@@ -1,0 +1,71 @@
+@import "../../styles/global_variables.scss"
+
+// @include media-size(768)
+// 	border: none
+// 	border-left: $navigation_bar * 1px solid transparent
+
+.part
+	position: relative
+	float: left
+	width: auto
+
+	> .part-start
+		position: absolute
+		top: (($note_size / 2) - 1) * 1px
+		left: 0
+		width: 1px
+		height: (($note_size * 5) + 1) * 1px
+		border-left: 3px solid #988c69
+		z-index: 1
+
+	> .part-end
+		position: absolute
+		top: (($note_size / 2) - 1) * 1px
+		right: 0
+		width: 1px
+		height: (($note_size * 5) + 1) * 1px
+		border-right: 3px solid #988c69
+		z-index: 1
+
+
+.background-lines
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+
+	> .line-1,
+	> .line-2,
+	> .line-3,
+	> .line-4,
+	> .line-5,
+	> .line-6
+		width: 100%
+		// border-bottom: 1px solid #36424d
+		background-image: linear-gradient(to right, #4a5056 60%, rgba(255, 255, 255, 0) 0%)
+		background-position: bottom
+		background-size: 6px 1px
+		background-repeat: repeat-x
+
+
+	> .line-1
+		height: ($note_size / 2) * 1px
+
+	> .line-2,
+	> .line-3,
+	> .line-4,
+	> .line-5,
+	> .line-6
+		height: $note_size * 1px
+
+
+.add-block-button
+	position: absolute
+	z-index: 1
+
+
+.remove-block-button
+	position: absolute
+	top: 40px
+	z-index: 1
+

@@ -1,0 +1,224 @@
+@import "../../styles/global_variables.scss";
+
+.doc-wrapper {
+	padding-top: 50px; }
+
+.part {
+	position: relative;
+	float: left;
+	width: auto;
+
+	> .part-start {
+		position: absolute;
+		top: (($note_size / 2) - 1) * 1px;
+		left: 0;
+		width: 1px;
+		height: ($note_size * 5) * 1px;
+		border-left: 1px solid #ccc; }
+
+	> .part-end {
+		position: absolute;
+		top: (($note_size / 2) - 1) * 1px;
+		right: 0;
+		width: 1px;
+		height: ($note_size * 5) * 1px;
+		border-right: 1px solid #ccc; }
+}
+
+.block {
+	position: relative;
+	float: left;
+	padding: 0 17px 0;
+
+	> .block-end {
+		position: absolute;
+		top: (($note_size / 2) - 1) * 1px;
+		right: 0;
+		width: 1px;
+		height: ($note_size * 5) * 1px;
+		border-right: 1px solid #ccc; }
+}
+
+.column {
+	position: relative;
+	float: left;
+	width: auto;
+	min-width: $note_size * 1px;
+	padding: 0; }
+
+.note {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: $note_size * 1px;
+	outline: none;
+	cursor: pointer;
+	border: transparent 1px solid;
+	border-radius: 0;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	font-weight: bold;
+	color: #222;
+
+	> span {
+		padding: 0 4px 0 4px;
+		background-color: #fff; }
+
+	&:hover {
+		border: #999 1px solid;
+		background-color: rgba(89, 150, 175, 0.1);
+
+		> span {
+			background-color: #eef4f7; }
+	}
+
+	&.selected {
+		border: #e64747 1px solid;
+		background-color: rgba(230, 71, 71, 0.1);
+
+		> span {
+			background-color: #fcecec; }
+	}
+}
+
+.background-lines {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	> .line-1,
+	> .line-2,
+	> .line-3,
+	> .line-4,
+	> .line-5,
+	> .line-6 {
+		width: 100%;
+		border-bottom: 1px solid #dedede; }
+
+	> .line-1 {
+		height: ($note_size / 2) * 1px; }
+
+	> .line-2,
+	> .line-3,
+	> .line-4,
+	> .line-5,
+	> .line-6 {
+		height: $note_size * 1px; }
+}
+
+.title {
+	margin-bottom: 16px; }
+
+.action-buttons {
+	position: relative;
+	padding: 0 0 38px 0;
+
+	>  button {
+		margin-right: 12px;	}
+}
+
+.waiting-time {
+	position: relative;
+	padding: 0 0 44px 26px;
+	color: #cb327c;
+	font-size: 21px;
+
+	> i {
+		position: absolute;
+		top: 4px;
+		left: 0;
+		color: #babcbf;
+		font-size: 16px; }
+
+	> .label {
+		color: #babcbf;
+		font-size: 16px; }
+}
+
+.dates {
+	position: relative;
+	padding: 0 0 23px 26px;
+	color: #0a0a0a;
+
+	> i {
+		position: absolute;
+		top: 4px;
+		left: 0;
+		color: #babcbf; }
+
+	> .label {
+		color: #babcbf; }
+}
+
+.contacts {
+	position: relative;
+	padding: 12px 0 23px 26px;
+
+	> i {
+		position: absolute;
+		top: 16px;
+		left: 0;
+		color: #babcbf; }
+
+	> .label {
+		color: #babcbf; }
+
+	> .contact {
+		position: relative;
+
+		> .name {
+			padding: 12px 0 0 0;
+			color: #cb327c; }
+
+		> .email {
+			padding: 0 0 6px 0;
+			color: #0a0a0a; }
+	}
+}
+
+
+/* ================================================================== *\
+
+
+		@media (min-width: 768px) and (max-width: 1024px) {
+
+    #Small devices (tablets, 768px and up)
+
+
+
+\* ================================================================== */ @media (min-width: 768px) {
+
+
+
+
+
+/* ================================================================== *\
+
+
+
+    #Medium devices (desktops, 992px and up)
+
+
+
+\* ================================================================== */ } @media (min-width: 992px) {
+
+
+
+
+
+/* ================================================================== *\
+
+
+
+		#Large devices (large desktops, 1200px and up)
+
+
+
+\* ================================================================== */ } @media (min-width: 1200px) {
+
+
+
+
+
+/* ================================================================== */ } /* END devices */

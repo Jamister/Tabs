@@ -1,0 +1,19 @@
+# Logs
+# Design folder
+v1
+design
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directory
+node_modules
+
+# Ignore build files
+build

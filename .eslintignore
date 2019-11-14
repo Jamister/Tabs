@@ -1,0 +1,7 @@
+# Real files to ignore
+config/
+node_modules/
+public/
+scripts/
+src/serviceWorker.js
+.test.js

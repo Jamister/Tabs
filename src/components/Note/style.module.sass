@@ -1,0 +1,37 @@
+@import "../../styles/global_variables.scss"
+
+.note
+	position: relative
+	float: left
+	width: 100%
+	height: $note_size * 1px
+	outline: none
+	cursor: pointer
+	border: transparent 1px solid
+	border-radius: 0
+	font-family: "Courier New", Courier, monospace
+	font-size: 14px
+	font-weight: bold
+	color: #c8ced4
+
+	> span
+		padding: 0 4px 0 4px
+		background-color: #252f3a
+
+	&:hover
+		border: #666 1px solid
+		background-color: rgba(89, 150, 175, 0.1)
+
+		> span
+			background-color: lighten(#252f3a, 4%)
+
+	&.selected
+		border: #988c69 1px solid
+		background-color: rgba(89, 150, 175, 0.1)
+
+		> span
+			background-color: lighten(#252f3a, 4%)
+
+
+
+

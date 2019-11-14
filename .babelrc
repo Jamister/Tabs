@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "react-app",
+    "airbnb"
+  ],
+  "plugins": [
+  	"transform-class-properties"
+  ]
+}

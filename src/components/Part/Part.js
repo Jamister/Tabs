@@ -15,7 +15,8 @@ import Block from '../Block';
 function Part({ part }) {
 	const { id } = part || {};
 	const blocks = useSelector(store => store.tab.blocks, shallowEqual);
-	const blocks_list = blocks.all_ids
+	const all_ids = blocks.all_ids || [];
+	const blocks_list = all_ids
 		.filter(b => b.indexOf(`${id}-`) !== -1);
 	const dispatch = useDispatch();
 
@@ -41,6 +42,7 @@ function Part({ part }) {
 			{blocks_list.map(b => (
 				<Block
 					key={b}
+					data-test="blocks-render"
 					part_id={id}
 					block={blocks.by_id[b]}
 				/>

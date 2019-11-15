@@ -9,6 +9,9 @@ import styles from './style.module.sass';
 // Actions
 import { selectNote } from '../../store/tab/actions';
 
+// Components
+import NoteValue from './NoteValue';
+
 function Note({
 	part_id,
 	block_id,
@@ -29,8 +32,6 @@ function Note({
 	}
 
 	const note_id = `${part_id}-${block_id}-${column_id}-${line_id}`;
-	const note = useSelector(store => store.tab.notes[note_id], shallowEqual) || {};
-	const note_value = note.value || '';
 	const selected_note = useSelector(store => store.tab.selected_note, shallowEqual) || {};
 	const { p, b, c, l } = selected_note;
 	const selected_note_id = `${p}-${b}-${c}-${l}`;
@@ -42,10 +43,11 @@ function Note({
 	return (
 		<button
 			type="button"
+			data-test="note-render"
 			styleName={note_class}
 			onClick={handleNote}
 		>
-			{note_value !== '' && <span>{note_value}</span>}
+			<NoteValue note_id={note_id} />
 		</button>
 	);
 }

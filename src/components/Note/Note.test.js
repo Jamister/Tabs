@@ -1,24 +1,53 @@
 /* eslint-disable */
 import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
+import Adapter from 'enzyme-adapter-react-16';
+import { useSelector, useDispatch } from 'react-redux';
 import Note from './Note';
 
-Enzyme.configure({ adapter: new EnzymeAdapter() });
+Enzyme.configure({ adapter: new Adapter() });
 
-jest.mock('react-css-modules', () => Note => Note);
+jest.mock('react-redux', () => ({
+	useDispatch: jest.fn(),
+	useSelector: jest.fn(),
+}));
 
-const setup = (props = {}, state = null) => {
-	return shallow(<Note {...props} />);
-};
+describe('Note 1', () => {
+	beforeAll(() => {
+		useSelector.mockImplementation(() => (null))
+	});
 
-const findByTestAttr = (wrapper, value) => {
-	return wrapper.find(`[data-test="${value}"]`);
-};
+	it('should not crash Note component', () => {
+		const wrapper = shallow(
+			<Note
+				part_id={1}
+				block_id={1}
+				column_id={1}
+				line_id={1}
+			/>
+		);
+		const html_elem = wrapper.find('[data-test="note-render"]');
+		expect(html_elem).toHaveLength(1);
+	});
+});
 
-test('Note render ok', () => {
-	// const wrapper = setup();
-	// expect(
-	// 	findByTestAttr(wrapper, 'note').length
-	// ).toBe(1);
+describe('Note 2', () => {
+	beforeAll(() => {
+		useSelector.mockImplementation(() => ({
+			p: 1, b: 1, c: 1, l: 1,
+		}))
+	});
+
+	it('should render NoteValue', () => {
+		const wrapper = shallow(
+			<Note
+				part_id={1}
+				block_id={1}
+				column_id={1}
+				line_id={1}
+			/>
+		);
+		const html_elem = wrapper.find('NoteValue');
+		expect(html_elem).toHaveLength(1);
+	});
 });

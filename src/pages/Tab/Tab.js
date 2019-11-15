@@ -14,6 +14,7 @@ import Part from '../../components/Part';
 const Tab = () => {
 	const dispatch = useDispatch();
 	const parts = useSelector(store => store.tab.parts, shallowEqual);
+	const all_ids = parts.all_ids || [];
 
 	function handleKeyDown(e) {
 		const arrows = e.keyCode >= 37 && e.keyCode <= 40;
@@ -40,13 +41,12 @@ const Tab = () => {
 			</div>
 			<div className="grid-x">
 				<div className="medium-12 cell" data-test="tab-render">
-					{parts.all_ids.map(p => (
-						<p key={p} data-test="tab-render2">
-							<Part
-								key={p}
-								part={parts.by_id[p]}
-							/>
-						</p>
+					{all_ids.map(p => (
+						<Part
+							key={p}
+							data-test="blocks-render"
+							part={parts.by_id[p]}
+						/>
 					))}
 				</div>
 			</div>

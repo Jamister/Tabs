@@ -14,11 +14,21 @@ jest.mock('react-redux', () => ({
 
 describe('Tab', () => {
 	beforeAll(() => {
+		useSelector.mockImplementation(() => ({}))
+	});
+
+	it('should not crash Tab component', () => {
+		const wrapper = shallow(<Tab />);
+		const html_elem = wrapper.find('[data-test="tab-render"]');
+		expect(html_elem).toHaveLength(1);
+	});
+});
+
+describe('Tab', () => {
+	beforeAll(() => {
 		useSelector.mockImplementation(() => ({
-			all_ids: [1],
-			by_id: {
-				1: { id: 1 },
-			},
+			all_ids: [],
+			by_id: {},
 		}))
 	});
 
@@ -32,14 +42,17 @@ describe('Tab', () => {
 describe('Tab 2', () => {
 	beforeAll(() => {
 		useSelector.mockImplementation(() => ({
-			all_ids: [],
-			by_id: {},
+			all_ids: [1, 2],
+			by_id: {
+				1: { id: 1 },
+				2: { id: 2 },
+			},
 		}))
 	});
 
-	it('aaaaaaaaaaaaaaaaaaaaashould render Tab component', () => {
+	it('should render Tab with blocks', () => {
 		const wrapper = shallow(<Tab />);
-		const html_elem = wrapper.find('[data-test="tab-render2"]');
-		expect(html_elem).toHaveLength(1);
+		const html_elem = wrapper.find('[data-test="blocks-render"]');
+		expect(html_elem).toHaveLength(2);
 	});
 });

@@ -29,45 +29,26 @@ describe('Column 1', () => {
 	});
 });
 
-// describe('Block 2', () => {
-// 	beforeAll(() => {
-// 		useSelector.mockImplementation(() => ({
-// 			all_ids: [
-// 				'1-1-1',
-// 				'1-1-2',
-// 				'1-1-3',
-// 			],
-// 			by_id: {
-// 				'1-1-1': {
-// 					part_id: 1,
-// 					block_id: 1,
-// 					id: '1-1-1',
-// 				},
-// 				'1-1-2': {
-// 					part_id: 1,
-// 					block_id: 1,
-// 					id: '1-1-2',
-// 				},
-// 				'1-1-3': {
-// 					part_id: 1,
-// 					block_id: 1,
-// 					id: '1-1-3',
-// 				},
-// 			},
-// 		}))
-// 	});
+describe('Column 2', () => {
+	beforeAll(() => {
+		useSelector.mockImplementation(() => ([
+			1, 2, 3, 4, 5, 6,
+		]))
+	});
 
-// 	it('should render 3 Columns', () => {
-// 		const wrapper = shallow(
-// 			<Block
-// 				part_id="1"
-// 				block={{
-// 					part_id: 1,
-// 					id: '1-1',
-// 				}}
-// 			/>
-// 		);
-// 		const html_elem = wrapper.find('[data-test="columns-render"]');
-// 		expect(html_elem).toHaveLength(3);
-// 	});
-// });
+	it('should render 6 empty Notes', () => {
+		const wrapper = shallow(
+			<Column
+				part_id={1}
+				block_id={1}
+				column={{
+					part_id: 1,
+					block_id: 1,
+					id: '1-1-1',
+				}}
+			/>
+		);
+		const html_elem = wrapper.find('[data-test="notes-render"]');
+		expect(html_elem).toHaveLength(6);
+	});
+});

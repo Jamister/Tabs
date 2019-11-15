@@ -19,6 +19,7 @@ function Column({ part_id, block_id, column }) {
 			{(lines || []).map(l => (
 				<Note
 					key={l}
+					data-test="notes-render"
 					part_id={part_id}
 					block_id={block_id}
 					column_id={column_id}

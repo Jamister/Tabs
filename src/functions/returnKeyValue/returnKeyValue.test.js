@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { returnKeyValue } from './returnKeyValue';
 
 test('returnKeyValue', () => {

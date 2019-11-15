@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { findLastColumnFromPreviousBlock } from './findLastColumnFromPreviousBlock';
 
 test('findLastColumnFromPreviousBlock', () => {

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { handleArrows } from './handleArrows';
 
 test('handleArrows', () => {

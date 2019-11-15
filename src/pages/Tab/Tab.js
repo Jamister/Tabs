@@ -44,7 +44,7 @@ const Tab = () => {
 					{all_ids.map(p => (
 						<Part
 							key={p}
-							data-test="blocks-render"
+							data-test="parts-render"
 							part={parts.by_id[p]}
 						/>
 					))}

@@ -50,9 +50,9 @@ describe('Tab 2', () => {
 		}))
 	});
 
-	it('should render Tab with blocks', () => {
+	it('should render Tab with parts', () => {
 		const wrapper = shallow(<Tab />);
-		const html_elem = wrapper.find('[data-test="blocks-render"]');
+		const html_elem = wrapper.find('[data-test="parts-render"]');
 		expect(html_elem).toHaveLength(2);
 	});
 });

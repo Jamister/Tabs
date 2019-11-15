@@ -10,17 +10,19 @@ import styles from './style.module.sass';
 import Column from '../Column';
 
 function Block({ part_id, block }) {
-	const { id } = block;
+	const id = (block || {}).id || '';
 	const block_id = Number(id.replace(`${part_id}-`, ''));
 	const columns = useSelector(store => store.tab.columns, shallowEqual);
-	const columns_list = columns.all_ids
+	const all_ids = columns.all_ids || [];
+	const columns_list = all_ids
 		.filter(b => b.indexOf(`${part_id}-${block_id}-`) !== -1);
 
 	return (
-		<div styleName="block">
+		<div styleName="block" data-test="block-render">
 			{columns_list.map(c => (
 				<Column
 					key={c}
+					data-test="columns-render"
 					part_id={part_id}
 					block_id={block_id}
 					column={columns.by_id[c]}

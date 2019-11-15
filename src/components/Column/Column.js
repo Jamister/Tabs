@@ -10,13 +10,13 @@ import styles from './style.module.sass';
 import Note from '../Note';
 
 function Column({ part_id, block_id, column }) {
-	const { id } = column;
+	const id = (column || {}).id || '';
 	const column_id = Number(id.replace(`${part_id}-${block_id}-`, ''));
 	const lines = useSelector(store => store.tab.lines, shallowEqual);
 
 	return (
-		<div styleName="column">
-			{lines.map(l => (
+		<div styleName="column" data-test="column-render">
+			{(lines || []).map(l => (
 				<Note
 					key={l}
 					part_id={part_id}

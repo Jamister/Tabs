@@ -1,0 +1,1 @@
+export { updateNote } from './updateNote';

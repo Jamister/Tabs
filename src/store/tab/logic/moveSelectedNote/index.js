@@ -1,0 +1,1 @@
+export { moveSelectedNote } from './moveSelectedNote';

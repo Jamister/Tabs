@@ -1,8 +1,14 @@
 import { findLastColumn } from '../findLastColumn';
 
 export const handleArrows = (key_code, tab) => {
-	const { selected_note, columns, lines } = tab;
+	const selected_note = (tab || {}).selected_note || {};
+	const columns = (tab || {}).columns || {};
+	const lines = (tab || {}).lines || [];
 	const { p, b, c, l } = selected_note;
+
+	if (p === undefined) {
+		return { p: 1, b: 1, c: 1, l: 1 };
+	}
 
 	switch (key_code) {
 	// right arrow

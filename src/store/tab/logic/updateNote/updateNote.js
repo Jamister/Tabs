@@ -1,5 +1,5 @@
 // Functions
-import { returnKeyValue } from '../../utils';
+import { returnKeyValue } from '../../../../functions/returnKeyValue';
 
 export const updateNote = (state, action) => {
 	const selected_note = state.selected_note || {};

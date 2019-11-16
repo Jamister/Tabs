@@ -1,8 +1,8 @@
-import { findLastColumnFromPreviousBlock } from './findLastColumnFromPreviousBlock';
+import { findLastColumn } from './findLastColumn';
 
 test('should not crash', () => {
-	expect(findLastColumnFromPreviousBlock()).toBe(1);
-	expect(findLastColumnFromPreviousBlock(null, null, null)).toBe(1);
+	expect(findLastColumn()).toBe(1);
+	expect(findLastColumn(null, null, null)).toBe(1);
 });
 
 test('should find column 4', () => {
@@ -30,7 +30,7 @@ test('should find column 4', () => {
 			},
 		},
 	};
-	const last_column = findLastColumnFromPreviousBlock(columns, 1, 1);
+	const last_column = findLastColumn(columns, 1, 1);
 	expect(last_column).toBe(4);
 });
 

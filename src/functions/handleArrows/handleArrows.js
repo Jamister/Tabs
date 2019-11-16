@@ -1,4 +1,4 @@
-import { findLastColumnFromPreviousBlock } from '../findLastColumnFromPreviousBlock';
+import { findLastColumn } from '../findLastColumn';
 
 export const handleArrows = (key_code, tab) => {
 	const { selected_note, columns, lines } = tab;
@@ -24,7 +24,7 @@ export const handleArrows = (key_code, tab) => {
 			next_column = 1;
 		}
 		if (next_column === 0 && b > 1) {
-			next_column = findLastColumnFromPreviousBlock(columns, p, b - 1);
+			next_column = findLastColumn(columns, p, b - 1);
 			next_block = b - 1;
 		}
 		const next_location = { p, b: next_block, c: next_column, l };

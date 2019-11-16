@@ -32,6 +32,6 @@ export const returnKeyValue = (key_code, pre_value) => {
 	case 37: case 38: case 39: case 40: return 'arrows';
 
 	// default
-	default: return pre_value;
+	default: return pre_value || '';
 	}
 };

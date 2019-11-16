@@ -1,5 +1,4 @@
 import {
-	UPDATE_TAB,
 	SELECT_NOTE,
 	UPDATE_NOTE,
 	MOVE_SELECTED_NOTE,
@@ -7,7 +6,6 @@ import {
 	REMOVE_BLOCK,
 } from './types';
 
-export const updateTab = (fields_n_values) => ({ type: UPDATE_TAB, fields_n_values });
 export const selectNote = (p, b, c, l) => ({ type: SELECT_NOTE, p, b, c, l });
 export const updateNote = (key_code) => ({ type: UPDATE_NOTE, key_code });
 export const moveSelectedNote = (key_code) => ({ type: MOVE_SELECTED_NOTE, key_code });

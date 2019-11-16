@@ -1,4 +1,3 @@
-export const UPDATE_TAB = 'UPDATE_TAB';
 export const SELECT_NOTE = 'SELECT_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
 export const MOVE_SELECTED_NOTE = 'MOVE_SELECTED_NOTE';

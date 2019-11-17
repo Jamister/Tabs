@@ -36,6 +36,9 @@ export const updateNote = (state, action) => {
 		};
 		data_to_update.columns = columns;
 	}
+
+	// TODO remove empty column at the end
+
 	return {
 		...state,
 		...data_to_update,

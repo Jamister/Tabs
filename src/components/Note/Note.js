@@ -11,6 +11,7 @@ import { selectNote } from '../../store/tab/actions';
 
 // Components
 import NoteValue from './NoteValue';
+import NoteWidthSpace from './NoteWidthSpace';
 
 function Note({
 	part_id,
@@ -37,18 +38,21 @@ function Note({
 	const selected_note_id = `${p}-${b}-${c}-${l}`;
 
 	const note_class = note_id === selected_note_id
-		? 'note selected'
-		: 'note';
+		? `note n${line_id} selected`
+		: `note n${line_id}`;
 
 	return (
-		<button
-			type="button"
-			data-test="note-render"
-			styleName={note_class}
-			onClick={handleNote}
-		>
-			<NoteValue note_id={note_id} />
-		</button>
+		<>
+			<button
+				type="button"
+				data-test="note-render"
+				styleName={note_class}
+				onClick={handleNote}
+			>
+				<NoteValue note_id={note_id} />
+			</button>
+			<NoteWidthSpace note_id={note_id} />
+		</>
 	);
 }
 

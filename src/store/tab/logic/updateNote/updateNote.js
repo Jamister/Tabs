@@ -1,22 +1,9 @@
 // Functions
 import { returnKeyValue } from '../../../../functions/returnKeyValue';
 
-export const updateNote = (state, action) => {
+function addColumnIfLastOne(state) {
 	const selected_note = state.selected_note || {};
-	const { p, b, c, l } = selected_note;
-	const note_id = `${p}-${b}-${c}-${l}`;
-	const note_pre_value = ((state.notes || {})[note_id] || {}).value || '';
-	const value = returnKeyValue(action.key_code, note_pre_value);
-	const notes = {
-		...state.notes,
-		[note_id]: {
-			value,
-		},
-	};
-	const data_to_update = {
-		notes,
-	};
-	// Add column in case its the last one
+	const { p, b, c } = selected_note;
 	const next_column_id = `${p}-${b}-${c + 1}`;
 	const last_column = state.columns.by_id[next_column_id] === undefined;
 	if (last_column) {
@@ -34,8 +21,33 @@ export const updateNote = (state, action) => {
 				},
 			},
 		};
-		data_to_update.columns = columns;
+		return columns;
 	}
+
+	return { ...state.columns };
+}
+
+// function removeColumnsIfEmpty() {
+// }
+
+export const updateNote = (state, action) => {
+	const selected_note = state.selected_note || {};
+	const { p, b, c, l } = selected_note;
+	const note_id = `${p}-${b}-${c}-${l}`;
+	const note_pre_value = ((state.notes || {})[note_id] || {}).value || '';
+	const value = returnKeyValue(action.key_code, note_pre_value);
+	const notes = {
+		...state.notes,
+		[note_id]: {
+			value,
+		},
+	};
+	const data_to_update = {
+		notes,
+	};
+	// Add column in case its the last one
+	const columns = addColumnIfLastOne(state);
+	data_to_update.columns = columns;
 
 	// TODO remove empty column at the end
 

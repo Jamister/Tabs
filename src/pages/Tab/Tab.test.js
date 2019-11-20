@@ -11,7 +11,7 @@ jest.mock('react-redux', () => ({
 	useSelector: jest.fn(),
 }));
 
-describe('Tab', () => {
+describe('Tab 1', () => {
 	beforeAll(() => {
 		useSelector.mockImplementation(() => ({}))
 	});
@@ -23,7 +23,7 @@ describe('Tab', () => {
 	});
 });
 
-describe('Tab', () => {
+describe('Tab 2', () => {
 	beforeAll(() => {
 		useSelector.mockImplementation(() => ({
 			all_ids: [],
@@ -38,7 +38,7 @@ describe('Tab', () => {
 	});
 });
 
-describe('Tab 2', () => {
+describe('Tab 3', () => {
 	beforeAll(() => {
 		useSelector.mockImplementation(() => ({
 			all_ids: [1, 2],

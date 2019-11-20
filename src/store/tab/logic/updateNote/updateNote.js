@@ -2,18 +2,21 @@
 import { returnKeyValue } from '../../../../functions/returnKeyValue';
 
 function addColumnIfLastOne(state) {
+	const columns = state.columns || {};
+	const all_ids = columns.all_ids || [];
+	const by_id = columns.by_id || {};
 	const selected_note = state.selected_note || {};
 	const { p, b, c } = selected_note;
 	const next_column_id = `${p}-${b}-${c + 1}`;
-	const last_column = state.columns.by_id[next_column_id] === undefined;
+	const last_column = by_id[next_column_id] === undefined;
 	if (last_column) {
-		const columns = {
+		const new_columns = {
 			all_ids: [
-				...state.columns.all_ids,
+				...all_ids,
 				next_column_id,
 			],
 			by_id: {
-				...state.columns.by_id,
+				...by_id,
 				[next_column_id]: {
 					part_id: p,
 					block_id: b,
@@ -21,18 +24,25 @@ function addColumnIfLastOne(state) {
 				},
 			},
 		};
-		return columns;
+		return new_columns;
 	}
 
-	return { ...state.columns };
+	return { ...columns };
 }
 
 // function removeColumnsIfEmpty() {
 // }
 
-export const updateNote = (state, action) => {
+export const updateNote = (_state, _action) => {
+	const state = _state || {};
+	const action = _action || {};
 	const selected_note = state.selected_note || {};
 	const { p, b, c, l } = selected_note;
+
+	if (p === undefined) {
+		return { ...state };
+	}
+
 	const note_id = `${p}-${b}-${c}-${l}`;
 	const note_pre_value = ((state.notes || {})[note_id] || {}).value || '';
 	const value = returnKeyValue(action.key_code, note_pre_value);

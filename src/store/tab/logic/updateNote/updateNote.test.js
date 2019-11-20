@@ -1,7 +1,7 @@
 import { updateNote } from './updateNote';
 
-test('updateNote', () => {
-	// expect(caracteristicaType([], 0, 'texto')).toBe('texto');
-	// expect(caracteristicaType([], null, 'texto')).toBe('texto');
+test('updateNote should not crash', () => {
+	const test_empty = updateNote();
+	expect(test_empty).toStrictEqual({});
 });
 

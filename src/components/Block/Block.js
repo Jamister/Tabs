@@ -17,8 +17,22 @@ function Block({ part_id, block }) {
 	const columns_list = all_ids
 		.filter(b => b.indexOf(`${part_id}-${block_id}-`) !== -1);
 
+	// return (
+	// 	<div styleName="block" data-test="block-render">
+	// 		{columns_list.map(c => (
+	// 			<Column
+	// 				key={c}
+	// 				data-test="columns-render"
+	// 				part_id={part_id}
+	// 				block_id={block_id}
+	// 				column={columns.by_id[c]}
+	// 			/>
+	// 		))}
+	// 		<div styleName="block-end" />
+	// 	</div>
+	// );
 	return (
-		<div styleName="block" data-test="block-render">
+		<>
 			{columns_list.map(c => (
 				<Column
 					key={c}
@@ -28,8 +42,8 @@ function Block({ part_id, block }) {
 					column={columns.by_id[c]}
 				/>
 			))}
-			<div styleName="block-end" />
-		</div>
+			<div styleName="block-end-2" />
+		</>
 	);
 }
 

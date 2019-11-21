@@ -31,14 +31,14 @@ function Part({ part }) {
 	return (
 		<div styleName="part" data-test="part-render">
 			<div styleName="part-start" />
-			<div styleName="background-lines">
+			{/* <div styleName="background-lines">
 				<div styleName="line-1" />
 				<div styleName="line-2" />
 				<div styleName="line-3" />
 				<div styleName="line-4" />
 				<div styleName="line-5" />
 				<div styleName="line-6" />
-			</div>
+			</div> */}
 			{blocks_list.map(b => (
 				<Block
 					key={b}

@@ -30,7 +30,7 @@ function addColumnIfLastOne(state) {
 	return { ...columns };
 }
 
-// function removeColumnsIfEmpty() {
+// function removeColumnsIfEmpty(state) {
 // }
 
 export const updateNote = (_state, _action) => {
@@ -55,7 +55,8 @@ export const updateNote = (_state, _action) => {
 	const data_to_update = {
 		notes,
 	};
-	// Add column in case its the last one
+
+	// add column in case its the last one
 	const columns = addColumnIfLastOne(state);
 	data_to_update.columns = columns;
 

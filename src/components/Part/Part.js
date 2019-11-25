@@ -47,7 +47,6 @@ function Part({ part }) {
 					block={blocks.by_id[b]}
 				/>
 			))}
-			<div styleName="part-end" />
 
 			<button
 				type="button"

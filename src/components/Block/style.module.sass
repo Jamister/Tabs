@@ -18,7 +18,16 @@
 	float: left
 	width: 1px
 	height: (($note_size * 5) + 1) * 1px
-	margin: 11px 28px 0 0
+	margin: 11px 28px 64px 0
 	padding: 0
-	background: #4a5056
+	border-right: 1px solid #4a5056
+
+.part-end
+	position: absolute
+	top: (($note_size / 2) - 1) * 1px
+	right: 0
+	width: 1px
+	height: (($note_size * 5) + 1) * 1px
+	border-right: 4px solid #6b6b6b
+	z-index: 1
 

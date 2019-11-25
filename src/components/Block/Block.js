@@ -23,7 +23,7 @@ function Block({ part_id, block }) {
 	const has_next_block = (by_id[next_block_id] || {}).id !== undefined;
 	const block_end_elem = has_next_block
 		? <div styleName="block-end-2" />
-		: <div styleName="part-end" />;
+		: <div styleName="part-end" data-test="block-render" />;
 
 	return (
 		<>

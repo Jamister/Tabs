@@ -1,3 +1,23 @@
+function removeColumnsInLastBlock(state, last_block_id) {
+	const columns = state.columns || {};
+	const all_ids = columns.all_ids || [];
+	const by_id = columns.by_id || {};
+
+	const _by_id = { ...by_id };
+	const _all_ids = all_ids.filter(id => {
+		const to_delete = id.indexOf(`${last_block_id}-`) !== -1;
+		if (to_delete) {
+			delete _by_id[id];
+		}
+		return !to_delete;
+	});
+
+	return {
+		all_ids: _all_ids,
+		by_id: _by_id,
+	};
+}
+
 export const removeBlock = (state, action) => {
 	const { part_id } = action;
 	let last_block_id = `${part_id}-${1}`;
@@ -18,13 +38,14 @@ export const removeBlock = (state, action) => {
 		by_id,
 	};
 
-	// TODO remove columns
+	// remove columns
+	const columns = removeColumnsInLastBlock(state, last_block_id);
 
 	// TODO remove notes
 
 	return {
 		...state,
 		blocks,
-		// columns: { $set: columns },
+		columns,
 	};
 };

@@ -17,20 +17,14 @@ function Block({ part_id, block }) {
 	const columns_list = all_ids
 		.filter(b => b.indexOf(`${part_id}-${block_id}-`) !== -1);
 
-	// return (
-	// 	<div styleName="block" data-test="block-render">
-	// 		{columns_list.map(c => (
-	// 			<Column
-	// 				key={c}
-	// 				data-test="columns-render"
-	// 				part_id={part_id}
-	// 				block_id={block_id}
-	// 				column={columns.by_id[c]}
-	// 			/>
-	// 		))}
-	// 		<div styleName="block-end" />
-	// 	</div>
-	// );
+	// Need to check the end of the block
+	const by_id = columns.by_id || {};
+	const next_block_id = `${part_id}-${block_id + 1}-1`;
+	const has_next_block = (by_id[next_block_id] || {}).id !== undefined;
+	const block_end_elem = has_next_block
+		? <div styleName="block-end-2" />
+		: <div styleName="part-end" />;
+
 	return (
 		<>
 			{columns_list.map(c => (
@@ -42,7 +36,7 @@ function Block({ part_id, block }) {
 					column={columns.by_id[c]}
 				/>
 			))}
-			<div styleName="block-end-2" />
+			{block_end_elem}
 		</>
 	);
 }

@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 
 // CSS
 import CSSModules from 'react-css-modules';
 import styles from './style.module.sass';
 
-// Actions
-import { addBlock, removeBlock } from '../../store/tab/actions';
-
 // Components
 import Block from '../Block';
+import AddBlockButton from '../_buttons/AddBlockButton';
+import RemoveBlockButton from '../_buttons/RemoveBlockButton';
 
 function Part({ part }) {
 	const { id } = part || {};
@@ -18,15 +17,6 @@ function Part({ part }) {
 	const all_ids = blocks.all_ids || [];
 	const blocks_list = all_ids
 		.filter(b => b.indexOf(`${id}-`) !== -1);
-	const dispatch = useDispatch();
-
-	function addNewBlock() {
-		dispatch(addBlock(id));
-	}
-
-	function removeLastBlock() {
-		dispatch(removeBlock(id));
-	}
 
 	return (
 		<div styleName="part" data-test="part-render">
@@ -40,22 +30,8 @@ function Part({ part }) {
 				/>
 			))}
 
-			<button
-				type="button"
-				styleName="add-block-button"
-				onClick={addNewBlock}
-			>
-				+ Block
-			</button>
-
-			<button
-				type="button"
-				styleName="remove-block-button"
-				onClick={removeLastBlock}
-			>
-				- Block
-			</button>
-
+			<AddBlockButton part_id={id} />
+			<RemoveBlockButton part_id={id} />
 		</div>
 	);
 }

@@ -22,6 +22,8 @@ export const returnKeyValue = (key_code, pre_value) => {
 	case 57: case 105: return `${pre_value}9`;
 	// s
 	case 83: return `${pre_value}s`;
+	// h
+	case 72: return `${pre_value}h`;
 
 	// backspace
 	case 8: return pre_value.slice(0, -1);

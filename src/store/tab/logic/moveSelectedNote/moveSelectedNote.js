@@ -18,7 +18,9 @@ export const moveSelectedNote = (state, action) => {
 	let new_selected_note = {};
 
 	switch (key_code) {
+	// tab
 	// right arrow
+	case 9:
 	case 39: {
 		const column_id = `${p}-${b}-${c + 1}`;
 		const next_location = columns.by_id[column_id] === undefined

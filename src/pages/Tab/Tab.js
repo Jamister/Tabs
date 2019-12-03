@@ -17,7 +17,10 @@ const Tab = () => {
 	const all_ids = parts.all_ids || [];
 
 	function handleKeyDown(e) {
-		const arrows = e.keyCode >= 37 && e.keyCode <= 40;
+		const arrows = (
+			e.keyCode >= 37
+			&& e.keyCode <= 40
+		) || e.keyCode === 9;
 		if (arrows) {
 			dispatch(moveSelectedNote(e.keyCode));
 			return;

@@ -5,11 +5,11 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import CSSModules from 'react-css-modules';
 import styles from './style.module.sass';
 
-// Actions
-import { moveSelectedNote, updateNote } from '../../store/tab/actions';
-
 // Components
 import Part from '../../components/Part';
+
+// Functions
+import { mapKeysToActions } from '../../functions/mapKeysToActions';
 
 const Tab = () => {
 	const dispatch = useDispatch();
@@ -17,15 +17,8 @@ const Tab = () => {
 	const all_ids = parts.all_ids || [];
 
 	function handleKeyDown(e) {
-		const arrows = (
-			e.keyCode >= 37
-			&& e.keyCode <= 40
-		) || e.keyCode === 9;
-		if (arrows) {
-			dispatch(moveSelectedNote(e.keyCode));
-			return;
-		}
-		dispatch(updateNote(e.keyCode));
+		const action = mapKeysToActions(e.keyCode);
+		dispatch(action);
 	}
 
 	useEffect(() => {

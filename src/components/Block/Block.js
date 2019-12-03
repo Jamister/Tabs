@@ -8,6 +8,7 @@ import styles from './style.module.sass';
 
 // Components
 import Column from '../Column';
+import BlockEnd from './BlockEnd';
 
 function Block({ part_id, block }) {
 	const id = (block || {}).id || '';
@@ -16,14 +17,6 @@ function Block({ part_id, block }) {
 	const all_ids = columns.all_ids || [];
 	const columns_list = all_ids
 		.filter(b => b.indexOf(`${part_id}-${block_id}-`) !== -1);
-
-	// Need to check the end of the block
-	const by_id = columns.by_id || {};
-	const next_block_id = `${part_id}-${block_id + 1}-1`;
-	const has_next_block = (by_id[next_block_id] || {}).id !== undefined;
-	const block_end_elem = has_next_block
-		? <div styleName="block-end-2" />
-		: <div styleName="part-end" data-test="block-render" />;
 
 	return (
 		<>
@@ -36,7 +29,10 @@ function Block({ part_id, block }) {
 					column={columns.by_id[c]}
 				/>
 			))}
-			{block_end_elem}
+			<BlockEnd
+				part_id={part_id}
+				block_id={block_id}
+			/>
 		</>
 	);
 }

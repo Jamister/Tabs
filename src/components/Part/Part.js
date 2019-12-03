@@ -8,8 +8,6 @@ import styles from './style.module.sass';
 
 // Components
 import Block from '../Block';
-import AddBlockButton from '../_buttons/AddBlockButton';
-import RemoveBlockButton from '../_buttons/RemoveBlockButton';
 
 function Part({ part }) {
 	const { id } = part || {};
@@ -29,9 +27,6 @@ function Part({ part }) {
 					block={blocks.by_id[b]}
 				/>
 			))}
-
-			<AddBlockButton part_id={id} />
-			<RemoveBlockButton part_id={id} />
 		</div>
 	);
 }

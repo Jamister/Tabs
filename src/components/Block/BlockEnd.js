@@ -18,12 +18,12 @@ function BlockEnd({ part_id, block_id }) {
 
 	if (has_next_block) {
 		return (
-			<div styleName="block-end-2" />
+			<div styleName="block-end-2" data-test="blockend-render" />
 		);
 	}
 
 	return (
-		<div styleName="part-end" data-test="block-render">
+		<div styleName="part-end" data-test="blockend-render">
 			<AddBlockButton part_id={part_id} />
 			<RemoveBlockButton part_id={part_id} />
 			<div styleName="layer-over-lines" />

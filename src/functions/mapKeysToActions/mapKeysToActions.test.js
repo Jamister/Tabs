@@ -1,6 +1,8 @@
 import { mapKeysToActions } from './mapKeysToActions';
 
-test('should return default', () => {
-	expect(mapKeysToActions()).toBe('');
+test('mapKeysToActions should not crash', () => {
+	expect(mapKeysToActions()).toBe({
+		key_code: undefined,
+		type: 'UPDATE_NOTE',
+	});
 });
-

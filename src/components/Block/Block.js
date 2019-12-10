@@ -32,6 +32,7 @@ function Block({ part_id, block }) {
 			<BlockEnd
 				part_id={part_id}
 				block_id={block_id}
+				data-test="block-render"
 			/>
 		</>
 	);

@@ -32,19 +32,9 @@ function createColumns(
 	};
 }
 
-export const addBlock = (_state, _action) => {
-	const state = _state || {};
-	const action = _action || {};
-	const blocks = state.blocks || {};
-	const all_ids = blocks.all_ids || [];
-	const by_id = blocks.by_id || {};
-	const { part_id } = action;
+function getNextBlock(by_id, part_id) {
 	let next_block_id = `${part_id}-${1}`;
 	let block_id = 0;
-
-	if (part_id === undefined) {
-		return { ...state };
-	}
 
 	for (let i = 1; i <= 1000; i++) {
 		if (by_id[`${part_id}-${i}`] === undefined) {
@@ -54,10 +44,24 @@ export const addBlock = (_state, _action) => {
 		}
 	}
 
-	const _all_ids = [
-		...all_ids,
-		next_block_id,
-	].filter((el, i, a) => i === a.indexOf(el));
+	return { next_block_id, block_id };
+}
+
+export const addBlock = (_state, _action) => {
+	const state = _state || {};
+	const action = _action || {};
+	const blocks = state.blocks || {};
+	const all_ids = blocks.all_ids || [];
+	const by_id = blocks.by_id || {};
+	const { part_id } = action;
+
+	if (part_id === undefined) {
+		return { ...state };
+	}
+
+	const { next_block_id, block_id } = getNextBlock(by_id, part_id);
+	const _all_ids = [...all_ids, next_block_id]
+		.filter((el, i, a) => i === a.indexOf(el));
 	const _blocks = {
 		all_ids: _all_ids,
 		by_id: {

@@ -1,5 +1,9 @@
 // Actions
-import { moveSelectedNote, updateNote } from '../../store/tab/actions';
+import {
+	moveSelectedNote,
+	updateNote,
+	clearSelectNote,
+} from '../../store/tab/actions';
 
 export const mapKeysToActions = (key_code) => {
 	// arrows
@@ -11,10 +15,10 @@ export const mapKeysToActions = (key_code) => {
 		return moveSelectedNote(key_code);
 	}
 
-	// actions
-	// if (key_code === 65) {
-	// 	return moveSelectedNote(key_code);
-	// }
+	// esc
+	if (key_code === 27) {
+		return clearSelectNote();
+	}
 
 	// default
 	return updateNote(key_code);

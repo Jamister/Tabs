@@ -1,0 +1,1 @@
+export { clearSelectNote } from './clearSelectNote';

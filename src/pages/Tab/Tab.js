@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules';
 import styles from './style.module.sass';
 
 // Components
+import Header from '../../components/Header';
 import Part from '../../components/Part';
 
 // Functions
@@ -29,24 +30,29 @@ const Tab = () => {
 	}, [handleKeyDown]);
 
 	return (
-		<div className="grid-container">
-			<div className="grid-x">
-				<div className="medium-12 cell">
-					<h3>Create tab</h3>
+		<>
+			<div className="grid-container full">
+				<div className="grid-x">
+					<div className="medium-12 cell">
+						<div styleName="top-bar">.</div>
+					</div>
 				</div>
 			</div>
-			<div className="grid-x">
-				<div className="medium-12 cell" data-test="tab-render">
-					{all_ids.map(p => (
-						<Part
-							key={p}
-							data-test="parts-render"
-							part={parts.by_id[p]}
-						/>
-					))}
+			<div className="grid-container">
+				<Header />
+				<div className="grid-x">
+					<div className="medium-12 cell" data-test="tab-render">
+						{all_ids.map(p => (
+							<Part
+								key={p}
+								data-test="parts-render"
+								part={parts.by_id[p]}
+							/>
+						))}
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

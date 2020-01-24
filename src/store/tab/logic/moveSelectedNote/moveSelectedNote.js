@@ -5,6 +5,7 @@ export const moveSelectedNote = (state, action) => {
 	const key_code = (action || {}).key_code || 0;
 	const selected_note = (state || {}).selected_note || {};
 	const columns = (state || {}).columns || {};
+	const blocks = (state || {}).blocks || {};
 	const lines = (state || {}).lines || [];
 	const { p, b, c, l } = selected_note;
 
@@ -22,13 +23,22 @@ export const moveSelectedNote = (state, action) => {
 	// right arrow
 	case 9:
 	case 39: {
-		const column_id = `${p}-${b}-${c + 1}`;
-		const next_location = columns.by_id[column_id] === undefined
-			? { p, b: b + 1, c: 1, l }
-			: { p, b, c: c + 1, l };
+		const column_full_id = `${p}-${b}-${c + 1}`;
+		const next_column_exists = (columns.by_id || {})[column_full_id] !== undefined;
+		const next_block_exists = (blocks.by_id || {})[`${p}-${b + 1}`] !== undefined;
+		let block_id = next_column_exists
+			? b
+			: b + 1;
+		let column_id = next_column_exists
+			? c + 1
+			: 1;
 
-		// TODO check the end
+		if (!next_column_exists && !next_block_exists) {
+			block_id = b;
+			column_id = c;
+		}
 
+		const next_location = { p, b: block_id, c: column_id, l };
 		new_selected_note = next_location;
 		break;
 	}

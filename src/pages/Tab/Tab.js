@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules';
 import styles from './style.module.sass';
 
 // Components
+import NavigationBar from '../../components/NavigationBar';
 import Header from '../../components/Header';
 import Part from '../../components/Part';
 
@@ -31,13 +32,7 @@ const Tab = () => {
 
 	return (
 		<>
-			<div className="grid-container full">
-				<div className="grid-x">
-					<div className="medium-12 cell">
-						<div styleName="top-bar">.</div>
-					</div>
-				</div>
-			</div>
+			<NavigationBar />
 			<div className="grid-container">
 				<Header />
 				<div className="grid-x">

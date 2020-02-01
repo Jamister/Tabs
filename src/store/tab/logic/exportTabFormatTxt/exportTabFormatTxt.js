@@ -6,40 +6,49 @@ export const exportTabFormatTxt = (state = {}) => {
 	const notes = state.notes || {};
 	const space_between_columns = 2;
 
-	function createLinesToPrint() {
-		return lines.reduce((result, current) => ({
-			...result,
-			[current]: '',
-		}), {});
+	function createTabObjectToPrint() {
+		const lines_to_print = lines
+			.reduce((result, current) => ({
+				...result,
+				[current]: '',
+			}), {});
+		const parts_all_ids = parts.all_ids || [];
+		const parts_to_print = parts_all_ids
+			.reduce((result, current) => ({
+				...result,
+				[current]: { ...lines_to_print },
+			}), {});
+		return parts_to_print;
 	}
 
-	const lines_to_print = createLinesToPrint();
+	const tab_to_be_printed = createTabObjectToPrint();
 
-	function printTab() {
+	function printLines(current_part_lines) {
 		return Object
-			.keys(lines_to_print)
+			.keys(current_part_lines)
 			.reduce((result, current) => {
-				const new_line_content = lines_to_print[current];
-				const tab_with_new_line = `${result}\n${new_line_content}`;
-				return tab_with_new_line;
+				const new_line_content = current_part_lines[current];
+				return `${result}\n${new_line_content}`;
 			}, '');
 	}
 
-	// function checkIfTabIsBlank() {
-	// 	return true;
-	// }
-
-	// function createLineBreakBetweenParts() {
-	// 	replace \--\
-	// }
+	function printTab() {
+		return Object
+			.keys(tab_to_be_printed)
+			.reduce((result, current_part_id) => {
+				const part_lines_string = printLines(tab_to_be_printed[current_part_id]);
+				return `${result}${part_lines_string}\n\n`;
+			}, '');
+	}
 
 	function filterIfHasId(all_ids, piece_of_id) {
 		return all_ids.filter(id => id.indexOf(piece_of_id) !== -1);
 	}
 
-	function updateLinesToPrint(line, note_value) {
-		const previous_content = lines_to_print[line] || '';
-		lines_to_print[line] = `${previous_content}${note_value}`;
+	function updateLinesToPrint(part_id, line, note_value) {
+		const part_object = tab_to_be_printed[part_id] || {};
+		const previous_content = part_object[line] || '';
+		part_object[line] = `${previous_content}${note_value}`;
 	}
 
 	function getLengthOfHigherNoteInColumn(column_full_id) {
@@ -63,14 +72,18 @@ export const exportTabFormatTxt = (state = {}) => {
 		return blank_value;
 	}
 
-	function createBorder(with_space = true) {
+	function createBorder(part_id, with_space = true) {
 		for (let l = 0; l < lines.length; l++) {
 			const line = lines[l];
 			const between_columns_value = with_space
 				? setBlankValue(space_between_columns)
 				: '';
-			updateLinesToPrint(line, `|${between_columns_value}`);
+			updateLinesToPrint(part_id, line, `|${between_columns_value}`);
 		}
+	}
+
+	function getPartIdFromFullIdString(full_id_string = '') {
+		return full_id_string.split('-')[0] || '0';
 	}
 
 	function fillTheLinesToPrint(column_full_id) {
@@ -80,10 +93,11 @@ export const exportTabFormatTxt = (state = {}) => {
 
 		for (let l = 0; l < lines.length; l++) {
 			const line = lines[l];
+			const part_id = getPartIdFromFullIdString(column_full_id);
 			const note_full_id = `${column_full_id}-${line}`;
 			const note_value = (notes[note_full_id] || {}).value || `${blank_value}`;
 			const note_value_with_space = `${note_value}${between_columns_value}`;
-			updateLinesToPrint(line, note_value_with_space);
+			updateLinesToPrint(part_id, line, note_value_with_space);
 		}
 	}
 
@@ -109,7 +123,7 @@ export const exportTabFormatTxt = (state = {}) => {
 
 			const last_block = b === blocks_length - 1;
 			const with_space = !last_block;
-			createBorder(with_space);
+			createBorder(part_id, with_space);
 		}
 	}
 
@@ -119,7 +133,7 @@ export const exportTabFormatTxt = (state = {}) => {
 
 		for (let p = 0; p < parts_length; p++) {
 			const part_id = parts_all_ids[p];
-			createBorder();
+			createBorder(part_id);
 			loopThroughBlocks(part_id);
 		}
 

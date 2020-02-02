@@ -18,6 +18,10 @@ const Tab = () => {
 	const parts = useSelector(store => store.tab.parts, shallowEqual);
 	const all_ids = parts.all_ids || [];
 
+
+	const printed_tab = useSelector(store => store.tab.printed_tab, shallowEqual);
+
+
 	function handleKeyDown(e) {
 		const action = mapKeysToActions(e.keyCode);
 		dispatch(action);
@@ -44,6 +48,12 @@ const Tab = () => {
 								part={parts.by_id[p]}
 							/>
 						))}
+					</div>
+				</div>
+
+				<div className="grid-x">
+					<div className="medium-12 cell" style={{ whiteSpace: 'pre', fontFamily: 'Courier' }}>
+						{printed_tab}
 					</div>
 				</div>
 			</div>

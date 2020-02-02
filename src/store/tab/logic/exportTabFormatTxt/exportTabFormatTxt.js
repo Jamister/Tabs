@@ -1,10 +1,11 @@
-export const exportTabFormatTxt = (state = {}) => {
+export const createPrintedTab = (state = {}) => {
 	const parts = state.parts || {};
 	const blocks = state.blocks || {};
 	const columns = state.columns || {};
 	const lines = state.lines || [];
 	const notes = state.notes || {};
 	const space_between_columns = 2;
+	const type_of_line_break = '\r\n';
 
 	function createTabObjectToPrint() {
 		const lines_to_print = lines
@@ -28,7 +29,7 @@ export const exportTabFormatTxt = (state = {}) => {
 			.keys(current_part_lines)
 			.reduce((result, current) => {
 				const new_line_content = current_part_lines[current];
-				return `${result}\n${new_line_content}`;
+				return `${result}${type_of_line_break}${new_line_content}`;
 			}, '');
 	}
 
@@ -37,7 +38,7 @@ export const exportTabFormatTxt = (state = {}) => {
 			.keys(tab_to_be_printed)
 			.reduce((result, current_part_id) => {
 				const part_lines_string = printLines(tab_to_be_printed[current_part_id]);
-				return `${result}${part_lines_string}\n\n`;
+				return `${result}${part_lines_string}${type_of_line_break}${type_of_line_break}`;
 			}, '');
 	}
 
@@ -145,4 +146,14 @@ export const exportTabFormatTxt = (state = {}) => {
 	}
 
 	return startExporting();
+};
+
+
+export const exportTabFormatTxt = (state = {}) => {
+	const printed_tab = createPrintedTab(state);
+
+	return {
+		...state,
+		printed_tab,
+	};
 };

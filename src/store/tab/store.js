@@ -92,6 +92,7 @@ const tab = {
 			},
 		},
 	},
+	printed_tab: '',
 };
 
 export default tab;

@@ -1,0 +1,1 @@
+export { lockBody } from './lockBody';

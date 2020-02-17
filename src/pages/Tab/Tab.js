@@ -10,6 +10,9 @@ import NavigationBar from '../../components/NavigationBar';
 import Header from '../../components/Header';
 import Part from '../../components/Part';
 
+// Actions
+import { clearPressedKey } from '../../store/tab/actions';
+
 // Functions
 import { mapKeysToActions } from '../../functions/mapKeysToActions';
 

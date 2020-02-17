@@ -3,6 +3,7 @@ import {
 	moveSelectedNote,
 	updateNote,
 	clearSelectNote,
+	holdPressedKey,
 } from '../../store/tab/actions';
 
 export const mapKeysToActions = (key_code) => {
@@ -18,6 +19,11 @@ export const mapKeysToActions = (key_code) => {
 	// esc
 	if (key_code === 27) {
 		return clearSelectNote();
+	}
+
+	// shift
+	if (key_code === 16) {
+		return holdPressedKey(key_code);
 	}
 
 	// default

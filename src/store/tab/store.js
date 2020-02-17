@@ -1,4 +1,5 @@
 const tab = {
+	instrument: 'guitar',
 	selected_note: {
 		p: 0,
 		b: 0,
@@ -93,6 +94,7 @@ const tab = {
 		},
 	},
 	printed_tab: '',
+	pressed_key: '',
 };
 
 export default tab;

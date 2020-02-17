@@ -56,7 +56,7 @@ export const createPrintedTab = (state = {}) => {
 		return lines.reduce((result, current) => {
 			const note_full_id = `${column_full_id}-${current}`;
 			const note_size = ((notes[note_full_id] || {}).value || '').length;
-			if (note_size >= result) {
+			if (note_size > result) {
 				return note_size;
 			}
 			return result;

@@ -97,6 +97,7 @@ export const createPrintedTab = (state = {}) => {
 			const part_id = getPartIdFromFullIdString(column_full_id);
 			const note_full_id = `${column_full_id}-${line}`;
 			const note_value = (notes[note_full_id] || {}).value || `${blank_value}`;
+			// TODO if note length is not the same as the higher one need to put extras --
 			const note_value_with_space = `${note_value}${between_columns_value}`;
 			updateLinesToPrint(part_id, line, note_value_with_space);
 		}

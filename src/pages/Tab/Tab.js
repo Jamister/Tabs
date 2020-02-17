@@ -23,10 +23,17 @@ const Tab = () => {
 		dispatch(action);
 	}
 
+	function handleKeyUp() {
+		const action = clearPressedKey();
+		dispatch(action);
+	}
+
 	useEffect(() => {
 		window.addEventListener('keydown', handleKeyDown);
+		window.addEventListener('keyup', handleKeyUp);
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown);
+			window.removeEventListener('keyup', handleKeyUp);
 		};
 	}, [handleKeyDown]);
 

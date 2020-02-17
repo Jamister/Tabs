@@ -1,29 +1,18 @@
-import { holdPressedKey } from './holdPressedKey';
+import { clearPressedKey } from './clearPressedKey';
 
-test('holdPressedKey should not crash', () => {
-	const test_empty = holdPressedKey();
+it('clearPressedKey should not crash', () => {
+	const test_empty = clearPressedKey();
 	expect(test_empty).toStrictEqual({
-		selected_note: {
-			p: 0,
-			b: 0,
-			c: 0,
-			l: 0,
-		},
+		pressed_key: '',
 	});
 });
 
-test('should clear the selected note', () => {
+it('should clear the pressed key', () => {
 	const state = {
-		blocks: {},
+		pressed_key: 'shift',
 	};
-	const result = holdPressedKey(state);
+	const result = clearPressedKey(state);
 	expect(result).toStrictEqual({
-		blocks: {},
-		selected_note: {
-			p: 0,
-			b: 0,
-			c: 0,
-			l: 0,
-		},
+		pressed_key: '',
 	});
 });

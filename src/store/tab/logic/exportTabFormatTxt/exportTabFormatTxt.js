@@ -49,7 +49,9 @@ export const createPrintedTab = (state = {}) => {
 	function updateLinesToPrint(part_id, line, note_value) {
 		const part_object = tab_to_be_printed[part_id] || {};
 		const previous_content = part_object[line] || '';
-		part_object[line] = `${previous_content}${note_value}`;
+		if (tab_to_be_printed[part_id] !== undefined) {
+			tab_to_be_printed[part_id][line] = `${previous_content}${note_value}`;
+		}
 	}
 
 	function getLengthOfHigherNoteInColumn(column_full_id) {

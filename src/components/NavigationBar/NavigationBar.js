@@ -6,6 +6,7 @@ import styles from './style.module.sass';
 
 // Components
 import ExportTab from '../ExportTab';
+import AddPartButton from '../_buttons/AddPartButton';
 
 const NavigationBar = () => (
 	<div styleName="top-bar">
@@ -13,6 +14,7 @@ const NavigationBar = () => (
 			<div className="grid-x">
 				<div className="medium-12 cell">
 					<ExportTab />
+					<AddPartButton />
 				</div>
 			</div>
 		</div>

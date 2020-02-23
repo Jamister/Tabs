@@ -8,10 +8,10 @@ import styles from './style.module.sass';
 import ExportTab from '../ExportTab';
 
 const NavigationBar = () => (
-	<div className="grid-container full">
-		<div className="grid-x">
-			<div className="medium-12 cell">
-				<div styleName="top-bar">
+	<div styleName="top-bar">
+		<div className="grid-container">
+			<div className="grid-x">
+				<div className="medium-12 cell">
 					<ExportTab />
 				</div>
 			</div>

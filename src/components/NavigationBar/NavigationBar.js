@@ -14,6 +14,7 @@ const NavigationBar = () => (
 			<div className="grid-x">
 				<div className="medium-12 cell">
 					<ExportTab />
+					- - -
 					<AddPartButton />
 				</div>
 			</div>

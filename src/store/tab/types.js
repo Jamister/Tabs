@@ -1,4 +1,5 @@
 export const ADD_BLOCK = 'ADD_BLOCK';
+export const ADD_PART = 'ADD_PART';
 export const CLEAR_PRESSED_KEY = 'CLEAR_PRESSED_KEY';
 export const CLEAR_SELECT_NOTE = 'CLEAR_SELECT_NOTE';
 export const EXPORT_TAB_TXT = 'EXPORT_TAB_TXT';

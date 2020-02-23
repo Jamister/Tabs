@@ -2,6 +2,7 @@ import tab from './store';
 
 // Actions external logic
 import { addBlock } from './logic/addBlock';
+import { addPart } from './logic/addPart';
 import { clearPressedKey } from './logic/clearPressedKey';
 import { clearSelectNote } from './logic/clearSelectNote';
 import { exportTabFormatTxt } from './logic/exportTabFormatTxt';
@@ -13,6 +14,7 @@ import { updateNote } from './logic/updateNote';
 
 const funcs = {
 	ADD_BLOCK: addBlock,
+	ADD_PART: addPart,
 	CLEAR_PRESSED_KEY: clearPressedKey,
 	CLEAR_SELECT_NOTE: clearSelectNote,
 	EXPORT_TAB_TXT: exportTabFormatTxt,

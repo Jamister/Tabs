@@ -1,5 +1,6 @@
 import {
 	ADD_BLOCK,
+	ADD_PART,
 	CLEAR_PRESSED_KEY,
 	CLEAR_SELECT_NOTE,
 	EXPORT_TAB_TXT,
@@ -11,6 +12,7 @@ import {
 } from './types';
 
 export const addBlock = (part_id) => ({ type: ADD_BLOCK, part_id });
+export const addPart = () => ({ type: ADD_PART });
 export const clearPressedKey = () => ({ type: CLEAR_PRESSED_KEY });
 export const clearSelectNote = () => ({ type: CLEAR_SELECT_NOTE });
 export const exportTabFormatTxt = () => ({ type: EXPORT_TAB_TXT });

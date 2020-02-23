@@ -68,27 +68,27 @@ const tab = {
 			},
 			'1-2-1': {
 				part_id: 1,
-				block_id: 1,
+				block_id: 2,
 				id: '1-2-1',
 			},
 			'1-2-2': {
 				part_id: 1,
-				block_id: 1,
+				block_id: 2,
 				id: '1-2-2',
 			},
 			'1-2-3': {
 				part_id: 1,
-				block_id: 1,
+				block_id: 2,
 				id: '1-2-3',
 			},
 			'1-2-4': {
 				part_id: 1,
-				block_id: 1,
+				block_id: 2,
 				id: '1-2-4',
 			},
 			'1-2-5': {
 				part_id: 1,
-				block_id: 1,
+				block_id: 2,
 				id: '1-2-5',
 			},
 		},

@@ -6,6 +6,7 @@ const tab = {
 		c: 0,
 		l: 0,
 	},
+	tune: ['e', 'a', 'd', 'g', 'b', 'e'],
 	lines: [1, 2, 3, 4, 5, 6],
 	notes: {},
 	parts: {

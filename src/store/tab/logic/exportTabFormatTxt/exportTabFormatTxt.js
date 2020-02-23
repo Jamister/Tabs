@@ -5,7 +5,7 @@ export const createPrintedTab = (state = {}) => {
 	const lines = state.lines || [];
 	const notes = state.notes || {};
 	const space_between_columns = 2;
-	const type_of_line_break = '\r\n';
+	const type_of_line_break = '\n';
 
 	function createTabObjectToPrint() {
 		const lines_to_print = lines

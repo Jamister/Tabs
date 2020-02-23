@@ -7,6 +7,7 @@ import CSSModules from 'react-css-modules';
 import styles from './style.module.sass';
 
 // Components
+import TuneOnPart from '../TuneOnPart';
 import Block from '../Block';
 
 function Part({ part }) {
@@ -17,16 +18,19 @@ function Part({ part }) {
 		.filter(b => b.indexOf(`${id}-`) !== -1);
 
 	return (
-		<div styleName="part" data-test="part-render">
-			<div styleName="part-start" />
-			{blocks_list.map(b => (
-				<Block
-					key={b}
-					data-test="blocks-render"
-					part_id={id}
-					block={blocks.by_id[b]}
-				/>
-			))}
+		<div styleName="part-wrapper">
+			<TuneOnPart />
+			<div styleName="part" data-test="part-render">
+				<div styleName="part-start" />
+				{blocks_list.map(b => (
+					<Block
+						key={b}
+						data-test="blocks-render"
+						part_id={id}
+						block={blocks.by_id[b]}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

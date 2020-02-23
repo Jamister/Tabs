@@ -43,10 +43,10 @@ const Tab = () => {
 	return (
 		<>
 			<NavigationBar />
-			<div className="grid-container">
+			<div className="grid-container" data-test="tab-render">
 				<Header />
 				<div className="grid-x">
-					<div className="medium-12 cell" data-test="tab-render">
+					<div className="medium-12 cell" styleName="padding-for-tune">
 						{all_ids.map(p => (
 							<Part
 								key={p}

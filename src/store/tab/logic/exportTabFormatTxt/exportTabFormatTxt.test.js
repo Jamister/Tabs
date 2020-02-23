@@ -2,7 +2,7 @@ import { exportTabFormatTxt } from './exportTabFormatTxt';
 
 test('exportTabFormatTxt should not crash', () => {
 	const test_empty = exportTabFormatTxt();
-	expect(test_empty).toEqual('');
+	expect(test_empty.printed_tab).toEqual('');
 });
 
 test('should export tab in string format', () => {
@@ -171,5 +171,5 @@ test('should export tab in string format', () => {
 |--------------|--------------|
 
 `;
-	expect(result).toEqual(tab_in_string_format);
+	expect(result.printed_tab).toBe(tab_in_string_format);
 });

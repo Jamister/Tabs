@@ -73,6 +73,7 @@ export const addBlock = (_state, _action) => {
 		},
 	};
 
+	// TODO replace by the function used in addPart
 	const columns = createColumns(
 		state,
 		block_id,

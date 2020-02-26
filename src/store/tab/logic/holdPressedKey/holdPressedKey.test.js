@@ -1,29 +1,26 @@
 import { holdPressedKey } from './holdPressedKey';
 
-test('holdPressedKey should not crash', () => {
+it('should not crash holdPressedKey', () => {
 	const test_empty = holdPressedKey();
 	expect(test_empty).toStrictEqual({
-		selected_note: {
-			p: 0,
-			b: 0,
-			c: 0,
-			l: 0,
-		},
+		pressed_key: '',
 	});
 });
 
-test('should clear the selected note', () => {
-	const state = {
-		blocks: {},
-	};
-	const result = holdPressedKey(state);
+it('should hold the SHIFT holdPressedKey', () => {
+	const state = {};
+	const action = { key_code: 16 };
+	const result = holdPressedKey(state, action);
 	expect(result).toStrictEqual({
-		blocks: {},
-		selected_note: {
-			p: 0,
-			b: 0,
-			c: 0,
-			l: 0,
-		},
+		pressed_key: 'shift'
+	});
+});
+
+it('should not hold anything holdPressedKey', () => {
+	const state = {};
+	const action = { key_code: 90 };
+	const result = holdPressedKey(state, action);
+	expect(result).toStrictEqual({
+		pressed_key: ''
 	});
 });

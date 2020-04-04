@@ -1,0 +1,1 @@
+export { changedWritingType } from './changedWritingType';

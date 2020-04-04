@@ -11,6 +11,7 @@ import { moveSelectedNote } from './logic/moveSelectedNote';
 import { removeBlock } from './logic/removeBlock';
 import { selectNote } from './logic/selectNote';
 import { updateNote } from './logic/updateNote';
+import { changedWritingType } from './logic/changedWritingType';
 
 const funcs = {
 	ADD_BLOCK: addBlock,
@@ -23,6 +24,7 @@ const funcs = {
 	REMOVE_BLOCK: removeBlock,
 	SELECT_NOTE: selectNote,
 	UPDATE_NOTE: updateNote,
+	CHANGED_WRITING_TYPE: changedWritingType,
 };
 
 const reducer = (state = tab, action) => {

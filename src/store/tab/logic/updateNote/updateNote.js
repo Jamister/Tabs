@@ -163,8 +163,8 @@ export const updateNote = (state = {}, action = {}) => {
 	}
 
 	function checkIfIsChord() {
-		const pressed_key = state.pressed_key || '';
-		if (pressed_key === 'shift') {
+		const { user_is_writing } = state;
+		if (user_is_writing === 'chords') {
 			return findChord();
 		}
 		return buildSingleNote();

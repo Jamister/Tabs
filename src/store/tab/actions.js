@@ -9,6 +9,7 @@ import {
 	REMOVE_BLOCK,
 	SELECT_NOTE,
 	UPDATE_NOTE,
+	CHANGED_WRITING_TYPE,
 } from './types';
 
 export const addBlock = (part_id) => ({ type: ADD_BLOCK, part_id });
@@ -21,3 +22,4 @@ export const moveSelectedNote = (key_code) => ({ type: MOVE_SELECTED_NOTE, key_c
 export const removeBlock = (part_id) => ({ type: REMOVE_BLOCK, part_id });
 export const selectNote = (p, b, c, l) => ({ type: SELECT_NOTE, p, b, c, l });
 export const updateNote = (key_code) => ({ type: UPDATE_NOTE, key_code });
+export const userChangedWritingType = ({ writing }) => ({ type: CHANGED_WRITING_TYPE, writing });

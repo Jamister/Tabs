@@ -7,6 +7,7 @@ import styles from './style.module.sass';
 // Components
 import ExportTab from '../ExportTab';
 import AddPartButton from '../_buttons/AddPartButton';
+import SwitchWritingType from '../SwitchWritingType';
 
 const NavigationBar = () => (
 	<div styleName="top-bar">
@@ -16,6 +17,8 @@ const NavigationBar = () => (
 					<ExportTab />
 					- - -
 					<AddPartButton />
+					- - -
+					<SwitchWritingType />
 				</div>
 			</div>
 		</div>

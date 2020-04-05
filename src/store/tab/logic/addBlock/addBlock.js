@@ -1,9 +1,9 @@
-function createColumns(
+function createColumns({
 	state,
 	block_id,
 	next_block_id,
 	part_id,
-) {
+}) {
 	const columns = state.columns || {};
 	const all_ids = columns.all_ids || [];
 	const by_id = columns.by_id || {};
@@ -74,12 +74,12 @@ export const addBlock = (_state, _action) => {
 	};
 
 	// TODO replace by the function used in addPart
-	const columns = createColumns(
+	const columns = createColumns({
 		state,
 		block_id,
 		next_block_id,
 		part_id,
-	);
+	});
 
 	return {
 		...state,

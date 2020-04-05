@@ -20,6 +20,7 @@ export const exportTabFormatTxt = () => ({ type: EXPORT_TAB_TXT });
 export const holdPressedKey = (key_code) => ({ type: HOLD_PRESSED_KEY, key_code });
 export const moveSelectedNote = (key_code) => ({ type: MOVE_SELECTED_NOTE, key_code });
 export const removeBlock = (part_id) => ({ type: REMOVE_BLOCK, part_id });
+// eslint-disable-next-line max-params
 export const selectNote = (p, b, c, l) => ({ type: SELECT_NOTE, p, b, c, l });
 export const updateNote = (key_code) => ({ type: UPDATE_NOTE, key_code });
 export const userChangedWritingType = ({ writing }) => ({ type: CHANGED_WRITING_TYPE, writing });

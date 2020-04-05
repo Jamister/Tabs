@@ -1,6 +1,6 @@
 {
   "env": {
-    "browser": true,
+    "browser": true
   },
   "extends": "airbnb",
   "plugins": [
@@ -10,8 +10,8 @@
   "rules": {
     "indent": ["error", "tab"],
     "no-tabs": 0,
-    "react/jsx-indent": ["error", "tab"],
-    "react/jsx-indent-props": ["error", "tab"],
+    "react/jsx-indent": [2, "tab"],
+    "react/jsx-indent-props": [2, "tab"],
     "max-len": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "camelcase": 0,
@@ -20,8 +20,8 @@
     "import/prefer-default-export": "off",
     "arrow-parens": 0,
     "no-plusplus": 0,
-    "react/forbid-prop-types": 0,
-    "react/jsx-closing-bracket-location": [0],
+    "react/forbid-prop-types": [1],
+    "react/jsx-closing-bracket-location": [1, "line-aligned"],
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/media-has-caption": 0,
@@ -30,6 +30,10 @@
     "react/jsx-one-expression-per-line": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "react/destructuring-assignment": 0,
-    "react/state-in-constructor": [0]
+    "react/state-in-constructor": [0],
+    "max-nested-callbacks": ["error", 3],
+    "max-params": ["error", 3],
+    "max-lines": ["error", { "max": 300, "skipBlankLines": true }],
+    "max-lines-per-function": "off"
   }
 }

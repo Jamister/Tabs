@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+import { Row, Col } from 'antd';
+import * as s from './Tab.style';
 
 // Components
+import Container from '../../components/Container';
 import NavigationBar from '../../components/NavigationBar';
 import Header from '../../components/Header';
 import Part from '../../components/Part';
@@ -41,24 +42,26 @@ const Tab = () => {
 	}, [handleKeyDown]);
 
 	return (
-		<>
+		<s.PageWrapper>
 			<NavigationBar />
-			<div className="grid-container" data-test="tab-render">
-				<Header />
-				<div className="grid-x">
-					<div className="medium-12 cell" styleName="padding-for-tune">
-						{all_ids.map(p => (
-							<Part
-								key={p}
-								data-test="parts-render"
-								part={parts.by_id[p]}
-							/>
-						))}
-					</div>
-				</div>
-			</div>
-		</>
+			<Container>
+				<Row>
+					<Col span={24}>
+						<Header />
+						<s.PaddingWrapper>
+							{all_ids.map(p => (
+								<Part
+									key={p}
+									data-test="parts-render"
+									part={parts.by_id[p]}
+								/>
+							))}
+						</s.PaddingWrapper>
+					</Col>
+				</Row>
+			</Container>
+		</s.PageWrapper>
 	);
 };
 
-export default CSSModules(Tab, styles, { allowMultiple: true });
+export default Tab;

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+import * as s from './ChordSelection.style';
 
 // Actions
 import { selectNote } from '../../store/tab/actions';
@@ -31,16 +30,13 @@ function ChordSelection({
 	const selected_note = useSelector(store => store.tab.selected_note, shallowEqual) || {};
 	const { p, b, c, l } = selected_note;
 	const selected_note_id = `${p}-${b}-${c}-${l}`;
-
-	const note_class = note_id === selected_note_id
-		? 'chord selected'
-		: 'chord';
+	const selected = note_id === selected_note_id;
 
 	return (
-		<button
+		<s.Chord
 			type="button"
 			aria-label="chord button"
-			styleName={note_class}
+			selected={selected}
 			onClick={handleNote}
 		/>
 	);
@@ -61,4 +57,4 @@ ChordSelection.propTypes = {
 	]).isRequired,
 };
 
-export default CSSModules(ChordSelection, styles, { allowMultiple: true });
+export default ChordSelection;

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+import * as s from './BlockEnd.style';
 
 // Components
 import AddBlockButton from '../_buttons/AddBlockButton';
@@ -18,16 +17,16 @@ function BlockEnd({ part_id, block_id }) {
 
 	if (has_next_block) {
 		return (
-			<div styleName="block-end-2" data-test="blockend-render" />
+			<s.BlockEnd data-test="blockend-render" />
 		);
 	}
 
 	return (
-		<div styleName="part-end" data-test="blockend-render">
+		<s.PartEnd data-test="blockend-render">
 			<AddBlockButton part_id={part_id} />
 			<RemoveBlockButton part_id={part_id} />
-			<div styleName="layer-over-lines" />
-		</div>
+			<s.LayerOverLines />
+		</s.PartEnd>
 	);
 }
 
@@ -42,4 +41,4 @@ BlockEnd.propTypes = {
 	]).isRequired,
 };
 
-export default CSSModules(BlockEnd, styles, { allowMultiple: true });
+export default BlockEnd;

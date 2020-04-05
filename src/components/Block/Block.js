@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
-// CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
-
 // Components
 import Column from '../Column';
 import BlockEnd from './BlockEnd';
@@ -48,4 +44,4 @@ Block.propTypes = {
 	}).isRequired,
 };
 
-export default CSSModules(Block, styles, { allowMultiple: true });
+export default Block;

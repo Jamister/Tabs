@@ -8,6 +8,7 @@ import * as s from './Tab.style';
 // Components
 import Container from '../../components/Container';
 import NavigationBar from '../../components/NavigationBar';
+import ActionsSubBar from '../../components/ActionsSubBar';
 import Header from '../../components/Header';
 import Part from '../../components/Part';
 
@@ -44,6 +45,7 @@ const Tab = () => {
 	return (
 		<s.PageWrapper>
 			<NavigationBar />
+			<ActionsSubBar />
 			<Container>
 				<Row>
 					<Col span={24}>

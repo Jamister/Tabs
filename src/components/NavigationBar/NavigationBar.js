@@ -1,28 +1,19 @@
 import React from 'react';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+// import { Row, Col } from 'antd';
+import * as s from './NavigationBar.style';
 
 // Components
+import Container from '../Container';
 import ExportTab from '../ExportTab';
-import AddPartButton from '../_buttons/AddPartButton';
-import SwitchWritingType from '../SwitchWritingType';
 
 const NavigationBar = () => (
-	<div styleName="top-bar">
-		<div className="grid-container">
-			<div className="grid-x">
-				<div className="medium-12 cell">
-					<ExportTab />
-					- - -
-					<AddPartButton />
-					- - -
-					<SwitchWritingType />
-				</div>
-			</div>
-		</div>
-	</div>
+	<s.TabBarWrapper>
+		<Container>
+			<ExportTab />
+		</Container>
+	</s.TabBarWrapper>
 );
 
-export default CSSModules(NavigationBar, styles, { allowMultiple: true });
+export default NavigationBar;

@@ -11,7 +11,10 @@ import ExportTab from '../ExportTab';
 const NavigationBar = () => (
 	<s.TabBarWrapper>
 		<Container>
-			<ExportTab />
+			<s.Logo>Oaktabs</s.Logo>
+			<s.Buttons>
+				<ExportTab />
+			</s.Buttons>
 		</Container>
 	</s.TabBarWrapper>
 );

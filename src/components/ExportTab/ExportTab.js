@@ -2,8 +2,8 @@ import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+import { Button } from 'antd';
+import * as s from './ExportTab.style';
 
 // Actions
 import { exportTabFormatTxt } from '../../store/tab/actions';
@@ -33,16 +33,16 @@ const ExportTab = () => {
 			{modal && (
 				<Modal closeModal={handleModal}>
 					<>
-						<p styleName="printed-tab-wrapper">{printed_tab}</p>
+						<s.PrintedTabWrapper>{printed_tab}</s.PrintedTabWrapper>
 					</>
 				</Modal>
 			)}
 
-			<button type="button" onClick={exportTab}>
-				Export
-			</button>
+			<Button onClick={exportTab}>
+				Exportar tab
+			</Button>
 		</>
 	);
 };
 
-export default CSSModules(ExportTab, styles, { allowMultiple: true });
+export default ExportTab;

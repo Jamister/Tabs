@@ -6,7 +6,6 @@ import * as s from './ActionsSubBar.style';
 
 // Components
 import Container from '../Container';
-// import ExportTab from '../ExportTab';
 // import AddPartButton from '../_buttons/AddPartButton';
 import SwitchWritingType from '../SwitchWritingType';
 

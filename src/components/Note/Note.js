@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+import * as s from './Note.style';
 
 // Actions
 import { selectNote } from '../../store/tab/actions';
@@ -36,21 +35,19 @@ function Note({
 	const selected_note = useSelector(store => store.tab.selected_note, shallowEqual) || {};
 	const { p, b, c, l } = selected_note;
 	const selected_note_id = `${p}-${b}-${c}-${l}`;
-
-	const note_class = note_id === selected_note_id
-		? `note n${line_id} selected`
-		: `note n${line_id}`;
+	const selected = note_id === selected_note_id;
 
 	return (
 		<>
-			<button
+			<s.Note
 				type="button"
 				data-test="note-render"
-				styleName={note_class}
+				line={line_id}
+				selected={selected}
 				onClick={handleNote}
 			>
 				<NoteValue note_id={note_id} />
-			</button>
+			</s.Note>
 			<NoteWidthSpace note_id={note_id} />
 		</>
 	);
@@ -75,4 +72,4 @@ Note.propTypes = {
 	]).isRequired,
 };
 
-export default CSSModules(Note, styles, { allowMultiple: true });
+export default Note;

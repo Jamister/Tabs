@@ -66,7 +66,9 @@ Column.propTypes = {
 		PropTypes.string,
 		PropTypes.number,
 	]).isRequired,
-	column: PropTypes.object.isRequired,
+	column: PropTypes.shape({
+		id: PropTypes.string,
+	}).isRequired,
 };
 
 export default CSSModules(Column, styles, { allowMultiple: true });

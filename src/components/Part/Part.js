@@ -36,7 +36,9 @@ function Part({ part }) {
 }
 
 Part.propTypes = {
-	part: PropTypes.object.isRequired,
+	part: PropTypes.shape({
+		id: PropTypes.string,
+	}).isRequired,
 };
 
 export default CSSModules(Part, styles, { allowMultiple: true });

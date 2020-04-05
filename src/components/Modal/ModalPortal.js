@@ -27,7 +27,7 @@ class ModalPortal extends Component {
 }
 
 ModalPortal.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.element.isRequired,
 };
 
 export default ModalPortal;

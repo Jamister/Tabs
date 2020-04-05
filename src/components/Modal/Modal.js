@@ -52,7 +52,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
 	closeModal: PropTypes.func.isRequired,
-	children: PropTypes.object.isRequired,
+	children: PropTypes.element.isRequired,
 };
 
 export default CSSModules(Modal, styles, { allowMultiple: true });

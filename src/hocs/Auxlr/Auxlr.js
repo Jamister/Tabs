@@ -10,7 +10,7 @@ function Auxlr({ children }) {
 }
 
 Auxlr.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.element.isRequired,
 };
 
 export default withStore(connect(null, null)(Auxlr));

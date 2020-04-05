@@ -43,7 +43,9 @@ Block.propTypes = {
 		PropTypes.string,
 		PropTypes.number,
 	]).isRequired,
-	block: PropTypes.object.isRequired,
+	block: PropTypes.shape({
+		id: PropTypes.string,
+	}).isRequired,
 };
 
 export default CSSModules(Block, styles, { allowMultiple: true });

@@ -37,7 +37,10 @@ function Part({ part }) {
 
 Part.propTypes = {
 	part: PropTypes.shape({
-		id: PropTypes.string,
+		id: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.number,
+		]).isRequired,
 	}).isRequired,
 };
 

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import theme from '../../styles/global_theme';
 
-export const WidthSpace = styled.button`
+export const WidthSpace = styled.div`
 	position: relative;
 	width: 100%;
 	height: 1px;

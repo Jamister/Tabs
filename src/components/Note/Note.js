@@ -36,12 +36,24 @@ function Note({
 	const { p, b, c, l } = selected_note;
 	const selected_note_id = `${p}-${b}-${c}-${l}`;
 	const selected = note_id === selected_note_id;
+	const user_is_writing = useSelector(store => store
+		.tab.user_is_writing, shallowEqual);
+
+	if (user_is_writing === 'chords') {
+		return (
+			<>
+				<s.Note line={line_id}>
+					<NoteValue note_id={note_id} />
+				</s.Note>
+				<NoteWidthSpace note_id={note_id} />
+			</>
+		);
+	}
 
 	return (
 		<>
 			<s.Note
 				type="button"
-				data-test="note-render"
 				line={line_id}
 				selected={selected}
 				onClick={handleNote}

@@ -22,6 +22,7 @@ const Tab = () => {
 	const dispatch = useDispatch();
 	const parts = useSelector(store => store.tab.parts, shallowEqual);
 	const all_ids = parts.all_ids || [];
+	const by_id = parts.by_id || {};
 
 	function handleKeyDown(e) {
 		const action = mapKeysToActions(e.keyCode);
@@ -55,7 +56,7 @@ const Tab = () => {
 								<Part
 									key={p}
 									data-test="parts-render"
-									part={parts.by_id[p]}
+									part={by_id[p]}
 								/>
 							))}
 						</s.PaddingWrapper>

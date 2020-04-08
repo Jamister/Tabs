@@ -5,9 +5,9 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 // reducers
-import combined_reducers from '../utils/redux/combinedReducers';
+import tab from '../store/tab/reducers';
 
-const reducers = combineReducers(combined_reducers);
+const reducers = combineReducers({ tab });
 
 function renderWithRedux(
 	comp,

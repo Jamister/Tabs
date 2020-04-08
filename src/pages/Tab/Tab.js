@@ -51,7 +51,7 @@ const Tab = () => {
 				<Row>
 					<Col span={24}>
 						<Header />
-						<s.PaddingWrapper>
+						<s.PaddingWrapper data-testid="wrapper">
 							{all_ids.map(p => (
 								<Part
 									key={p}

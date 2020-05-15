@@ -10,7 +10,7 @@ import styles from './style.module.sass';
 import TuneOnPart from '../TuneOnPart';
 import Block from '../Block';
 
-function Part({ part }) {
+function TablaturePart({ part }) {
 	const { id } = part || {};
 	const blocks = useSelector(store => store.tab.blocks, shallowEqual);
 	const all_ids = blocks.all_ids || [];
@@ -35,7 +35,7 @@ function Part({ part }) {
 	);
 }
 
-Part.propTypes = {
+TablaturePart.propTypes = {
 	part: PropTypes.shape({
 		id: PropTypes.oneOfType([
 			PropTypes.string,
@@ -44,4 +44,4 @@ Part.propTypes = {
 	}).isRequired,
 };
 
-export default CSSModules(Part, styles, { allowMultiple: true });
+export default CSSModules(TablaturePart, styles, { allowMultiple: true });

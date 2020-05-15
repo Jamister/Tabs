@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 // CSS
-import { Row, Col } from 'antd';
 import * as s from './Tab.style';
 
 // Components
@@ -10,7 +9,7 @@ import Container from '../../components/Container';
 import NavigationBar from '../../components/NavigationBar';
 import ActionsSubBar from '../../components/ActionsSubBar';
 import Header from '../../components/Header';
-import Part from '../../components/Part';
+import Parts from '../../components/Parts';
 
 // Actions
 import { clearPressedKey } from '../../store/tab/actions';
@@ -48,20 +47,16 @@ const Tab = () => {
 			<NavigationBar />
 			<ActionsSubBar />
 			<Container>
-				<Row>
-					<Col span={24}>
-						<Header />
-						<s.PaddingWrapper data-testid="wrapper">
-							{all_ids.map(p => (
-								<Part
-									key={p}
-									data-test="parts-render"
-									part={by_id[p]}
-								/>
-							))}
-						</s.PaddingWrapper>
-					</Col>
-				</Row>
+				<Header />
+				<s.PaddingWrapper data-testid="wrapper">
+					{all_ids.map(p => (
+						<Parts
+							key={p}
+							data-test="parts-render"
+							part={by_id[p]}
+						/>
+					))}
+				</s.PaddingWrapper>
 			</Container>
 		</s.PageWrapper>
 	);

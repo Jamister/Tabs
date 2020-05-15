@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from '../../styles/global_theme';
 
-export const Column = styled.button`
+export const Column = styled.div`
 	position: relative;
 	float: left;
 	width: auto;

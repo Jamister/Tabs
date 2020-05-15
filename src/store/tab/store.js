@@ -6,14 +6,21 @@ const tab = {
 		c: 0,
 		l: 0,
 	},
-	tune: ['e', 'a', 'd', 'g', 'b', 'e'],
+	tune: ['e', 'B', 'G', 'D', 'A', 'E'],
 	lines: [1, 2, 3, 4, 5, 6],
 	user_is_writing: 'notes',
 	notes: {},
 	parts: {
-		all_ids: [1],
+		all_ids: [1, 2],
 		by_id: {
-			1: { id: 1 },
+			1: {
+				id: 1,
+				type: 'tablature',
+			},
+			2: {
+				id: 2,
+				type: 'lyric',
+			},
 		},
 	},
 	blocks: {
@@ -97,6 +104,48 @@ const tab = {
 	},
 	printed_tab: '',
 	pressed_key: '',
+
+
+	// lyric_chords: {
+	// 	1: {
+	// 		lyric_line_id: '1',
+	// 		chord: 'B',
+	// 		version: 1,
+	// 		position: 10,
+	// 	},
+	// },
+	// 'tablature/lyric'
+
+	lyric_lines: {
+		all_ids: ['1-1', '1-2'],
+		by_id: {
+			'1-1': {
+				id: '1-1',
+				lyric: 'Sing as their bones go marching in',
+			},
+			'1-2': {
+				id: '1-2',
+				lyric: 'Its never ending, never ending',
+			},
+		},
+	},
+	lyric_chords: {
+		all_ids: ['1-1', '1-2'],
+		by_id: {
+			'1-1': {
+				lyric_line_id: '1',
+				chord: 'B',
+				chord_version: 1,
+				position: 10,
+			},
+			'1-2': {
+				lyric_line_id: '1',
+				chord: 'B',
+				chord_version: 1,
+				position: 10,
+			},
+		},
+	},
 };
 
 export default tab;

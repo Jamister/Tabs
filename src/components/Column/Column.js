@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+import * as s from './Column.style';
 
 // Components
 import Note from '../Note';
@@ -20,7 +19,7 @@ function Column({ part_id, block_id, column }) {
 
 	if (user_is_writing === 'chords') {
 		return (
-			<div styleName="column" data-test="column-render">
+			<s.Column data-test="column-render">
 				<ChordSelection
 					data-test="notes-render"
 					part_id={part_id}
@@ -37,12 +36,12 @@ function Column({ part_id, block_id, column }) {
 						line_id={l}
 					/>
 				))}
-			</div>
+			</s.Column>
 		);
 	}
 
 	return (
-		<div styleName="column" data-test="column-render">
+		<s.Column data-test="column-render">
 			{(lines || []).map(l => (
 				<Note
 					key={l}
@@ -53,7 +52,7 @@ function Column({ part_id, block_id, column }) {
 					line_id={l}
 				/>
 			))}
-		</div>
+		</s.Column>
 	);
 }
 
@@ -71,4 +70,4 @@ Column.propTypes = {
 	}).isRequired,
 };
 
-export default CSSModules(Column, styles, { allowMultiple: true });
+export default Column;

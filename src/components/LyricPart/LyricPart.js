@@ -5,21 +5,27 @@ import { useSelector, shallowEqual } from 'react-redux';
 // CSS
 import * as s from './LyricPart.style';
 
-/* eslint-disable */
 // Components
 import LyricLine from '../LyricLine';
-import Block from '../Block';
 
 function LyricPart({ part }) {
 	const { id } = part || {};
-	const blocks = useSelector(store => store.tab.blocks, shallowEqual);
-	const all_ids = blocks.all_ids || [];
-	const blocks_list = all_ids
+	const lyric_lines = useSelector(store => store
+		.tab.lyric_lines, shallowEqual);
+	const by_id = lyric_lines.by_id || {};
+	const all_ids = lyric_lines.all_ids || [];
+	const all_part_lines = all_ids
 		.filter(b => b.indexOf(`${id}-`) !== -1);
 
 	return (
 		<s.Lyric>
-			<LyricLine />
+			{all_part_lines.map(line_id => (
+				<LyricLine
+					key={line_id}
+					part_id={id}
+					lyric_line={by_id[line_id]}
+				/>
+			))}
 		</s.Lyric>
 	);
 }

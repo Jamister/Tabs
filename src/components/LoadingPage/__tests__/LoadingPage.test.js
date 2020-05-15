@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import LoadingPage from './LoadingPage';
+import LoadingPage from '../LoadingPage';
 
 Enzyme.configure({ adapter: new Adapter() });
 

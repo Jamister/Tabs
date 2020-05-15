@@ -1,19 +1,19 @@
 import React from 'react';
 
 // CSS
-import CSSModules from 'react-css-modules';
-import styles from './style.module.sass';
+import * as s from './Header.style';
+
+// Components
+import Container from '../Container';
 
 function Header() {
 	return (
-		<div className="grid-x">
-			<div className="medium-12 cell">
-				<div styleName="header-wrapper">
-					<h3>Create tab</h3>
-				</div>
-			</div>
-		</div>
+		<Container>
+			<s.HeaderWrapper>
+				<h3>Create tab</h3>
+			</s.HeaderWrapper>
+		</Container>
 	);
 }
 
-export default CSSModules(Header, styles, { allowMultiple: true });
+export default Header;

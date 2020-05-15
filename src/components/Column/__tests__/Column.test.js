@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { useSelector, useDispatch } from 'react-redux';
-import Column from './Column';
+import Column from '../Column';
 
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -117,15 +117,11 @@ const tab = {
 	// 'tablature/lyric'
 
 	lyric_lines: {
-		all_ids: ['2-1', '2-2'],
+		all_ids: ['2-1'],
 		by_id: {
 			'2-1': {
 				id: '2-1',
 				lyric: 'Sing as their bones go marching in',
-			},
-			'2-2': {
-				id: '2-2',
-				lyric: 'Its never ending, never ending',
 			},
 		},
 	},

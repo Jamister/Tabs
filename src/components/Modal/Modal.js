@@ -6,7 +6,7 @@ import CSSModules from 'react-css-modules';
 import styles from './style.module.sass';
 
 // Components
-import ModalPortal from './ModalPortal';
+import Portal from '../Portal';
 
 // Functions
 import { lockBody } from '../../functions/lockBody';
@@ -30,7 +30,7 @@ class Modal extends Component {
 
 	render() {
 		return (
-			<ModalPortal>
+			<Portal>
 				<div className="reveal-overlay" styleName="reveal-overlay">
 					<div className="reveal" data-reveal styleName="reveal">
 						<button
@@ -45,7 +45,7 @@ class Modal extends Component {
 						{React.cloneElement(this.props.children)}
 					</div>
 				</div>
-			</ModalPortal>
+			</Portal>
 		);
 	}
 }

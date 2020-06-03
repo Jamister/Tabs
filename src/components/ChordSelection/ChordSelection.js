@@ -14,23 +14,21 @@ function ChordSelection({
 	column_id,
 }) {
 	const dispatch = useDispatch();
-
-	function handleNote() {
-		dispatch(
-			selectNote(
-				part_id,
-				block_id,
-				column_id,
-				1,
-			),
-		);
-	}
-
 	const note_id = `${part_id}-${block_id}-${column_id}-1`;
 	const selected_note = useSelector(store => store.tab.selected_note, shallowEqual) || {};
 	const { p, b, c, l } = selected_note;
 	const selected_note_id = `${p}-${b}-${c}-${l}`;
 	const selected = note_id === selected_note_id;
+
+	function handleNote() {
+		const action = selectNote({
+			p: part_id,
+			b: block_id,
+			c: column_id,
+			l: 1,
+		});
+		dispatch(action);
+	}
 
 	return (
 		<s.Chord

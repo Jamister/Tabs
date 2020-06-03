@@ -19,18 +19,6 @@ function Note({
 	line_id,
 }) {
 	const dispatch = useDispatch();
-
-	function handleNote() {
-		dispatch(
-			selectNote(
-				part_id,
-				block_id,
-				column_id,
-				line_id,
-			),
-		);
-	}
-
 	const note_id = `${part_id}-${block_id}-${column_id}-${line_id}`;
 	const selected_note = useSelector(store => store.tab.selected_note, shallowEqual) || {};
 	const { p, b, c, l } = selected_note;
@@ -38,6 +26,16 @@ function Note({
 	const selected = note_id === selected_note_id;
 	const user_is_writing = useSelector(store => store
 		.tab.user_is_writing, shallowEqual);
+
+	function handleNote() {
+		const action = selectNote({
+			p: part_id,
+			b: block_id,
+			c: column_id,
+			l: line_id,
+		});
+		dispatch(action);
+	}
 
 	if (user_is_writing === 'chords') {
 		return (

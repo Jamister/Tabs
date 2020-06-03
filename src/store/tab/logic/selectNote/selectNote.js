@@ -1,7 +1,7 @@
 export const selectNote = (_state, _action) => {
 	const state = _state || {};
 	const action = _action || {};
-	const { p, b, c, l } = action;
+	const { p, b, c, l } = action.note || {};
 
 	if (p === undefined) {
 		return { ...state };

@@ -1,4 +1,4 @@
-import { moveSelectedNote } from './moveSelectedNote';
+import { moveSelectedNote } from '../moveSelectedNote';
 
 test('should not crash', () => {
 	expect(moveSelectedNote()).toStrictEqual({

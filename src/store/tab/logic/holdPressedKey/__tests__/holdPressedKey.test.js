@@ -1,4 +1,4 @@
-import { holdPressedKey } from './holdPressedKey';
+import { holdPressedKey } from '../holdPressedKey';
 
 it('should not crash holdPressedKey', () => {
 	const test_empty = holdPressedKey();

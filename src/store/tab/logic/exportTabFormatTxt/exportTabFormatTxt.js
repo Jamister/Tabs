@@ -152,7 +152,7 @@ export const createPrintedTab = (state = {}) => {
 };
 
 
-export const exportTabFormatTxt = (state = {}) => {
+const exportTabFormatTxt = (state = {}) => {
 	const printed_tab = createPrintedTab(state);
 
 	return {
@@ -160,3 +160,5 @@ export const exportTabFormatTxt = (state = {}) => {
 		printed_tab,
 	};
 };
+
+export default exportTabFormatTxt;

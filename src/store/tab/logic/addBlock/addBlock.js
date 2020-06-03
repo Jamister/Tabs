@@ -47,7 +47,7 @@ function getNextBlock(by_id, part_id) {
 	return { next_block_id, block_id };
 }
 
-export const addBlock = (_state, _action) => {
+const addBlock = (_state, _action) => {
 	const state = _state || {};
 	const action = _action || {};
 	const blocks = state.blocks || {};
@@ -87,3 +87,5 @@ export const addBlock = (_state, _action) => {
 		columns,
 	};
 };
+
+export default addBlock;

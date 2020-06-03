@@ -18,7 +18,7 @@ function removeColumnsInLastBlock(state, last_block_id) {
 	};
 }
 
-export const removeBlock = (state, action) => {
+const removeBlock = (state, action) => {
 	const { part_id } = action;
 	let last_block_id = `${part_id}-${1}`;
 	// let block_id = 0;
@@ -49,3 +49,5 @@ export const removeBlock = (state, action) => {
 		columns,
 	};
 };
+
+export default removeBlock;

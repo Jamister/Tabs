@@ -1,4 +1,4 @@
-export const selectNote = (_state, _action) => {
+const selectNote = (_state, _action) => {
 	const state = _state || {};
 	const action = _action || {};
 	const { p, b, c, l } = action.note || {};
@@ -19,3 +19,5 @@ export const selectNote = (_state, _action) => {
 		selected_note,
 	};
 };
+
+export default selectNote;

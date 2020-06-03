@@ -1,1 +1,1 @@
-export { updateNote } from './updateNote';
+export { default } from './updateNote';

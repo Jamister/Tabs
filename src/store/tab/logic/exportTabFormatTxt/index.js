@@ -1,1 +1,1 @@
-export { exportTabFormatTxt } from './exportTabFormatTxt';
+export { default } from './exportTabFormatTxt';

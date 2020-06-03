@@ -1,4 +1,4 @@
-import { exportTabFormatTxt } from '../exportTabFormatTxt';
+import exportTabFormatTxt from '../exportTabFormatTxt';
 
 test('exportTabFormatTxt should not crash', () => {
 	const test_empty = exportTabFormatTxt();

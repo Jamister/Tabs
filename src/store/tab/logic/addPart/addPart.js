@@ -1,6 +1,6 @@
 import { createColumns } from '../../utils/createColumns';
 
-export const addPart = (state = {}) => {
+const addPart = (state = {}) => {
 	const parts = state.parts || {};
 	const next_state = { ...state };
 	let next_part_id = 1;
@@ -127,3 +127,5 @@ export const addPart = (state = {}) => {
 
 	return getNextPartId();
 };
+
+export default addPart;

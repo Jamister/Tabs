@@ -1,1 +1,1 @@
-export { clearPressedKey } from './clearPressedKey';
+export { default } from './clearPressedKey';

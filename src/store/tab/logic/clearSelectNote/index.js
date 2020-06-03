@@ -1,1 +1,1 @@
-export { clearSelectNote } from './clearSelectNote';
+export { default } from './clearSelectNote';

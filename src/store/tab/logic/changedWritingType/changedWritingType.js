@@ -1,4 +1,4 @@
-export const changedWritingType = (state = {}, action = {}) => {
+const changedWritingType = (state = {}, action = {}) => {
 	const user_is_writing = action.writing || 'notes';
 	const selected_note = {
 		p: 0,
@@ -12,3 +12,5 @@ export const changedWritingType = (state = {}, action = {}) => {
 		user_is_writing,
 	};
 };
+
+export default changedWritingType;

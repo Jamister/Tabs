@@ -1,1 +1,1 @@
-export { moveSelectedNote } from './moveSelectedNote';
+export { default } from './moveSelectedNote';

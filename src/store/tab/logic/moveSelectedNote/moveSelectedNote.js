@@ -1,7 +1,7 @@
 // Functions
 import { findLastColumn } from '../../../../functions/findLastColumn';
 
-export const moveSelectedNote = (state, action) => {
+const moveSelectedNote = (state, action) => {
 	const key_code = (action || {}).key_code || 0;
 	const selected_note = (state || {}).selected_note || {};
 	const columns = (state || {}).columns || {};
@@ -81,3 +81,5 @@ export const moveSelectedNote = (state, action) => {
 		selected_note: new_selected_note,
 	};
 };
+
+export default moveSelectedNote;

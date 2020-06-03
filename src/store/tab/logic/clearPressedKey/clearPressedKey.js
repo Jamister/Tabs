@@ -1,4 +1,4 @@
-export const clearPressedKey = (_state) => {
+const clearPressedKey = (_state) => {
 	const state = _state || {};
 	const pressed_key = '';
 
@@ -7,3 +7,5 @@ export const clearPressedKey = (_state) => {
 		pressed_key,
 	};
 };
+
+export default clearPressedKey;

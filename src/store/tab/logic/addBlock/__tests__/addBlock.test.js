@@ -1,4 +1,4 @@
-import { addBlock } from '../addBlock';
+import addBlock from '../addBlock';
 
 test('addBlock should not crash', () => {
 	const test_empty = addBlock();

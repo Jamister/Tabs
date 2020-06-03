@@ -1,1 +1,1 @@
-export { addPart } from './addPart';
+export { default } from './addPart';

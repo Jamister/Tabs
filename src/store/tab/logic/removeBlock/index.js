@@ -1,1 +1,1 @@
-export { removeBlock } from './removeBlock';
+export { default } from './removeBlock';

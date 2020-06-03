@@ -1,4 +1,4 @@
-export const holdPressedKey = (_state, _action) => {
+const holdPressedKey = (_state, _action) => {
 	const state = _state || {};
 	const action = _action || {};
 	const { key_code } = action;
@@ -18,3 +18,5 @@ export const holdPressedKey = (_state, _action) => {
 		pressed_key,
 	};
 };
+
+export default holdPressedKey;

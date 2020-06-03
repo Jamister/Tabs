@@ -1,4 +1,4 @@
-import { clearSelectNote } from '../clearSelectNote';
+import clearSelectNote from '../clearSelectNote';
 
 test('clearSelectNote should not crash', () => {
 	const test_empty = clearSelectNote();

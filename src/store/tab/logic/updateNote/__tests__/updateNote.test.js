@@ -1,4 +1,4 @@
-import { updateNote } from '../updateNote';
+import updateNote from '../updateNote';
 
 test('updateNote should not crash', () => {
 	const test_empty = updateNote();

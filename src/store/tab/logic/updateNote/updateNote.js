@@ -73,7 +73,7 @@ import { returnChord } from '../../../../functions/returnChord';
 // };
 
 
-export const updateNote = (state = {}, action = {}) => {
+const updateNote = (state = {}, action = {}) => {
 	const instrument = state.instrument || 'guitar';
 	const lines = state.lines || [];
 	const columns = state.columns || {};
@@ -216,3 +216,5 @@ export const updateNote = (state = {}, action = {}) => {
 
 // 	return { ...columns };
 // }
+
+export default updateNote;

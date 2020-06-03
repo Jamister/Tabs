@@ -1,1 +1,1 @@
-export { changedWritingType } from './changedWritingType';
+export { default } from './changedWritingType';

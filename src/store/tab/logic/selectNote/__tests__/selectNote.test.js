@@ -1,4 +1,4 @@
-import { selectNote } from '../selectNote';
+import selectNote from '../selectNote';
 
 test('selectNote should not crash', () => {
 	const test_empty = selectNote();

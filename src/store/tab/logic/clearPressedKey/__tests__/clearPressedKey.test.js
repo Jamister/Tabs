@@ -1,4 +1,4 @@
-import { clearPressedKey } from './clearPressedKey';
+import { clearPressedKey } from '../clearPressedKey';
 
 it('clearPressedKey should not crash', () => {
 	const test_empty = clearPressedKey();

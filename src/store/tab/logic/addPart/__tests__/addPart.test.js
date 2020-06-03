@@ -1,4 +1,4 @@
-import { addPart } from './addPart';
+import { addPart } from '../addPart';
 
 describe('addPart', () => {
 	it('should add new part at the end of the tab', () => {

@@ -1,4 +1,4 @@
-import '../../tests/matchMedia.mock';
+import '../../../tests/matchMedia.mock';
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
@@ -13,7 +13,7 @@ import Tab from '../Tab';
 
 describe('Tab', () => {
 	it('should not crash component', async () => {
-		const { getByTestId } = renderWithRedux(
+		renderWithRedux(
 			<Router><Tab /></Router>,
 			{ initialState: { tab: tab } },
 		);

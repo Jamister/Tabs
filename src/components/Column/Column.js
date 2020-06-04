@@ -10,8 +10,10 @@ import Note from '../Note';
 import ChordSelection from '../ChordSelection';
 
 function Column({ part_id, block_id, column }) {
-	const id = (column || {}).id || '';
-	const column_id = Number(id.replace(`${part_id}-${block_id}-`, ''));
+	const column_full_id = (column || {}).id || '';
+	const column_id = Number(
+		column_full_id.replace(`${part_id}-${block_id}-`, ''),
+	);
 	const lines = useSelector(store => store
 		.tab.lines, shallowEqual);
 	const user_is_writing = useSelector(store => store

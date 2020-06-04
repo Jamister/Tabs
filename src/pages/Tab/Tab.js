@@ -49,11 +49,11 @@ const Tab = () => {
 			<Container>
 				<Header />
 				<s.PaddingWrapper data-testid="wrapper">
-					{all_ids.map(p => (
+					{all_ids.map(part_id => (
 						<Parts
-							key={p}
+							key={part_id}
 							data-test="parts-render"
-							part={by_id[p]}
+							part={by_id[part_id]}
 						/>
 					))}
 				</s.PaddingWrapper>

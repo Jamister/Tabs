@@ -11,23 +11,21 @@ import TuneOnPart from '../TuneOnPart';
 import Block from '../Block';
 
 function TablaturePart({ part }) {
-	const { id } = part || {};
+	const part_id = (part || {}).id;
 	const blocks = useSelector(store => store.tab.blocks, shallowEqual);
-	const all_ids = blocks.all_ids || [];
-	const blocks_list = all_ids
-		.filter(b => b.indexOf(`${id}-`) !== -1);
+	const blocks_in_this_part = (blocks.all_ids || [])
+		.filter(b => b.indexOf(`${part_id}-`) !== -1);
 
 	return (
 		<div styleName="part-wrapper">
 			<TuneOnPart />
-			<div styleName="part" data-test="part-render">
+			<div styleName="part">
 				<div styleName="part-start" />
-				{blocks_list.map(b => (
+				{blocks_in_this_part.map(block_full_id => (
 					<Block
-						key={b}
-						data-test="blocks-render"
-						part_id={id}
-						block={blocks.by_id[b]}
+						key={block_full_id}
+						part_id={part_id}
+						block={blocks.by_id[block_full_id]}
 					/>
 				))}
 			</div>

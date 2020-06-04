@@ -5,7 +5,4 @@
   <p><a href="http://oaktabs.2sidesof1.com/">Preview</a></p>
 </div>
 
-<hr>
-
-![Preview](/prints/taylor.png?raw=true)
-
+![Preview](/prints/taylor-2.jpg?raw=true)

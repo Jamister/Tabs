@@ -23,7 +23,7 @@ function BlockEnd({ block_full_id = '' }) {
 		return_number: true,
 	});
 	const next_block_id = `${part_id}-${block_id + 1}-1`;
-	const has_next_block = (by_id[next_block_id] || {}).id !== undefined;
+	const has_next_block = by_id[next_block_id] !== undefined;
 
 	if (has_next_block) {
 		return (

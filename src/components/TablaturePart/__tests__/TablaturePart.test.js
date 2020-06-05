@@ -31,20 +31,13 @@ describe('TablaturePart', () => {
 			blocks: {
 				all_ids: ['1-1', '1-2'],
 				by_id: {
-					'1-1': {
-						part_id: 1,
-						id: '1-1',
-					},
-					'1-2': {
-						part_id: 1,
-						id: '1-2',
-					},
+					'1-1': { id: '1-1' },
+					'1-2': { id: '1-2' },
 				},
 			},
 		};
-		const part = { id: 1 };
 		renderWithRedux(
-			<TablaturePart part={part} />,
+			<TablaturePart part_id="1" />,
 			{ initialState: { tab: mocked_store } },
 		);
 		const block_end = await screen.getAllByTestId('blockend-render');

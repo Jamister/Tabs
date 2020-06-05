@@ -52,8 +52,9 @@ const Tab = () => {
 					{all_ids.map(part_id => (
 						<Parts
 							key={part_id}
+							part_id={part_id}
+							part_type={by_id[part_id].type}
 							data-test="parts-render"
-							part={by_id[part_id]}
 						/>
 					))}
 				</s.PaddingWrapper>

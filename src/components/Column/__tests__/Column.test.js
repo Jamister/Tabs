@@ -18,11 +18,7 @@ describe('Column 1', () => {
 
 	it('should not crash Column component', () => {
 		const wrapper = shallow(
-			<Column
-				part_id={1}
-				block_id={1}
-				column={{}}
-			/>
+			<Column column_full_id="" />
 		);
 		const html_elem = wrapper.find('[data-test="column-render"]');
 		expect(html_elem).toHaveLength(1);
@@ -38,15 +34,7 @@ describe('Column 2', () => {
 
 	it('should render 6 empty Notes', () => {
 		const wrapper = shallow(
-			<Column
-				part_id={1}
-				block_id={1}
-				column={{
-					part_id: 1,
-					block_id: 1,
-					id: '1-1-1',
-				}}
-			/>
+			<Column column_full_id="1-1-1" />
 		);
 		const html_elem = wrapper.find('[data-test="notes-render"]');
 		expect(html_elem).toHaveLength(6);

@@ -10,8 +10,7 @@ import styles from './style.module.sass';
 import TuneOnPart from '../TuneOnPart';
 import Block from '../Block';
 
-function TablaturePart({ part }) {
-	const part_id = (part || {}).id;
+function TablaturePart({ part_id }) {
 	const blocks = useSelector(store => store.tab.blocks, shallowEqual);
 	const blocks_in_this_part = (blocks.all_ids || [])
 		.filter(b => b.indexOf(`${part_id}-`) !== -1);
@@ -25,7 +24,7 @@ function TablaturePart({ part }) {
 					<Block
 						key={block_full_id}
 						part_id={part_id}
-						block={blocks.by_id[block_full_id]}
+						block_full_id={block_full_id}
 					/>
 				))}
 			</div>
@@ -34,12 +33,10 @@ function TablaturePart({ part }) {
 }
 
 TablaturePart.propTypes = {
-	part: PropTypes.shape({
-		id: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.number,
-		]).isRequired,
-	}).isRequired,
+	part_id: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]).isRequired,
 };
 
 export default CSSModules(TablaturePart, styles, { allowMultiple: true });

@@ -13,15 +13,15 @@ const tab = {
 	parts: {
 		all_ids: [1, 2],
 		by_id: {
-			1: { id: 1, type: 'tablature' },
-			2: { id: 2, type: 'lyric' },
+			1: { type: 'tablature' },
+			2: { type: 'lyric' },
 		},
 	},
 	blocks: {
 		all_ids: ['1-1', '1-2'],
 		by_id: {
-			'1-1': { id: '1-1' },
-			'1-2': { id: '1-2' },
+			'1-1': {},
+			'1-2': {},
 		},
 	},
 	columns: {

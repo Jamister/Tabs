@@ -9,11 +9,7 @@ import * as s from './Column.style';
 import Note from '../Note';
 import ChordSelection from '../ChordSelection';
 
-function Column({ part_id, block_id, column }) {
-	const column_full_id = (column || {}).id || '';
-	const column_id = Number(
-		column_full_id.replace(`${part_id}-${block_id}-`, ''),
-	);
+function Column({ column_full_id = '' }) {
 	const lines = useSelector(store => store
 		.tab.lines, shallowEqual);
 	const user_is_writing = useSelector(store => store
@@ -23,19 +19,15 @@ function Column({ part_id, block_id, column }) {
 		return (
 			<s.Column data-test="column-render">
 				<ChordSelection
+					column_full_id={column_full_id}
 					data-test="notes-render"
-					part_id={part_id}
-					block_id={block_id}
-					column_id={column_id}
 				/>
 				{(lines || []).map(l => (
 					<Note
 						key={l}
-						data-test="notes-render"
-						part_id={part_id}
-						block_id={block_id}
-						column_id={column_id}
+						column_full_id={column_full_id}
 						line_id={l}
+						data-test="notes-render"
 					/>
 				))}
 			</s.Column>
@@ -47,11 +39,9 @@ function Column({ part_id, block_id, column }) {
 			{(lines || []).map(l => (
 				<Note
 					key={l}
-					data-test="notes-render"
-					part_id={part_id}
-					block_id={block_id}
-					column_id={column_id}
+					column_full_id={column_full_id}
 					line_id={l}
+					data-test="notes-render"
 				/>
 			))}
 		</s.Column>
@@ -59,17 +49,7 @@ function Column({ part_id, block_id, column }) {
 }
 
 Column.propTypes = {
-	part_id: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	]).isRequired,
-	block_id: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	]).isRequired,
-	column: PropTypes.shape({
-		id: PropTypes.string,
-	}).isRequired,
+	column_full_id: PropTypes.string.isRequired,
 };
 
 export default Column;

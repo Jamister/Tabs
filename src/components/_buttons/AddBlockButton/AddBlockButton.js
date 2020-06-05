@@ -28,7 +28,10 @@ function AddBlockButton({ part_id }) {
 }
 
 AddBlockButton.propTypes = {
-	part_id: PropTypes.number.isRequired,
+	part_id: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]).isRequired,
 };
 
 export default CSSModules(AddBlockButton, styles, { allowMultiple: true });

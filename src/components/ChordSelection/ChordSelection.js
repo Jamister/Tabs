@@ -8,17 +8,28 @@ import * as s from './ChordSelection.style';
 // Actions
 import { selectNote } from '../../store/tab/actions';
 
-function ChordSelection({
-	part_id,
-	block_id,
-	column_id,
-}) {
+// Functions
+import { extract } from '../../functions/extractIds';
+
+function ChordSelection({ column_full_id = '' }) {
 	const dispatch = useDispatch();
-	const note_id = `${part_id}-${block_id}-${column_id}-1`;
-	const selected_note = useSelector(store => store.tab.selected_note, shallowEqual) || {};
+	const note_id = `${column_full_id}-1`;
+	const selected_note = useSelector(store => store
+		.tab.selected_note, shallowEqual) || {};
 	const { p, b, c, l } = selected_note;
 	const selected_note_id = `${p}-${b}-${c}-${l}`;
 	const selected = note_id === selected_note_id;
+	const part_id = extract.partId({
+		full_id: column_full_id,
+	});
+	const block_id = extract.blockId({
+		full_id: column_full_id,
+		return_number: true,
+	});
+	const column_id = extract.columnId({
+		full_id: column_full_id,
+		return_number: true,
+	});
 
 	function handleNote() {
 		const action = selectNote({
@@ -41,18 +52,7 @@ function ChordSelection({
 }
 
 ChordSelection.propTypes = {
-	part_id: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	]).isRequired,
-	block_id: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	]).isRequired,
-	column_id: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	]).isRequired,
+	column_full_id: PropTypes.string.isRequired,
 };
 
 export default ChordSelection;

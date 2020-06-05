@@ -28,7 +28,10 @@ function RemoveBlockButton({ part_id }) {
 }
 
 RemoveBlockButton.propTypes = {
-	part_id: PropTypes.number.isRequired,
+	part_id: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]).isRequired,
 };
 
 export default CSSModules(RemoveBlockButton, styles, { allowMultiple: true });

@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { useSelector, useDispatch } from 'react-redux';
-import Block from './Block';
+import Block from '../Block';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -18,10 +18,7 @@ describe('Block 1', () => {
 
 	it('should not crash Block component', () => {
 		const wrapper = shallow(
-			<Block
-				part_id="1"
-				block={{}}
-			/>
+			<Block block_full_id="" />
 		);
 		const html_elem = wrapper.find('[data-test="block-render"]');
 		expect(html_elem).toHaveLength(1);
@@ -58,13 +55,7 @@ describe('Block 2', () => {
 
 	it('should render 3 Columns', () => {
 		const wrapper = shallow(
-			<Block
-				part_id="1"
-				block={{
-					part_id: 1,
-					id: '1-1',
-				}}
-			/>
+			<Block block_full_id="1-1" />
 		);
 		const html_elem = wrapper.find('[data-test="columns-render"]');
 		expect(html_elem).toHaveLength(3);

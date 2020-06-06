@@ -23,7 +23,6 @@ function TablaturePart({ part_id }) {
 				{blocks_in_this_part.map(block_full_id => (
 					<Block
 						key={block_full_id}
-						part_id={part_id}
 						block_full_id={block_full_id}
 					/>
 				))}

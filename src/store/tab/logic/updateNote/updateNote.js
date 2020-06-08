@@ -5,7 +5,6 @@ import { returnChord } from '../../../../functions/returnChord';
 const updateNote = (state = {}, action = {}) => {
 	const instrument = state.instrument || 'guitar';
 	const lines = state.lines || [];
-	const columns = state.columns || {};
 	const selected_note = state.selected_note || {};
 	const { p, b, c, l } = selected_note;
 	const new_state_to_return = {};
@@ -21,37 +20,6 @@ const updateNote = (state = {}, action = {}) => {
 		};
 	}
 
-	function addColumn() {
-		const all_ids = columns.all_ids || [];
-		const by_id = columns.by_id || {};
-		const next_column_id = `${p}-${b}-${c + 1}`;
-		const new_columns = {
-			all_ids: [
-				...all_ids,
-				next_column_id,
-			],
-			by_id: {
-				...by_id,
-				[next_column_id]: {
-					part_id: p,
-					block_id: b,
-					id: next_column_id,
-				},
-			},
-		};
-		new_state_to_return.columns = new_columns;
-		return returnUpdatedState();
-	}
-
-	function checkIfIsLastColumn() {
-		const by_id = columns.by_id || {};
-		const next_column_id = `${p}-${b}-${c + 1}`;
-		const last_column = by_id[next_column_id] === undefined;
-		return last_column
-			? addColumn()
-			: returnUpdatedState();
-	}
-
 	function fillNotes(note_id, note_new_value) {
 		const notes = {
 			...state.notes,
@@ -60,10 +28,7 @@ const updateNote = (state = {}, action = {}) => {
 			},
 		};
 		new_state_to_return.notes = notes;
-		const has_empty_value = note_new_value === '';
-		return has_empty_value
-			? returnUpdatedState()
-			: checkIfIsLastColumn();
+		return returnUpdatedState();
 	}
 
 	function buildSingleNote() {
@@ -83,7 +48,7 @@ const updateNote = (state = {}, action = {}) => {
 			};
 		});
 		new_state_to_return.notes = notes;
-		return checkIfIsLastColumn();
+		return returnUpdatedState();
 	}
 
 	function findChord() {

@@ -1,9 +1,9 @@
-import { all } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 
-// import tabSaga from './tab/sagas';
+import tabSaga from './tab/sagas';
 
 export default function* rootSaga() {
 	yield all([
-		// fork(tabSaga),
+		fork(tabSaga),
 	]);
 }

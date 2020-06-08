@@ -59,7 +59,7 @@ const removeBlock = (state = {}, action = {}) => {
 
 	function findLastBlockId(part_id) {
 		let last_block_id = `${part_id}-1`;
-		// TODO improve
+		// TODO improve this logic
 		for (let i = 1; i <= 1000; i++) {
 			if (by_id[`${part_id}-${i}`] === undefined) {
 				last_block_id = `${part_id}-${i - 1}`;

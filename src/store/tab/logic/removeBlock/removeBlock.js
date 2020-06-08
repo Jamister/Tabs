@@ -13,8 +13,16 @@ const removeBlock = (state = {}, action = {}) => {
 	}
 
 	function removeNotesInLastBlock(last_block_id) {
-		// TODO remove notes
-		console.log('last_block_id', last_block_id);
+		const notes = { ...state.notes };
+		const notes_ids = Object.keys(notes) || [];
+		notes_ids.forEach(note_id => {
+			const to_delete = note_id.indexOf(`${last_block_id}-`) === 0;
+			if (to_delete) {
+				delete notes[note_id];
+			}
+			return !to_delete;
+		});
+		updated_state.notes = notes;
 		return updateStore();
 	}
 

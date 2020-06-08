@@ -1,7 +1,7 @@
 // Actions
 import {
 	moveSelectedNote,
-	updateNote,
+	startUpdatingNote,
 	clearSelectNote,
 	holdPressedKey,
 } from '../../store/tab/actions';
@@ -27,5 +27,5 @@ export const mapKeysToActions = (key_code) => {
 	}
 
 	// default
-	return updateNote(key_code);
+	return startUpdatingNote(key_code);
 };

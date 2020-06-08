@@ -41,8 +41,8 @@ export const selectNote = (note) => ({
 	note,
 });
 
-export const updateNote = (key_code) => ({
-	type: types.UPDATE_NOTE,
+export const startUpdatingNote = (key_code) => ({
+	type: types.START_UPDATING_NOTE,
 	key_code,
 });
 

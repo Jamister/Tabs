@@ -60,7 +60,10 @@ const updateNote = (state = {}, action = {}) => {
 			},
 		};
 		new_state_to_return.notes = notes;
-		return checkIfIsLastColumn();
+		const has_empty_value = note_new_value === '';
+		return has_empty_value
+			? returnUpdatedState()
+			: checkIfIsLastColumn();
 	}
 
 	function buildSingleNote() {

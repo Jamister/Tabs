@@ -31,7 +31,7 @@ const removeBlock = (state = {}, action = {}) => {
 		const columns_by_id = { ...columns.by_id || {} };
 		const columns_all_ids = (columns.all_ids || [])
 			.filter(id => {
-				const to_delete = id.indexOf(`${last_block_id}-`) !== -1;
+				const to_delete = id.indexOf(`${last_block_id}-`) === 0;
 				if (to_delete) {
 					delete columns_by_id[id];
 				}

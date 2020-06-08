@@ -10,6 +10,10 @@ const updateNote = (state = {}, action = {}) => {
 	const { p, b, c, l } = selected_note;
 	const new_state_to_return = {};
 
+	function returnDefaultState() {
+		return { ...state };
+	}
+
 	function returnUpdatedState() {
 		return {
 			...state,
@@ -35,7 +39,6 @@ const updateNote = (state = {}, action = {}) => {
 				},
 			},
 		};
-
 		new_state_to_return.columns = new_columns;
 		return returnUpdatedState();
 	}
@@ -44,12 +47,9 @@ const updateNote = (state = {}, action = {}) => {
 		const by_id = columns.by_id || {};
 		const next_column_id = `${p}-${b}-${c + 1}`;
 		const last_column = by_id[next_column_id] === undefined;
-
-		if (last_column) {
-			return addColumn();
-		}
-
-		return returnUpdatedState();
+		return last_column
+			? addColumn()
+			: returnUpdatedState();
 	}
 
 	function fillNotes(note_id, note_new_value) {
@@ -88,25 +88,25 @@ const updateNote = (state = {}, action = {}) => {
 
 	function findChord() {
 		const chord = returnChord(action.key_code, instrument);
-		if (chord === null) {
-			return returnUpdatedState();
-		}
-		return buildChord(chord);
+		const no_chord_found = chord === null;
+		return no_chord_found
+			? returnUpdatedState()
+			: buildChord(chord);
 	}
 
 	function checkIfIsChord() {
 		const { user_is_writing } = state;
-		if (user_is_writing === 'chords') {
-			return findChord();
-		}
-		return buildSingleNote();
+		const writing_chords = user_is_writing === 'chords';
+		return writing_chords
+			? findChord()
+			: buildSingleNote();
 	}
 
 	function checkBlank() {
-		if (p === undefined) {
-			return { ...state };
-		}
-		return checkIfIsChord();
+		const no_part_found = p === undefined;
+		return no_part_found
+			? returnDefaultState()
+			: checkIfIsChord();
 	}
 
 	return checkBlank();

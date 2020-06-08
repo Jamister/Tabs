@@ -10,7 +10,9 @@ import holdPressedKey from './logic/holdPressedKey';
 import moveSelectedNote from './logic/moveSelectedNote';
 import removeBlock from './logic/removeBlock';
 import selectNote from './logic/selectNote';
+import removeEmptyColumn from './logic/removeEmptyColumn';
 import updateNote from './logic/updateNote';
+import addColumn from './logic/addColumn';
 import changedWritingType from './logic/changedWritingType';
 
 const funcs = {
@@ -23,7 +25,9 @@ const funcs = {
 	MOVE_SELECTED_NOTE: moveSelectedNote,
 	REMOVE_BLOCK: removeBlock,
 	SELECT_NOTE: selectNote,
+	REMOVE_EMPTY_COLUMN: removeEmptyColumn,
 	UPDATE_NOTE: updateNote,
+	ADD_COLUMN: addColumn,
 	CHANGED_WRITING_TYPE: changedWritingType,
 };
 

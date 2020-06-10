@@ -5,4 +5,6 @@
   <p><a href="http://oaktabs.2sidesof1.com/">Preview</a></p>
 </div>
 
+> **`Attention`**: I'm working on this project in my sparetime and thus this application is not yet 100% done.
+
 ![Preview](/prints/taylor-2.jpg?raw=true)

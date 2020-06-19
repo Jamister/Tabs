@@ -1,4 +1,4 @@
-import { returnKeyValue } from './returnKeyValue';
+import { returnKeyValue } from '../returnKeyValue';
 
 test('should return default', () => {
 	expect(returnKeyValue()).toBe('');

@@ -1,4 +1,4 @@
-import { findLastColumn } from './findLastColumn';
+import { findLastColumn } from '../findLastColumn';
 
 test('should not crash', () => {
 	expect(findLastColumn()).toBe(1);

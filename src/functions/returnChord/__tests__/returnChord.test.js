@@ -1,4 +1,4 @@
-import { returnChord } from './returnChord';
+import { returnChord } from '../returnChord';
 
 it('should return default (null)', () => {
 	const blank = returnChord();

@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // Redux HOC
-import withStore from '../../store/withStore';
+import withStore from '../../utils/redux/withStore';
 
-function Auxlr({ children }) {
-	return <>{children}</>;
-}
+const Auxlr = ({ children }) => <>{children}</>;
 
 Auxlr.propTypes = {
-	children: PropTypes.element.isRequired,
+    children: PropTypes.element.isRequired,
 };
 
 export default withStore(connect(null, null)(Auxlr));

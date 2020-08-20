@@ -15,10 +15,11 @@
     }
   },
   "rules": {
-    "indent": ["error", "tab"],
+    "indent": ["error", 4],
     "no-tabs": 0,
-    "react/jsx-indent": [2, "tab"],
-    "react/jsx-indent-props": [2, "tab"],
+    "react/jsx-indent": [0],
+    "react/jsx-indent-props": [1, 4],
+    "import/order": [0],
     "max-len": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "camelcase": 0,

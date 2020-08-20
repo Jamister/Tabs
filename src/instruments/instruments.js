@@ -1,7 +1,7 @@
 import guitar from './guitar';
 
 const instruments = {
-	guitar,
+    guitar,
 };
 
 export default instruments;

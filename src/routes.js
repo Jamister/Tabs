@@ -1,15 +1,25 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-// Pages
-import Tab from './pages/Tab';
+// Modules
+import tab_routes from 'modules/tab/routes';
+import user_routes from 'modules/user/routes';
+
+const all_routes = [
+    ...tab_routes,
+    ...user_routes,
+];
 
 const Routes = () => (
-	<Switch>
-		<Route path="/tab" exact component={Tab} />
-		<Route path="/" exact component={Tab} />
-		<Route path="*" exact component={Tab} />
-	</Switch>
+    <Switch>
+        {all_routes.map(route => (
+            <Route
+                path={route.path}
+                exact={route.exact}
+                component={route.component}
+            />
+        ))}
+    </Switch>
 );
 
 export default Routes;

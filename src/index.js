@@ -11,11 +11,11 @@ import Routes from './routes';
 import * as serviceWorker from './serviceWorker';
 
 const app = (
-	<Auxlr>
-		<BrowserRouter>
-			<Routes />
-		</BrowserRouter>
-	</Auxlr>
+    <Auxlr>
+        <BrowserRouter>
+            <Routes />
+        </BrowserRouter>
+    </Auxlr>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

@@ -10,13 +10,13 @@ import tab from '../store/tab/reducers';
 const reducers = combineReducers({ tab });
 
 function renderWithRedux(
-	comp,
-	{ initialState, store = createStore(reducers, initialState) } = {},
+    comp,
+    { initialState, store = createStore(reducers, initialState) } = {},
 ) {
-	return {
-		...render(<Provider store={store}>{comp}</Provider>),
-		store,
-	};
+    return {
+        ...render(<Provider store={store}>{comp}</Provider>),
+        store,
+    };
 }
 
 export default renderWithRedux;

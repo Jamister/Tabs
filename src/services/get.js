@@ -1,8 +1,14 @@
 import axios from 'axios';
 
-export function get(url) {
-	const instance = axios.create({
-		baseURL: 'https://test.t.com.br',
-	});
-	return instance.get(url);
-}
+const baseURL = process.env.REACT_APP_BASEURL;
+const mainInstance = axios.create({ baseURL });
+
+const get = (url) => mainInstance.get(url);
+const post = (url, params) => mainInstance.post(url, params);
+
+const services = {
+    get,
+    post,
+};
+
+export default services;

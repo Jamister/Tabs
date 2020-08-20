@@ -11,9 +11,6 @@ import ActionsSubBar from '../../components/ActionsSubBar';
 import Header from '../../components/Header';
 import Parts from '../../components/Parts';
 
-// Actions
-import { clearPressedKey } from '../../store/tab/actions';
-
 // Functions
 import { mapKeysToActions } from '../../functions/mapKeysToActions';
 
@@ -28,17 +25,10 @@ const Tab = () => {
 		dispatch(action);
 	}
 
-	function handleKeyUp() {
-		const action = clearPressedKey();
-		dispatch(action);
-	}
-
 	useEffect(() => {
 		window.addEventListener('keydown', handleKeyDown);
-		window.addEventListener('keyup', handleKeyUp);
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown);
-			window.removeEventListener('keyup', handleKeyUp);
 		};
 	}, [handleKeyDown]);
 

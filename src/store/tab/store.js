@@ -51,7 +51,6 @@ const tab = {
 		},
 	},
 	printed_tab: '',
-	pressed_key: '',
 	// lyric_chords: {
 	// 	1: {
 	// 		lyric_line_id: '1',

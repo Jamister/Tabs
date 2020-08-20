@@ -9,21 +9,12 @@ export const addPart = () => ({
 	type: types.ADD_PART,
 });
 
-export const clearPressedKey = () => ({
-	type: types.CLEAR_PRESSED_KEY,
-});
-
 export const clearSelectNote = () => ({
 	type: types.CLEAR_SELECT_NOTE,
 });
 
 export const exportTabFormatTxt = () => ({
 	type: types.EXPORT_TAB_TXT,
-});
-
-export const holdPressedKey = (key_code) => ({
-	type: types.HOLD_PRESSED_KEY,
-	key_code,
 });
 
 export const moveSelectedNote = (key_code) => ({

@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import monitorReducersEnhancer from '../utils/enhancers/monitorReducer';
-import loggerMiddleware from '../utils/middleware/logger';
+import monitorReducersEnhancer from '../config/enhancers/monitorReducer';
+import loggerMiddleware from '../config/middleware/logger';
 
 // sagas
 import rootSaga from './combineSagas';

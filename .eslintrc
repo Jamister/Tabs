@@ -7,6 +7,13 @@
     "jsx-a11y"
   ],
   "parser": "babel-eslint",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
   "rules": {
     "indent": ["error", "tab"],
     "no-tabs": 0,

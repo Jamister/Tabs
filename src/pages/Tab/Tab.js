@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
-// CSS
-import * as s from './Tab.style';
-
 // Components
-import Container from '../../components/Container';
-import NavigationBar from '../../components/NavigationBar';
-import ActionsSubBar from '../../components/ActionsSubBar';
-import Header from '../../components/Header';
-import Parts from '../../components/Parts';
+import Container from 'components/Container';
+import NavigationBar from 'components/NavigationBar';
+import ActionsSubBar from 'components/ActionsSubBar';
+import Header from 'components/Header';
+import Parts from 'components/Parts';
 
 // Functions
-import { mapKeysToActions } from '../../functions/mapKeysToActions';
+import { mapKeysToActions } from 'functions/mapKeysToActions';
+
+// CSS
+import * as s from './Tab.style';
 
 const Tab = () => {
 	const dispatch = useDispatch();

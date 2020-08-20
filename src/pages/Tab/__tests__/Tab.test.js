@@ -1,12 +1,12 @@
-import '../../../tests/matchMedia.mock';
+import 'tests/matchMedia.mock';
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter as Router } from 'react-router-dom';
-import renderWithRedux from '../../../tests/setupReduxTests';
+import renderWithRedux from 'tests/setupReduxTests';
 
 // Store
-import tab from '../../../store/tab/store';
+import tab from 'store/tab/store';
 
 // Components
 import Tab from '../Tab';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from 'styles/global_theme';
+import theme from 'styles/theme';
 
 const block_height = (theme.note_size * 5) + 1;
 

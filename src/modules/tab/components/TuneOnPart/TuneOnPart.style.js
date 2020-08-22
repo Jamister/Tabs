@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from 'styles/global_theme';
+import theme from 'styles/theme';
 
 export const TuneNote = styled.div`
     position: absolute;

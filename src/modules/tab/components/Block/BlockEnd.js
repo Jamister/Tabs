@@ -12,39 +12,41 @@ import RemoveBlockButton from '../_buttons/RemoveBlockButton';
 // Functions
 import { extract } from '../../utils/extractIds';
 
-function BlockEnd({ block_full_id = '' }) {
-    const columns = useSelector(store => store.tab.columns, shallowEqual);
-    const by_id = columns.by_id || {};
+function BlockEnd({ full_block_id }) {
+    const blocks = useSelector(store => store.tab.blocks, shallowEqual);
     const part_id = extract.partId({
-        full_id: block_full_id,
+        full_id: full_block_id,
     });
-    const block_id = extract.blockId({
-        full_id: block_full_id,
-        return_number: true,
-    });
-    const next_block_id = `${part_id}-${block_id + 1}-1`;
-    const has_next_block = by_id[next_block_id] !== undefined;
 
-    if (has_next_block) {
-        return (
-            <s.BlockEnd
-                data-testid="blockend-render"
-                data-test="blockend-render"
-            />
-        );
+    function isLastBlockInThisPart() {
+        // TODO refactor
+        const blocks_all_ids = blocks.all_ids || {};
+        const blocks_in_this_part = (blocks_all_ids || [])
+            .filter(b => b.indexOf(`${part_id}-`) !== -1);
+        const [last_block_full_id] = blocks_in_this_part.slice(-1);
+        const this_block_id = extract.blockId({
+            full_id: full_block_id,
+        });
+        const last_block_id = extract.blockId({
+            full_id: last_block_full_id,
+        });
+        const is_last_block = this_block_id === last_block_id;
+        return is_last_block;
     }
 
-    return (
-        <s.PartEnd data-testid="partend-render" data-test="blockend-render">
+    return isLastBlockInThisPart() ? (
+        <s.PartEnd>
             <AddBlockButton part_id={part_id} />
             <RemoveBlockButton part_id={part_id} />
             <s.LayerOverLines />
         </s.PartEnd>
+    ) : (
+        <s.BlockEnd />
     );
 }
 
 BlockEnd.propTypes = {
-    block_full_id: PropTypes.string.isRequired,
+    full_block_id: PropTypes.string.isRequired,
 };
 
 export default BlockEnd;

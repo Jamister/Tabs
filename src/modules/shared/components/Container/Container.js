@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 // CSS
 import * as s from './Container.style';
 
-const Container = ({ children, fluid }) => (
-    <s.Container fluid={fluid}>
+const Container = ({ children, background }) => (
+    <s.Container background={background}>
         {React.Children.map(children, (child) => <>{child}</>)}
     </s.Container>
 );
@@ -15,11 +15,11 @@ Container.propTypes = {
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
     ]).isRequired,
-    fluid: PropTypes.bool,
+    background: PropTypes.string,
 };
 
 Container.defaultProps = {
-    fluid: false,
+    background: '',
 };
 
 export default Container;

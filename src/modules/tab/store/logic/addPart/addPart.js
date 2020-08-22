@@ -1,131 +1,90 @@
-import { createColumns } from '../../utils/createColumns';
+import { cloneObject } from 'modules/shared/utils/objects';
+import { createUniqueId } from 'modules/shared/utils/createUniqueId';
+import { createColumns } from 'modules/tab/utils/createColumns';
 
 const addPart = (state = {}) => {
-    const parts = state.parts || {};
-    const next_state = { ...state };
-    let next_part_id = 1;
+    const new_state = cloneObject(state);
+    const parts = new_state.parts || {};
+    const parts_all_ids = parts.all_ids || [];
+    const parts_by_id = parts.by_id || {};
 
-    function updateNextState({ object, field, value }) {
-        next_state[object] = {
-            ...next_state[object],
-            [field]: value,
-        };
+    function saveStore() {
+        return new_state;
     }
 
-    function returnUpdatedStore() {
-        return { ...next_state };
-    }
-
-    function addColumnsToIdsObject(block_full_id) {
-        const { new_columns_by_id } = createColumns(block_full_id);
-        const columns_by_id = (next_state.columns || {}).by_id || {};
-        const columns_by_id_updated = {
+    function addColumnsToById(new_columns) {
+        const { by_id } = new_columns;
+        const columns_by_id = (new_state.columns || {}).by_id || {};
+        const new_columns_by_id = {
             ...columns_by_id,
-            ...new_columns_by_id,
+            ...by_id,
         };
-        updateNextState({
-            object: 'columns',
-            field: 'by_id',
-            value: columns_by_id_updated,
-        });
-
-        return returnUpdatedStore();
+        new_state.columns.by_id = new_columns_by_id;
+        return saveStore();
     }
 
-    function addColumnsToIdsList(block_full_id) {
-        const { new_columns_all_ids } = createColumns(block_full_id);
-        const columns_all_ids = (next_state.columns || {}).all_ids || [];
-        const columns_all_ids_updated = [
+    function addColumnsToAllIds(new_columns) {
+        const { all_ids } = new_columns;
+        const columns_all_ids = (new_state.columns || {}).all_ids || [];
+        const new_columns_all_ids = [
             ...columns_all_ids,
-            ...new_columns_all_ids,
-        ].filter((el, i, a) => i === a.indexOf(el));
-        updateNextState({
-            object: 'columns',
-            field: 'all_ids',
-            value: columns_all_ids_updated,
-        });
-
-        return addColumnsToIdsObject(block_full_id);
-    }
-
-    function addBlockToIdsObject(block_object) {
-        const blocks_by_id = (next_state.blocks || {}).by_id || {};
-        const blocks_by_id_updated = {
-            ...blocks_by_id,
-            [block_object.id]: block_object,
-        };
-        updateNextState({
-            object: 'blocks',
-            field: 'by_id',
-            value: blocks_by_id_updated,
-        });
-
-        return addColumnsToIdsList(block_object.id);
-    }
-
-    function addBlockToIdsList(block_object) {
-        const blocks_all_ids = (next_state.blocks || {}).all_ids || [];
-        const blocks_all_ids_updated = [
-            ...blocks_all_ids,
-            block_object.id,
+            ...all_ids,
         ];
-        updateNextState({
-            object: 'blocks',
-            field: 'all_ids',
-            value: blocks_all_ids_updated,
-        });
-
-        return addBlockToIdsObject(block_object);
+        new_state.columns.all_ids = new_columns_all_ids;
+        return addColumnsToById(new_columns);
     }
 
-    function createBlockObject() {
-        const block_full_id = `${next_part_id}-1`;
-        const block_object = { id: block_full_id };
-
-        return addBlockToIdsList(block_object);
+    function createBlockColumns(full_block_id) {
+        const new_columns = createColumns(full_block_id);
+        return addColumnsToAllIds(new_columns);
     }
 
-    function addPartToIdsObject() {
-        const parts_by_id = (next_state.parts || {}).by_id || {};
-        const parts_by_id_updated = {
-            ...parts_by_id,
-            [next_part_id]: {
-                id: next_part_id,
-            },
+    function addBlockToById(full_block_id) {
+        const blocks_by_id = (new_state.blocks || {}).by_id || {};
+        const new_blocks_by_id = {
+            ...blocks_by_id,
+            [full_block_id]: {},
         };
-        updateNextState({
-            object: 'parts',
-            field: 'by_id',
-            value: parts_by_id_updated,
-        });
-
-        return createBlockObject();
+        new_state.blocks.by_id = new_blocks_by_id;
+        return createBlockColumns(full_block_id);
     }
 
-    function addPartToIdsList() {
-        const parts_all_ids = (next_state.parts || {}).all_ids || [];
-        const parts_all_ids_updated = [...parts_all_ids, next_part_id];
-        updateNextState({
-            object: 'parts',
-            field: 'all_ids',
-            value: parts_all_ids_updated,
-        });
-
-        return addPartToIdsObject();
+    function addBlockToAllIds(full_block_id) {
+        const blocks_all_ids = (new_state.blocks || {}).all_ids || [];
+        const new_blocks_all_ids = [...blocks_all_ids, full_block_id];
+        new_state.blocks.all_ids = new_blocks_all_ids;
+        return addBlockToById(full_block_id);
     }
 
-    function getNextPartId() {
-        const all_ids = parts.all_ids || [];
-        const last_part_id = all_ids
-            .reduce((result, current) => (
-                current >= result ? current : result
-            ), 0);
-        next_part_id = last_part_id + 1;
-
-        return addPartToIdsList();
+    function createBlockId(next_part_id) {
+        const hash = 'block 1';
+        const { smaller_id: next_block_id } = createUniqueId(hash);
+        const full_block_id = `${next_part_id}-${next_block_id}`;
+        return addBlockToAllIds(full_block_id);
     }
 
-    return getNextPartId();
+    function addPartToById(next_part_id) {
+        const new_parts_by_id = {
+            ...parts_by_id,
+            [next_part_id]: { type: 'tablature' },
+        };
+        new_state.parts.by_id = new_parts_by_id;
+        return createBlockId(next_part_id);
+    }
+
+    function addPartToAllIds(next_part_id) {
+        const new_parts_all_ids = [...parts_all_ids, next_part_id];
+        new_state.parts.all_ids = new_parts_all_ids;
+        return addPartToById(next_part_id);
+    }
+
+    function createNextPartId() {
+        const hash = `part ${parts_all_ids.length + 1}`;
+        const { smaller_id: next_part_id } = createUniqueId(hash);
+        return addPartToAllIds(next_part_id);
+    }
+
+    return createNextPartId();
 };
 
 export default addPart;

@@ -9,7 +9,7 @@ import * as s from './Column.style';
 import Note from '../Note';
 import ChordSelection from '../ChordSelection';
 
-function Column({ column_full_id = '' }) {
+function Column({ full_column_id }) {
     const lines = useSelector(store => store
         .tab.lines, shallowEqual);
     const user_is_writing = useSelector(store => store
@@ -19,13 +19,13 @@ function Column({ column_full_id = '' }) {
         return (
             <s.Column data-test="column-render">
                 <ChordSelection
-                    column_full_id={column_full_id}
+                    full_column_id={full_column_id}
                     data-test="notes-render"
                 />
                 {(lines || []).map(l => (
                     <Note
                         key={l}
-                        column_full_id={column_full_id}
+                        full_column_id={full_column_id}
                         line_id={l}
                         data-test="notes-render"
                     />
@@ -39,7 +39,7 @@ function Column({ column_full_id = '' }) {
             {(lines || []).map(l => (
                 <Note
                     key={l}
-                    column_full_id={column_full_id}
+                    full_column_id={full_column_id}
                     line_id={l}
                     data-test="notes-render"
                 />
@@ -49,7 +49,7 @@ function Column({ column_full_id = '' }) {
 }
 
 Column.propTypes = {
-    column_full_id: PropTypes.string.isRequired,
+    full_column_id: PropTypes.string.isRequired,
 };
 
 export default Column;

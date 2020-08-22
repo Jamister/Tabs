@@ -1,20 +1,21 @@
 import React from 'react';
+import * as s from './NavigationBar.style';
 
 // Components
-import ExportTab from 'modules/tab/components/ExportTab';
+import CreateTabButton from 'modules/tab/components/CreateTabButton';
 import Container from '../Container';
-
-// Css
-// import { Row, Col } from 'antd';
-import * as s from './NavigationBar.style';
 
 const NavigationBar = () => (
     <s.TabBarWrapper>
-        <Container>
-            <s.Logo>Oaktabs</s.Logo>
-            <s.Buttons>
-                <ExportTab />
-            </s.Buttons>
+        <Container background="#253140">
+            <s.Logo>Oak</s.Logo>
+            <s.Menu>Tablaturas</s.Menu>
+            <s.Button>
+                <CreateTabButton />
+            </s.Button>
+            <s.AccountMenu>
+                Beto
+            </s.AccountMenu>
         </Container>
     </s.TabBarWrapper>
 );

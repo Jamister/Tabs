@@ -15,12 +15,9 @@ import NoteWidthSpace from './NoteWidthSpace';
 // Functions
 import { extract } from '../../utils/extractIds';
 
-function Note({
-    column_full_id = '',
-    line_id = '',
-}) {
+function Note({ full_column_id, line_id = '' }) {
     const dispatch = useDispatch();
-    const note_id = `${column_full_id}-${line_id}`;
+    const note_id = `${full_column_id}-${line_id}`;
     const selected_note = useSelector(store => store.tab.selected_note, shallowEqual) || {};
     const { p, b, c, l } = selected_note;
     const selected_note_id = `${p}-${b}-${c}-${l}`;
@@ -29,15 +26,13 @@ function Note({
         .tab.user_is_writing, shallowEqual);
 
     const part_id = extract.partId({
-        full_id: column_full_id,
+        full_id: full_column_id,
     });
     const block_id = extract.blockId({
-        full_id: column_full_id,
-        return_number: true,
+        full_id: full_column_id,
     });
     const column_id = extract.columnId({
-        full_id: column_full_id,
-        return_number: true,
+        full_id: full_column_id,
     });
 
     function handleNote() {
@@ -77,7 +72,7 @@ function Note({
 }
 
 Note.propTypes = {
-    column_full_id: PropTypes.string.isRequired,
+    full_column_id: PropTypes.string.isRequired,
     line_id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,

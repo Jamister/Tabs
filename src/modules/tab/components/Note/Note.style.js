@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import theme from 'styles/global_theme';
+import theme from 'styles/theme';
 
 export const Note = styled.button`
     position: absolute;
@@ -7,6 +7,7 @@ export const Note = styled.button`
     left: 0;
     width: 100%;
     height: ${theme.note_height}px;
+    background: none;
     outline: none;
     cursor: pointer;
     border: transparent 1px solid;

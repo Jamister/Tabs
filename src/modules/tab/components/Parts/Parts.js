@@ -5,31 +5,19 @@ import PropTypes from 'prop-types';
 import TablaturePart from '../TablaturePart';
 import LyricPart from '../LyricPart';
 
-function Parts({
-    part_id = '',
-    part_type = '',
-}) {
-    if (part_type === 'lyric') {
-        return (
-            <LyricPart
-                part_id={part_id}
-            />
-        );
-    }
+function Parts({ part_id, part }) {
+    const isTablature = part?.type === 'tablature';
 
-    return (
-        <TablaturePart
-            part_id={part_id}
-        />
-    );
+    return isTablature
+        ? <TablaturePart part_id={part_id} />
+        : <LyricPart part_id={part_id} />;
 }
 
 Parts.propTypes = {
-    part_id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-    ]).isRequired,
-    part_type: PropTypes.string.isRequired,
+    part_id: PropTypes.string.isRequired,
+    part: PropTypes.shape({
+        type: PropTypes.string,
+    }).isRequired,
 };
 
 export default Parts;

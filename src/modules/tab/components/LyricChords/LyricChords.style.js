@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import theme from '../../styles/global_theme';
 
 export const ChordLine = styled.div`
     position: relative;

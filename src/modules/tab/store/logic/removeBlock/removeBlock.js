@@ -1,15 +1,17 @@
+import { cloneObject } from 'modules/shared/utils/objects';
+
 const removeBlock = (state = {}, action = {}) => {
-    const updated_state = { ...state };
+    const new_state = cloneObject(state);
     const blocks = state.blocks || {};
-    const all_ids = blocks.all_ids || [];
-    const by_id = blocks.by_id || {};
+    const blocks_all_ids = blocks.all_ids || [];
+    const blocks_by_id = blocks.by_id || {};
 
     function returnDefault() {
         return { ...state };
     }
 
     function updateStore() {
-        return updated_state;
+        return new_state;
     }
 
     function removeNotesInLastBlock(last_block_id) {
@@ -17,56 +19,50 @@ const removeBlock = (state = {}, action = {}) => {
         const notes_ids = Object.keys(notes) || [];
         notes_ids.forEach(note_id => {
             const to_delete = note_id.indexOf(`${last_block_id}-`) === 0;
-            if (to_delete) {
-                delete notes[note_id];
-            }
+            if (to_delete) delete notes[note_id];
             return !to_delete;
         });
-        updated_state.notes = notes;
+        new_state.notes = notes;
         return updateStore();
     }
 
-    function removeColumnsInLastBlock(last_block_id) {
+    function removeColumnsInLastBlock(last_block_full_id) {
         const columns = state.columns || {};
-        const columns_by_id = { ...columns.by_id || {} };
-        const columns_all_ids = (columns.all_ids || [])
+        const new_columns_by_id = { ...columns.by_id || {} };
+        const new_columns_all_ids = (columns.all_ids || [])
             .filter(id => {
-                const to_delete = id.indexOf(`${last_block_id}-`) === 0;
-                if (to_delete) {
-                    delete columns_by_id[id];
-                }
+                const to_delete = id.indexOf(`${last_block_full_id}-`) === 0;
+                if (to_delete) delete new_columns_by_id[id];
                 return !to_delete;
             });
-        updated_state.columns = {
-            all_ids: columns_all_ids,
-            by_id: columns_by_id,
-        };
-        return removeNotesInLastBlock(last_block_id);
+        new_state.columns.all_ids = new_columns_all_ids;
+        new_state.columns.by_id = new_columns_by_id;
+        return removeNotesInLastBlock(last_block_full_id);
     }
 
-    function removeBlockIdFromState(last_block_id) {
-        const all_ids_updated = all_ids
-            .filter(id => id !== last_block_id);
-        const by_id_updated = { ...by_id };
-        delete by_id_updated[last_block_id];
-        const blocks_updated = {
-            all_ids: all_ids_updated,
-            by_id: by_id_updated,
-        };
-        updated_state.blocks = blocks_updated;
-        return removeColumnsInLastBlock(last_block_id);
+    function removeBlockFromById(last_block_full_id) {
+        const new_blocks_by_id = { ...blocks_by_id };
+        delete new_blocks_by_id[last_block_full_id];
+        new_state.blocks.by_id = new_blocks_by_id;
+        return removeColumnsInLastBlock(last_block_full_id);
     }
 
-    function findLastBlockId(part_id) {
-        let last_block_id = `${part_id}-1`;
-        // TODO improve this logic
-        for (let i = 1; i <= 1000; i++) {
-            if (by_id[`${part_id}-${i}`] === undefined) {
-                last_block_id = `${part_id}-${i - 1}`;
-                break;
-            }
-        }
-        return removeBlockIdFromState(last_block_id);
+    function removeBlockFromAllIds(last_block_full_id) {
+        blocks_all_ids.pop();
+        const new_blocks_all_ids = blocks_all_ids;
+        new_state.blocks.all_ids = new_blocks_all_ids;
+        return removeBlockFromById(last_block_full_id);
+    }
+
+    function getLastBlockId(part_id, blocks_in_this_part) {
+        const [last_block_full_id] = blocks_in_this_part.slice(-1);
+        return removeBlockFromAllIds(last_block_full_id);
+    }
+
+    function findBlocksOfThisPart(part_id) {
+        const blocks_in_this_part = blocks_all_ids
+            .filter(b => b.indexOf(`${part_id}-`) !== -1);
+        return getLastBlockId(part_id, blocks_in_this_part);
     }
 
     function checkEmptyParams() {
@@ -74,7 +70,7 @@ const removeBlock = (state = {}, action = {}) => {
         const empty_id = part_id === '';
         return empty_id
             ? returnDefault()
-            : findLastBlockId(part_id);
+            : findBlocksOfThisPart(part_id);
     }
 
     return checkEmptyParams();

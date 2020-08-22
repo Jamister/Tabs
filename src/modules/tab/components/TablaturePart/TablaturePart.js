@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
-// CSS
+// Css
 import CSSModules from 'react-css-modules';
 import styles from './style.module.sass';
 
@@ -20,10 +20,10 @@ function TablaturePart({ part_id }) {
             <TuneOnPart />
             <div styleName="part">
                 <div styleName="part-start" />
-                {blocks_in_this_part.map(block_full_id => (
+                {blocks_in_this_part.map(full_block_id => (
                     <Block
-                        key={block_full_id}
-                        block_full_id={block_full_id}
+                        key={full_block_id}
+                        full_block_id={full_block_id}
                     />
                 ))}
             </div>
@@ -32,10 +32,7 @@ function TablaturePart({ part_id }) {
 }
 
 TablaturePart.propTypes = {
-    part_id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-    ]).isRequired,
+    part_id: PropTypes.string.isRequired,
 };
 
 export default CSSModules(TablaturePart, styles, { allowMultiple: true });

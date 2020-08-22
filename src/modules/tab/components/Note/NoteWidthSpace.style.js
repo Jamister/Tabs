@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import theme from 'styles/global_theme';
+import theme from 'styles/theme';
 
 export const WidthSpace = styled.div`
     position: relative;

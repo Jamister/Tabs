@@ -11,24 +11,22 @@ import { selectNote } from '../../store/actions';
 // Functions
 import { extract } from '../../utils/extractIds';
 
-function ChordSelection({ column_full_id = '' }) {
+function ChordSelection({ full_column_id = '' }) {
     const dispatch = useDispatch();
-    const note_id = `${column_full_id}-1`;
+    const note_id = `${full_column_id}-1`;
     const selected_note = useSelector(store => store
         .tab.selected_note, shallowEqual) || {};
     const { p, b, c, l } = selected_note;
     const selected_note_id = `${p}-${b}-${c}-${l}`;
     const selected = note_id === selected_note_id;
     const part_id = extract.partId({
-        full_id: column_full_id,
+        full_id: full_column_id,
     });
     const block_id = extract.blockId({
-        full_id: column_full_id,
-        return_number: true,
+        full_id: full_column_id,
     });
     const column_id = extract.columnId({
-        full_id: column_full_id,
-        return_number: true,
+        full_id: full_column_id,
     });
 
     function handleNote() {
@@ -52,7 +50,7 @@ function ChordSelection({ column_full_id = '' }) {
 }
 
 ChordSelection.propTypes = {
-    column_full_id: PropTypes.string.isRequired,
+    full_column_id: PropTypes.string.isRequired,
 };
 
 export default ChordSelection;

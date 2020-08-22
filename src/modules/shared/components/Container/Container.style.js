@@ -6,12 +6,10 @@ export const Container = styled.div`
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 21px;
+    padding: 0;
     text-align: left;
 
-    ${props => props.fluid && css`
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
+    ${props => props.background !== '' && css`
+        background: ${props.background};
     `}
 `;

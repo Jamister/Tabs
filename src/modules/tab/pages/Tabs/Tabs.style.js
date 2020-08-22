@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const Lyric = styled.div`
+export const PaddingWrapper = styled.div`
     position: relative;
-    float: left;
-    width: 100%;
+    padding-left: 23px;
 `;

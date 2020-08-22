@@ -1,0 +1,1 @@
+export { cloneObject } from './objects';

@@ -1,11 +1,10 @@
+import { createUniqueId } from 'modules/shared/utils/createUniqueId';
+
 export const createColumns = (block_full_id = '') => {
     const columns = {};
 
     function returnEmptyColumns() {
-        return {
-            new_columns_all_ids: [],
-            new_columns_by_id: {},
-        };
+        return { all_ids: [], by_id: {} };
     }
 
     function returnColumns() {
@@ -14,18 +13,20 @@ export const createColumns = (block_full_id = '') => {
 
     function createById() {
         const by_id = {};
-        columns.new_columns_all_ids
-            .forEach(id => {
-                by_id[id] = { id };
-            });
-        columns.new_columns_by_id = { ...by_id };
+        columns.all_ids.forEach(id => {
+            by_id[id] = {};
+        });
+        columns.by_id = by_id;
         return returnColumns();
     }
 
     function createAllIds() {
-        const all_ids = [1, 2, 3, 4, 5]
-            .map(column_id => `${block_full_id}-${column_id}`);
-        columns.new_columns_all_ids = [...all_ids];
+        const all_ids = [1, 2, 3, 4, 5].map(column_number => {
+            const hash = `column ${column_number}`;
+            const { smaller_id: column_id } = createUniqueId(hash);
+            return `${block_full_id}-${column_id}`;
+        });
+        columns.all_ids = all_ids;
         return createById();
     }
 

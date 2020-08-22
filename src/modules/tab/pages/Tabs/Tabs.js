@@ -1,22 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { Col } from 'antd';
+import * as s from './Tabs.style';
 
 // Components
-// import { Container, Row, Column } from 'modules/shared/ui-components';
-import Container from 'modules/shared/components/Container';
-import NavigationBar from 'modules/shared/components/NavigationBar';
+import Layout from 'modules/shared/components/Layout';
 import Header from 'modules/shared/components/Header';
-import ActionsSubBar from '../../components/ActionsSubBar';
-import Parts from '../../components/Parts';
-import AddPartButton from '../../components/_buttons/AddPartButton';
+import Parts from 'modules/tab/components/Parts';
+import AddPartButton from 'modules/tab/components/_buttons/AddPartButton';
 
 // Functions
-import { mapKeysToActions } from '../../utils/mapKeysToActions';
+import { mapKeysToActions } from 'modules/tab/utils/mapKeysToActions';
 
-// CSS
-import * as s from './Tab.style';
-
-const Tab = () => {
+const Tabs = () => {
     const dispatch = useDispatch();
     const parts = useSelector(store => store.tab.parts, shallowEqual);
     const all_ids = parts.all_ids || [];
@@ -35,25 +31,24 @@ const Tab = () => {
     }, [handleKeyDown]);
 
     return (
-        <s.PageWrapper>
-            <NavigationBar />
-            <ActionsSubBar />
-            <Container>
-                <Header />
-                <s.PaddingWrapper data-testid="wrapper">
+        <Layout actionsBar>
+            <Col span={24}>
+                <Header level="h1">
+                    Your Body Is a Wonderland
+                </Header>
+                <s.PaddingWrapper>
                     {all_ids.map(part_id => (
                         <Parts
                             key={part_id}
                             part_id={part_id}
                             part={by_id[part_id]}
-                            data-test="parts-render"
                         />
                     ))}
                     <div><AddPartButton /></div>
                 </s.PaddingWrapper>
-            </Container>
-        </s.PageWrapper>
+            </Col>
+        </Layout>
     );
 };
 
-export default Tab;
+export default Tabs;

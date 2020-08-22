@@ -1,3 +1,5 @@
+import { extract } from 'modules/tab/utils/extractIds';
+
 const addColumn = (state = {}) => {
     const columns = state.columns || {};
     const selected_note = state.selected_note || {};
@@ -13,6 +15,7 @@ const addColumn = (state = {}) => {
     }
 
     function addNewColumn() {
+        // TODO refactor
         const all_ids = columns.all_ids || [];
         const by_id = columns.by_id || {};
         const next_column_id = `${p}-${b}-${c + 1}`;
@@ -35,10 +38,13 @@ const addColumn = (state = {}) => {
     }
 
     function checkIfIsLastColumn() {
-        const by_id = columns.by_id || {};
-        const next_column_id = `${p}-${b}-${c + 1}`;
-        const last_column = by_id[next_column_id] === undefined;
-        return last_column
+        const all_ids = columns.all_ids || [];
+        const [last_column_full_id] = all_ids.slice(-1);
+        const last_column_id = extract.columnId({
+            full_id: last_column_full_id,
+        });
+        const is_last_column = c === last_column_id;
+        return is_last_column
             ? addNewColumn()
             : returnUpdatedState();
     }

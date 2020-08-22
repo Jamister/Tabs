@@ -1,18 +1,11 @@
-const selectNote = (_state, _action) => {
-    const state = _state || {};
-    const action = _action || {};
+const selectNote = (state = {}, action = {}) => {
     const { p, b, c, l } = action.note || {};
 
     if (p === undefined) {
         return { ...state };
     }
 
-    const selected_note = {
-        p: Number(p),
-        b: Number(b),
-        c: Number(c),
-        l: Number(l),
-    };
+    const selected_note = { p, b, c, l };
 
     return {
         ...state,

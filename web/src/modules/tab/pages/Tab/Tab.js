@@ -31,7 +31,7 @@ const Tab = () => {
     }, [handleKeyDown]);
 
     return (
-        <Layout actionsBar>
+        <Layout include_actions_bar include_keytips>
             <Col span={24}>
                 <p><br /></p>
                 <Header level="h1">
@@ -47,6 +47,11 @@ const Tab = () => {
                     ))}
                 </s.PaddingWrapper>
                 <div><AddPartButton /></div>
+                <p><br /></p>
+                <p><br /></p>
+                <p><br /></p>
+                <p><br /></p>
+                <p><br /></p>
             </Col>
         </Layout>
     );

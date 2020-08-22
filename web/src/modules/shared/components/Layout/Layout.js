@@ -5,18 +5,24 @@ import * as s from './Layout.style';
 
 // Components
 import NavigationBar from 'modules/shared/components/NavigationBar';
-import ActionsSubBar from 'modules/tab/components/ActionsSubBar';
 import Container from 'modules/shared/components/Container';
+import ActionsSubBar from 'modules/tab/components/ActionsSubBar';
+import KeyboardTipsBar from 'modules/tab/components/KeyboardTipsBar';
 
-const Layout = ({ children, actionsBar }) => (
+const Layout = ({
+    children,
+    include_actions_bar,
+    include_keytips,
+}) => (
     <s.PageWrapper>
         <NavigationBar />
-        {actionsBar ? <ActionsSubBar /> : null}
+        {include_actions_bar ? <ActionsSubBar /> : null}
         <Container>
             <Row>
                 {React.Children.map(children, (child) => <>{child}</>)}
             </Row>
         </Container>
+        {include_keytips ? <KeyboardTipsBar /> : null}
     </s.PageWrapper>
 );
 
@@ -25,11 +31,13 @@ Layout.propTypes = {
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
     ]).isRequired,
-    actionsBar: PropTypes.bool,
+    include_actions_bar: PropTypes.bool,
+    include_keytips: PropTypes.bool,
 };
 
 Layout.defaultProps = {
-    actionsBar: false,
+    include_actions_bar: false,
+    include_keytips: false,
 };
 
 export default Layout;

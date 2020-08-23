@@ -3,7 +3,7 @@ import theme from 'styles/theme';
 
 export const Chord = styled.button`
 	position: absolute;
-	top: 0;
+	top: 6px;
 	left: 0;
 	width: 100%;
 	height: ${theme.chord_height}px;

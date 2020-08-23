@@ -15,26 +15,26 @@ export const TuneNote = styled.div`
     z-index: 10;
 
     &:nth-child(1) {
-        top: 1px;
+        top: 7px;
     }
 
     &:nth-child(2) {
-        top: 23px;
+        top: 29px;
     }
 
     &:nth-child(3) {
-        top: 46px;
+        top: 52px;
     }
 
     &:nth-child(4) {
-        top: 69px;
+        top: 75px;
     }
 
     &:nth-child(5) {
-        top: 91px;
+        top: 97px;
     }
 
     &:nth-child(6) {
-        top: 113px;
+        top: 119px;
     }
 `;

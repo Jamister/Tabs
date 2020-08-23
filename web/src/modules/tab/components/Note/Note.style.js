@@ -19,27 +19,27 @@ export const Note = styled.button`
     z-index: 10;
 
     ${props => props.line === 1 && css`
-        top: -6px;
+        top: 0px;
     `}
 
     ${props => props.line === 2 && css`
-        top: 17px;
+        top: 23px;
     `}
 
     ${props => props.line === 3 && css`
-        top: 40px;
+        top: 46px;
     `}
 
     ${props => props.line === 4 && css`
-        top: 62px;
+        top: 68px;
     `}
 
     ${props => props.line === 5 && css`
-        top: 86px;
+        top: 92px;
     `}
 
     ${props => props.line === 6 && css`
-        top: 108px;
+        top: 114px;
     `}
 
     > span {

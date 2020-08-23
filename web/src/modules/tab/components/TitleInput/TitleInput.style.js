@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { transition } from 'styles/mixins';
 
 export const Input = styled.input`
-    margin: 36px 0 30px;
+    margin: 36px 0 23px;
     background: none;
     border: 1px solid transparent;
     font-family: 'Source Serif Pro', serif;

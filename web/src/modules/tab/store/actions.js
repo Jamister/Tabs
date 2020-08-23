@@ -47,3 +47,8 @@ export const addChordToLyric = ({ part_id, line_id }) => ({
     part_id,
     line_id,
 });
+
+export const updateTitle = ({ title }) => ({
+    type: types.UPDATE_TITLE,
+    title,
+});

@@ -12,6 +12,7 @@ import removeEmptyColumn from './logic/removeEmptyColumn';
 import updateNote from './logic/updateNote';
 import addColumn from './logic/addColumn';
 import changedWritingType from './logic/changedWritingType';
+import updateTitle from './logic/updateTitle';
 
 const funcs = {
     ADD_BLOCK: addBlock,
@@ -25,6 +26,7 @@ const funcs = {
     UPDATE_NOTE: updateNote,
     ADD_COLUMN: addColumn,
     CHANGED_WRITING_TYPE: changedWritingType,
+    UPDATE_TITLE: updateTitle,
 };
 
 const reducer = (state = tab, action) => {

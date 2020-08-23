@@ -5,8 +5,9 @@ import * as s from './Tab.style';
 
 // Components
 import Layout from 'modules/shared/components/Layout';
-import Header from 'modules/shared/components/Header';
+// import Header from 'modules/shared/components/Header';
 import Parts from 'modules/tab/components/Parts';
+import TitleInput from 'modules/tab/components/TitleInput';
 import AddPartButton from 'modules/tab/components/_buttons/AddPartButton';
 
 // Functions
@@ -33,10 +34,7 @@ const Tab = () => {
     return (
         <Layout include_actions_bar include_keytips>
             <Col span={24}>
-                <p><br /></p>
-                <Header level="h1">
-                    Your Body Is a Wonderland
-                </Header>
+                <TitleInput />
                 <s.PaddingWrapper>
                     {all_ids.map(part_id => (
                         <Parts

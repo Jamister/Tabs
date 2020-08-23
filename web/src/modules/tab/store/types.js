@@ -11,3 +11,4 @@ export const UPDATE_NOTE = 'UPDATE_NOTE';
 export const ADD_COLUMN = 'ADD_COLUMN';
 export const CHANGED_WRITING_TYPE = 'CHANGED_WRITING_TYPE';
 export const ADD_CHORD_TO_LYRIC = 'ADD_CHORD_TO_LYRIC';
+export const UPDATE_TITLE = 'UPDATE_TITLE';

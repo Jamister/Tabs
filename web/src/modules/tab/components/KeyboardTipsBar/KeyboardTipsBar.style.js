@@ -16,9 +16,9 @@ export const TipsBarWrapper = styled.div`
 export const Key = styled.div`
     position: relative;
     float: left;
-    height: 22px;
+    height: 23px;
     width: 26px;
-    margin-right: .4em;
+    margin-right: .5em;
     padding: 3px 0 0 0;
     text-align: center;
     border-radius: 2px;

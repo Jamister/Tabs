@@ -12,5 +12,6 @@ export const RemoveBlockButton = styled.button`
 	border: none;
 	line-height: 1;
 	border-radius: 46px;
+	cursor: pointer;
 	z-index: 2;
 `;

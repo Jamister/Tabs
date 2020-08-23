@@ -4,7 +4,6 @@ export const AddBlockButton = styled.button`
 	position: absolute;
 	top: 9px;
 	left: 8px;
-	z-index: 2;
 	width: 46px;
 	height: 46px;
 	background: #3C5E79;
@@ -12,4 +11,6 @@ export const AddBlockButton = styled.button`
 	font-size: 23px;
 	border: none;
 	border-radius: 46px;
+	cursor: pointer;
+	z-index: 2;
 `;

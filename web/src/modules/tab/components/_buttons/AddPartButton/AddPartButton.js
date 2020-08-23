@@ -1,22 +1,22 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as s from './AddPartButton.style';
+import { Button } from 'antd';
+// import * as s from './AddPartButton.style';
 
 // Actions
-import { addPart } from '../../../store/actions';
+import { addPart } from 'modules/tab/store/actions';
 
 const AddPartButton = () => {
     const dispatch = useDispatch();
 
     function exportTab() {
-        const action = addPart();
-        dispatch(action);
+        dispatch(addPart());
     }
 
     return (
-        <s.AddPartButton type="button" onClick={exportTab}>
+        <Button type="primary" onClick={exportTab}>
             Add new part
-        </s.AddPartButton>
+        </Button>
     );
 };
 

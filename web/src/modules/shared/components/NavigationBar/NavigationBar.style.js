@@ -32,17 +32,8 @@ export const Menu = styled.div`
     border-left: 1px solid #36414F;
 `;
 
-export const AccountMenu = styled.div`
-    position: relative;
-    float: right;
-    height: ${theme.navbar_height}px;
-    padding: 19px 0 0 0;
-    color: #fff;
-    font-size: 15px;
-`;
-
 export const Button = styled.div`
     position: relative;
     float: right;
-    padding: 15px 0 0 50px;
+    padding: 15px 0 0 45px;
 `;

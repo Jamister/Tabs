@@ -1,13 +1,13 @@
 const { nexusSchemaPrisma } = require('nexus-plugin-prisma/schema');
 const { makeSchema } = require('@nexus/schema');
 
-const { Auth, AuthQuery } = require('./Auth');
+const { AuthPayload } = require('./AuthPayload');
 const { Tab, TabQuery } = require('./Tab');
-const { User, UserMutation } = require('./User');
+const { User, UserQuery, UserMutation } = require('./User');
 
-const AuthType = [Auth, AuthQuery];
+const AuthType = [AuthPayload];
 const TabType = [Tab, TabQuery];
-const UserType = [User, UserMutation];
+const UserType = [User, UserQuery, UserMutation];
 
 const schema = makeSchema({
     types: [

@@ -1,9 +1,9 @@
-const { extendType, stringArg, intArg } = require('@nexus/schema');
+const { extendType, intArg } = require('@nexus/schema');
 
 const TabQuery = extendType({
     type: 'Query',
     definition(t) {
-        t.list.field('tabs', {
+        t.list.field('feed', {
             type: 'Tab',
             resolve: (_, args, ctx) => (
                 ctx.prisma.tab.findMany()

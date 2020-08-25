@@ -13,6 +13,7 @@
     "rules": {
         "no-tabs": [0],
         "indent": ["error", 4],
-        "object-curly-newline": [0]
+        "object-curly-newline": [0],
+        "camelcase": [0]
     }
 }

@@ -1,12 +1,27 @@
 require('dotenv').config();
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { schema } = require('./schema');
-const { createContext } = require('./context');
-const config = require('./config');
+const { applyMiddleware } = require('graphql-middleware');
 
-const server = new ApolloServer({ schema, context: createContext });
+const { schema } = require('./schema');
+const { permissions } = require('./permissions');
+const { prisma } = require('./context');
+
+const middleware = [permissions];
+const schemaWithMiddleware = applyMiddleware(schema, ...middleware);
+
+const server = new ApolloServer({
+    schema: schemaWithMiddleware,
+    context: (req) => ({
+        ...req,
+        prisma,
+    }),
+});
+
 const app = express();
+
 server.applyMiddleware({ app });
 
-app.listen({ port: config.PORT }, () => console.log(`🚀 Server ready at http://localhost:${config.PORT}${server.graphqlPath}`));
+app.listen({ port: process.env.PORT }, () => {
+    console.log(`🚀 Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`);
+});

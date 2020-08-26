@@ -4,7 +4,13 @@ import { Menu, Dropdown } from 'antd';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faUser, faCaretDown, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faUser, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
+// Components
+import SignOutButton from 'modules/user/components/SignOutButton';
+
+// Utils
+import { isUserLogged } from 'modules/user/utils/isUserLogged';
 
 const AccountMenu = () => {
     const menu = (
@@ -16,11 +22,21 @@ const AccountMenu = () => {
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item key="3">
-                <s.LinkPad to="/sign/out">
-                    <FontAwesomeIcon icon={faSignOutAlt} /> Sair
-                </s.LinkPad>
+                <SignOutButton />
             </Menu.Item>
         </Menu>
+    );
+
+    const acc = isUserLogged() ? (
+        <s.AccountMenu isLogged>
+            <FontAwesomeIcon icon={faUserCircle} />
+            Beto
+            <FontAwesomeIcon icon={faCaretDown} />
+        </s.AccountMenu>
+    ) : (
+        <s.AccountMenu>
+            Entrar
+        </s.AccountMenu>
     );
 
     return (
@@ -29,11 +45,7 @@ const AccountMenu = () => {
             placement="bottomRight"
             trigger={['click']}
         >
-            <s.AccountMenu>
-                <FontAwesomeIcon icon={faUserCircle} />
-                Beto
-                <FontAwesomeIcon icon={faCaretDown} />
-            </s.AccountMenu>
+            {acc}
         </Dropdown>
     );
 };

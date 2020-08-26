@@ -1,6 +1,7 @@
 import { extract } from 'modules/tab/utils/extractIds';
 
 const addColumn = (state = {}) => {
+    // TODO not adding when not last block
     const columns = state.columns || {};
     const selected_note = state.selected_note || {};
     const { p, b, c, l } = selected_note;

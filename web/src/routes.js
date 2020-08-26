@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // Modules
-import tab_routes from 'modules/tab/routes';
 import user_routes from 'modules/user/routes';
+import tab_routes from 'modules/tab/routes';
 
 const all_routes = [
-    ...tab_routes,
     ...user_routes,
+    ...tab_routes,
 ];
 
 const Routes = () => (

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import theme from 'styles/theme';
 import { transition } from 'styles/mixins';
@@ -7,13 +7,17 @@ export const AccountMenu = styled.button`
     position: relative;
     float: right;
     height: ${theme.navbar_height}px;
-    padding: 0 32px 0 45px;
+    padding: 0 32px 0 32px;
     color: #fff;
     font-size: 15px;
     background: none;
     border: none;
     outline: none;
     ${transition('background 0.2s ease')};
+
+    ${props => props.isLogged && css`
+        padding: 0 32px 0 45px;
+    `}
 
     :hover {
         cursor: pointer;

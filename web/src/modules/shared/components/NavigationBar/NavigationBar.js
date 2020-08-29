@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as s from './NavigationBar.style';
 
 // Components
@@ -10,7 +11,13 @@ const NavigationBar = () => (
     <s.TabBarWrapper>
         <Container background="#253140">
             <s.Logo>Oak</s.Logo>
-            <s.Menu>Tablaturas</s.Menu>
+            <s.Menu>
+                <li>
+                    <Link to="/me/tabs">
+                        Tablaturas
+                    </Link>
+                </li>
+            </s.Menu>
             <s.Button>
                 <CreateTabButton />
             </s.Button>

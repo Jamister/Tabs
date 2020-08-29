@@ -22,14 +22,30 @@ export const Logo = styled.div`
     border-right: 1px solid #0E1522;
 `;
 
-export const Menu = styled.div`
+export const Menu = styled.ul`
     position: relative;
     float: left;
     height: ${theme.navbar_height}px;
-    padding: 19px 0 0 60px;
-    color: #fff;
-    font-size: 15px;
+    margin: 0;
+    padding: 0 0 0 30px;
+    list-style: none;
+    text-align: left;
     border-left: 1px solid #36414F;
+
+    > li {
+        display: inline-block;
+        position: relative;
+        width: auto;
+        margin: 0 20px;
+
+        > a {
+            display: block;
+            height: ${theme.navbar_height}px;
+            padding: 18px 10px 0;
+            font-size: 15px;
+            color: #fff;
+        }
+    }
 `;
 
 export const Button = styled.div`

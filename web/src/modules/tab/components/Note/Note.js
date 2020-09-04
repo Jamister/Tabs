@@ -12,7 +12,7 @@ import NoteWidthSpace from './NoteWidthSpace';
 
 // Functions
 import { extract } from '../../utils/extractIds';
-import { isNoteSelectedSelector } from 'modules/tab/selectors';
+import { isNoteSelectedSelector } from 'modules/tab/store/selectors';
 
 function Note({ full_column_id, line_id = '' }) {
     const dispatch = useDispatch();

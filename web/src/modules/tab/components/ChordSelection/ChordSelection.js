@@ -8,7 +8,7 @@ import { selectNote } from '../../store/actions';
 
 // Functions
 import { extract } from '../../utils/extractIds';
-import { isNoteSelectedSelector } from 'modules/tab/selectors';
+import { isNoteSelectedSelector } from 'modules/tab/store/selectors';
 
 function ChordSelection({ full_column_id = '' }) {
     const dispatch = useDispatch();

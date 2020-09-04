@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { gql, useQuery } from '@apollo/client';
 import { Col } from 'antd';
+import { loading_stages } from 'modules/tab/constants';
 // import * as s from './MyTabs.style';
 
 // Components
@@ -21,13 +22,13 @@ const FetchingTabs = ({ setStage, setTabs }) => {
 
     useEffect(() => {
         if (data) {
-            setStage('DONE'); // REFACTOR
+            setStage(loading_stages.DONE);
             setTabs(data);
         }
     }, [data]);
 
     useEffect(() => {
-        if (error) setStage('ERROR'); // REFACTOR
+        if (error) setStage(loading_stages.ERROR);
     }, [error]);
 
     return (

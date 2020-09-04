@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { gql, useMutation } from '@apollo/client';
 import { Col } from 'antd';
+import { loading_stages } from 'modules/tab/constants';
 // import * as s from './MyTabs.style';
 
 // Components
@@ -25,12 +26,12 @@ const AssigningTabs = ({ setStage }) => {
 
     useEffect(() => {
         if (data) {
-            setStage('FETCHING_TABS'); // REFACTOR
+            setStage(loading_stages.FETCHING_TABS);
         }
     }, [data]);
 
     useEffect(() => {
-        if (error) setStage('ERROR'); // REFACTOR
+        if (error) setStage(loading_stages.ERROR);
     }, [error]);
 
     return (

@@ -69,14 +69,14 @@ export const createPrintedTab = (state = {}) => {
         let n = 1;
         let blank_value = '';
         while (n <= default_number_of_chars) {
-            n++;
+            n += 1;
             blank_value += '-';
         }
         return blank_value;
     }
 
     function createBorder(part_id, with_space = true) {
-        for (let l = 0; l < lines.length; l++) {
+        for (let l = 0; l < lines.length; l += 1) {
             const line = lines[l];
             const between_columns_value = with_space
                 ? setBlankValue(space_between_columns)
@@ -94,7 +94,7 @@ export const createPrintedTab = (state = {}) => {
         const blank_value = setBlankValue(default_number_of_chars);
         const between_columns_value = setBlankValue(space_between_columns);
 
-        for (let l = 0; l < lines.length; l++) {
+        for (let l = 0; l < lines.length; l += 1) {
             const line = lines[l];
             const part_id = getPartIdFromFullIdString(column_full_id);
             const note_full_id = `${column_full_id}-${line}`;
@@ -110,7 +110,7 @@ export const createPrintedTab = (state = {}) => {
         const columns_in_this_block = filterIfHasId(columns_all_ids, `${block_full_id}-`);
         const columns_length = columns_in_this_block.length;
 
-        for (let c = 0; c < columns_length; c++) {
+        for (let c = 0; c < columns_length; c += 1) {
             const column_full_id = columns_in_this_block[c];
             fillTheLinesToPrint(column_full_id);
         }
@@ -121,7 +121,7 @@ export const createPrintedTab = (state = {}) => {
         const blocks_in_this_part = filterIfHasId(blocks_all_ids, `${part_id}-`);
         const blocks_length = blocks_in_this_part.length;
 
-        for (let b = 0; b < blocks_length; b++) {
+        for (let b = 0; b < blocks_length; b += 1) {
             const block_full_id = blocks_in_this_part[b];
             loopThroughColumns(block_full_id);
 
@@ -135,7 +135,7 @@ export const createPrintedTab = (state = {}) => {
         const parts_all_ids = parts.all_ids || [];
         const parts_length = parts_all_ids.length;
 
-        for (let p = 0; p < parts_length; p++) {
+        for (let p = 0; p < parts_length; p += 1) {
             const part_id = parts_all_ids[p];
             createBorder(part_id);
             loopThroughBlocks(part_id);

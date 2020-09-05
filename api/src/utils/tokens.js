@@ -12,10 +12,11 @@ const extractToken = (context) => {
     const authorization = context.req.headers.authorization || null;
     return authorization !== null
         ? authorization.replace('Bearer ', '')
-        : null;
+        : '';
 };
 
-const decodeJwt = (token) => {
+const decodeJwt = (context) => {
+    const token = extractToken(context);
     const segments = token.split('.');
 
     if (segments.length !== 3) {

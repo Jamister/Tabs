@@ -12,26 +12,29 @@ const UserMutation = extendType({
                 name: stringArg(),
                 email: stringArg(),
             },
-            resolve: async (parent, { token, externalId, name, email }, context) => {
+            resolve: async (parent, args, context) => {
+                const {
+                    externalId,
+                    name,
+                    email,
+                    imageUrl,
+                } = args;
                 const existing_user = await context.prisma.user.findOne({
                     where: { email },
                 });
-
                 if (!existing_user) {
-                    const token_info = decodeJwt(token);
-                    const { user_id, user_email } = token_info;
+                    const { user_external_id, user_email } = decodeJwt(context);
                     const info_diff_from_token = (
-                        user_id.toString() !== externalId || email !== user_email
+                        user_external_id !== externalId || email !== user_email
                     );
                     if (info_diff_from_token) {
                         throw new Error('Wrong info');
                     }
                     const new_user = await context.prisma.user.create({
-                        data: { name, email, externalId },
+                        data: { name, email, externalId, imageUrl },
                     });
                     return { token, user: new_user };
                 }
-
                 return { token, user: existing_user };
             },
         });

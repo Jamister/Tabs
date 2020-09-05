@@ -4,8 +4,8 @@ const { encode } = require('../utils/hashIds');
 const Tab = objectType({
     name: 'Tab',
     definition(t) {
-        t.model.id();
-        t.int('hashid', (tab) => encode(tab.id));
+        // t.model.id();
+        t.string('hashId', (tab) => encode(tab.id));
         t.model.title();
         t.model.author();
         t.model.tune();

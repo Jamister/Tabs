@@ -5,7 +5,7 @@ const User = objectType({
     name: 'User',
     definition(t) {
         // t.model.id();
-        t.string('hashid', (tab) => encode(tab.id));
+        t.string('hashId', (user) => encode(user.id));
         // t.model.externalId();
         t.model.email();
         t.model.imageUrl();

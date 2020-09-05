@@ -8,6 +8,7 @@ type AuthPayload {
 }
 
 type Mutation {
+  createTab(tab: String): Tab!
   enter(email: String, externalId: String, imageUrl: String, name: String): AuthPayload!
 }
 
@@ -19,8 +20,7 @@ type Query {
 
 type Tab {
   author: String!
-  hashid: Int!
-  id: Int!
+  hashId: String!
   link: String!
   private: Boolean!
   tab: String!
@@ -35,7 +35,7 @@ input TabWhereUniqueInput {
 
 type User {
   email: String!
-  hashid: String!
+  hashId: String!
   imageUrl: String!
   name: String!
   tabs(after: TabWhereUniqueInput, before: TabWhereUniqueInput, first: Int, last: Int): [Tab!]!

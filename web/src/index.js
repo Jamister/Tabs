@@ -15,15 +15,15 @@ import * as serviceWorker from './serviceWorker';
 import ErrorBoundary from 'modules/shared/components/ErrorBoundary';
 
 const app = (
-    <ErrorBoundary>
-        <ApolloProvider client={client}>
-            <StoreProvider>
-                <BrowserRouter>
+    <ApolloProvider client={client}>
+        <StoreProvider>
+            <BrowserRouter>
+                <ErrorBoundary>
                     <Routes />
-                </BrowserRouter>
-            </StoreProvider>
-        </ApolloProvider>
-    </ErrorBoundary>
+                </ErrorBoundary>
+            </BrowserRouter>
+        </StoreProvider>
+    </ApolloProvider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

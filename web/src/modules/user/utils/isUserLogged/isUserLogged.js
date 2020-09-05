@@ -7,7 +7,8 @@ export const isUserLogged = () => {
     }
 
     function retrieveUserData() {
-        const auth = JSON.parse(localStorage.getItem('auth'));
+        const auth_object = localStorage.getItem('auth') || '{}';
+        const auth = JSON.parse(auth_object);
         const token = auth?.token || '';
         const user = auth?.user || {};
         return checkLogged(token, user);

@@ -7,10 +7,10 @@ const UserMutation = extendType({
         t.field('enter', {
             type: 'AuthPayload',
             args: {
-                token: stringArg(),
                 externalId: stringArg(),
                 name: stringArg(),
                 email: stringArg(),
+                imageUrl: stringArg(),
             },
             resolve: async (parent, args, context) => {
                 const {
@@ -30,12 +30,12 @@ const UserMutation = extendType({
                     if (info_diff_from_token) {
                         throw new Error('Wrong info');
                     }
-                    const new_user = await context.prisma.user.create({
+                    const new_user = context.prisma.user.create({
                         data: { name, email, externalId, imageUrl },
                     });
-                    return { token, user: new_user };
+                    return { user: new_user };
                 }
-                return { token, user: existing_user };
+                return { user: existing_user };
             },
         });
     },

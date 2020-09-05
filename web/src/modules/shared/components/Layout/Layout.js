@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row } from 'antd';
 import * as s from './Layout.style';
 
 // Components
@@ -18,9 +17,7 @@ const Layout = ({
         <NavigationBar />
         {include_actions_bar ? <ActionsSubBar /> : null}
         <Container>
-            <Row>
-                {React.Children.map(children, (child) => <>{child}</>)}
-            </Row>
+            {React.Children.map(children, (child) => <>{child}</>)}
         </Container>
         {include_keytips ? <KeyboardTipsBar /> : null}
     </s.PageWrapper>

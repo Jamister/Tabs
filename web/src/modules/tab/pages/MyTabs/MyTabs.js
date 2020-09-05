@@ -30,12 +30,22 @@ const MyTabs = () => {
         checkTabsToAssign();
     }, []);
 
+    // const aaa = [
+    //     {
+    //         hashId: '1',
+    //         title: 'Your Body Is a Wonderland',
+    //         author: 'John Mayer',
+    //         tune: 'e A D G B E',
+    //         private: true,
+    //     },
+    // ];
+
     const comps = {
-        TO_START: <div />,
+        TO_START: <div />, // TODO
         ASSIGNING_TABS: <AssigningTabs setStage={setStage} />,
         FETCHING_TABS: <FetchingTabs setStage={setStage} setTabs={setTabs} />,
         DONE: <ListTabs tabs={tabs} />,
-        ERROR: <div>error</div>,
+        ERROR: <div>error</div>, // TODO
     };
 
     return comps[stage] || comps.TO_START;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col } from 'antd';
+import { Row, Col } from 'antd';
 
 // Components
 import Layout from 'modules/shared/components/Layout';
@@ -24,9 +24,11 @@ class ErrorBoundary extends React.Component {
         if (this.state.error) {
             return (
                 <Layout>
-                    <Col span={24}>
-                        <h1>Something went wrong.</h1>
-                    </Col>
+                    <Row>
+                        <Col span={24}>
+                            <h1>Something went wrong.</h1>
+                        </Col>
+                    </Row>
                 </Layout>
             );
         }

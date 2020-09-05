@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { Col } from 'antd';
+import { Row, Col } from 'antd';
 import * as s from './Tab.style';
 
 // Components
@@ -33,24 +33,26 @@ const Tab = () => {
 
     return (
         <Layout include_actions_bar include_keytips>
-            <Col span={24}>
-                <TitleInput />
-                <s.PaddingWrapper>
-                    {all_ids.map(part_id => (
-                        <Parts
-                            key={part_id}
-                            part_id={part_id}
-                            part={by_id[part_id]}
-                        />
-                    ))}
-                </s.PaddingWrapper>
-                <div><AddPartButton /></div>
-                <p><br /></p>
-                <p><br /></p>
-                <p><br /></p>
-                <p><br /></p>
-                <p><br /></p>
-            </Col>
+            <Row>
+                <Col span={24}>
+                    <TitleInput />
+                    <s.PaddingWrapper>
+                        {all_ids.map(part_id => (
+                            <Parts
+                                key={part_id}
+                                part_id={part_id}
+                                part={by_id[part_id]}
+                            />
+                        ))}
+                    </s.PaddingWrapper>
+                    <div><AddPartButton /></div>
+                    <p><br /></p>
+                    <p><br /></p>
+                    <p><br /></p>
+                    <p><br /></p>
+                    <p><br /></p>
+                </Col>
+            </Row>
         </Layout>
     );
 };

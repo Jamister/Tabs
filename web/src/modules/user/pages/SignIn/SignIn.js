@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Col } from 'antd';
+import { Row, Col } from 'antd';
 // import * as s from './SignIn.style';
 
 // Components
@@ -23,9 +23,11 @@ const SignIn = ({ history }) => {
 
     return (
         <Layout>
-            <Col span={24}>
-                <SignInButton history={history} />
-            </Col>
+            <Row>
+                <Col span={24}>
+                    <SignInButton history={history} />
+                </Col>
+            </Row>
         </Layout>
     );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { gql, useQuery } from '@apollo/client';
-import { Col } from 'antd';
+import { Row, Col } from 'antd';
 import { loading_stages } from 'modules/tab/constants';
 // import * as s from './MyTabs.style';
 
@@ -33,9 +33,11 @@ const FetchingTabs = ({ setStage, setTabs }) => {
 
     return (
         <Layout>
-            <Col span={24}>
-                Fetching Tabs...
-            </Col>
+            <Row>
+                <Col span={24}>
+                    Fetching Tabs...
+                </Col>
+            </Row>
         </Layout>
     );
 };

@@ -13,6 +13,14 @@ import SignOutButton from 'modules/user/components/SignOutButton';
 import { isUserLogged } from 'modules/user/utils/isUserLogged';
 
 const AccountMenu = () => {
+    if (!isUserLogged()) {
+        return (
+            <s.SignInButton to="/sign/in">
+                Entrar
+            </s.SignInButton>
+        );
+    }
+
     const menu = (
         <Menu>
             <Menu.Item key="0">
@@ -27,25 +35,17 @@ const AccountMenu = () => {
         </Menu>
     );
 
-    const acc = isUserLogged() ? (
-        <s.AccountMenu isLogged>
-            <FontAwesomeIcon icon={faUserCircle} />
-            Beto
-            <FontAwesomeIcon icon={faCaretDown} />
-        </s.AccountMenu>
-    ) : (
-        <s.AccountMenu>
-            Entrar
-        </s.AccountMenu>
-    );
-
     return (
         <Dropdown
             overlay={menu}
             placement="bottomRight"
             trigger={['click']}
         >
-            {acc}
+            <s.AccountMenu>
+                <FontAwesomeIcon icon={faUserCircle} />
+                Beto
+                <FontAwesomeIcon icon={faCaretDown} />
+            </s.AccountMenu>
         </Dropdown>
     );
 };

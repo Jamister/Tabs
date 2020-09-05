@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { transition } from 'styles/mixins';
 
 export const GoogleButton = styled.button`
@@ -13,6 +13,10 @@ export const GoogleButton = styled.button`
 	box-shadow: 0 1px 2px 0 rgba(128, 128, 128, 0.6);
 	white-space: nowrap;
 	${transition('all 0.2s ease')};
+
+	${props => props.isLoading && css`
+		opacity: 0.7;
+	`}
 
 	:hover {
 		cursor: pointer;

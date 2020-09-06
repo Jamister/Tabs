@@ -9,11 +9,12 @@ type AuthPayload {
 
 type Mutation {
   createTab(tab: String): Tab!
-  enter(email: String, externalId: String, imageUrl: String, name: String): AuthPayload!
+  enter(token: String): AuthPayload!
 }
 
 type Query {
-  feed: [Tab!]!
+  allTabs: [Tab!]!
+  myTabs: [Tab!]!
   tab(id: Int): Tab!
   users: [User!]!
 }

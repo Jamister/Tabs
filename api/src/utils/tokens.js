@@ -1,3 +1,6 @@
+const { OAuth2Client } = require('google-auth-library');
+const jwt = require('jsonwebtoken');
+
 const base64urlUnescape = (str) => {
     let string = str || '';
     string += Array(5 - (string.length % 4)).join('=');
@@ -30,6 +33,10 @@ const decodeJwt = (context) => {
     const user_external_id = (payload || {}).sub || '';
     const user_email = (payload || {}).email || '';
 
+    // console.log('header', header);
+    // console.log('signature', signature);
+    // console.log('payload', payload);
+
     return {
         header,
         payload,
@@ -39,15 +46,48 @@ const decodeJwt = (context) => {
     };
 };
 
-const isExpired = (decoded) => {
+const isExpired = (context) => {
+    const { payload, user_email } = decodeJwt(context);
+    // console.log('user_email', user_email);
     const now = Date.now().valueOf() / 1000;
-    const expiration = ((decoded || {}).payload || {}).exp || null;
+    const expiration = (payload || {}).exp || null;
+    // console.log('expiration', expiration);
     const is_expired = expiration === null || now > expiration;
+    // console.log('is_expired', is_expired);
     return is_expired;
 };
+
+const googleValidation = (token) => {
+    const client = new OAuth2Client(process.env.GOOGLE_AUTH_CLIENT_ID);
+    async function verify() {
+        const ticket = await client.verifyIdToken({
+            idToken: token,
+            audience: process.env.GOOGLE_AUTH_CLIENT_ID,
+        });
+        const payload = ticket.getPayload();
+        // const userid = payload.sub;
+        return payload;
+    }
+    return verify().catch(console.error);
+};
+
+const createToken = (email) => jwt.sign(
+    { email },
+    process.env.SECRET,
+    { expiresIn: 15552000 }, // 6 months
+);
+
+const verifyToken = (token) => jwt.verify(
+    token,
+    process.env.SECRET,
+);
 
 module.exports = {
     extractToken,
     decodeJwt,
     isExpired,
+    newValidation: () => {},
+    googleValidation,
+    createToken,
+    verifyToken,
 };

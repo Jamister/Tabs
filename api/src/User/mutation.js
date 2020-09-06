@@ -1,5 +1,5 @@
 const { extendType, stringArg } = require('@nexus/schema');
-const { decodeJwt } = require('../utils/tokens');
+const { googleValidation, createToken } = require('../utils/tokens');
 
 const UserMutation = extendType({
     type: 'Mutation',
@@ -7,35 +7,37 @@ const UserMutation = extendType({
         t.field('enter', {
             type: 'AuthPayload',
             args: {
-                externalId: stringArg(),
-                name: stringArg(),
-                email: stringArg(),
-                imageUrl: stringArg(),
+                token: stringArg(),
             },
             resolve: async (parent, args, context) => {
-                const {
-                    externalId,
-                    name,
-                    email,
-                    imageUrl,
-                } = args;
+                const { token } = args;
+                const token_info = await googleValidation(token);
+                const isValidGoogleToken = true;
+                if (!isValidGoogleToken) {
+                    throw new Error('Invalid google token');
+                }
+
+                const user_email = token_info.email;
+                const user_name = token_info.name;
+                const user_external_id = token_info.sub;
+                const user_image_url = token_info.picture;
+                const new_token = createToken(user_email);
+
                 const existing_user = await context.prisma.user.findOne({
-                    where: { email },
+                    where: { email: user_email },
                 });
                 if (!existing_user) {
-                    const { user_external_id, user_email } = decodeJwt(context);
-                    const info_diff_from_token = (
-                        user_external_id !== externalId || email !== user_email
-                    );
-                    if (info_diff_from_token) {
-                        throw new Error('Wrong info');
-                    }
-                    const new_user = context.prisma.user.create({
-                        data: { name, email, externalId, imageUrl },
+                    const new_user = await context.prisma.user.create({
+                        data: {
+                            email: user_email,
+                            name: user_name,
+                            externalId: user_external_id,
+                            imageUrl: user_image_url,
+                        },
                     });
-                    return { user: new_user };
+                    return { token: new_token, user: new_user };
                 }
-                return { user: existing_user };
+                return { token: new_token, user: existing_user };
             },
         });
     },

@@ -18,6 +18,9 @@
 /web/.env.production.local
 /web/out/
 
+# db
+/db/
+
 # design
 /design/
 

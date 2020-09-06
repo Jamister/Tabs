@@ -1,15 +1,15 @@
 const { OAuth2Client } = require('google-auth-library');
 const jwt = require('jsonwebtoken');
 
-const base64urlUnescape = (str) => {
-    let string = str || '';
-    string += Array(5 - (string.length % 4)).join('=');
-    return string.replace(/-/g, '+').replace(/_/g, '/');
-};
+// const base64urlUnescape = (str) => {
+//     let string = str || '';
+//     string += Array(5 - (string.length % 4)).join('=');
+//     return string.replace(/-/g, '+').replace(/_/g, '/');
+// };
 
-const base64urlDecode = (str) => (
-    Buffer.from(base64urlUnescape(str), 'base64').toString()
-);
+// const base64urlDecode = (str) => (
+//     Buffer.from(base64urlUnescape(str), 'base64').toString()
+// );
 
 // const extractToken = (context) => {
 //     const authorization = context.req.headers.authorization || null;
@@ -86,8 +86,6 @@ const verifyToken = (context) => {
 };
 
 module.exports = {
-    isExpired: () => {},
-    decodeJwt: () => {},
     googleValidation,
     createToken,
     verifyToken,

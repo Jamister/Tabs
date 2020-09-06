@@ -1,5 +1,5 @@
 const { extendType, stringArg } = require('@nexus/schema');
-const { decodeJwt } = require('../utils/tokens');
+const { verifyToken } = require('../utils/tokens');
 
 const UserMutation = extendType({
     type: 'Mutation',
@@ -10,11 +10,11 @@ const UserMutation = extendType({
                 tab: stringArg(),
             },
             resolve: async (parent, args, context) => {
-                const { user_email } = decodeJwt(context);
-                const user = await context.prisma.user.findOne({
-                    where: { email: user_email },
-                });
-                if (user) {
+                const { valid, user_email } = verifyToken(context);
+                if (valid) {
+                    const user = await context.prisma.user.findOne({
+                        where: { email: user_email },
+                    });
                     return context.prisma.tab.create({
                         data: {
                             tab: args.tab,

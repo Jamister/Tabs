@@ -1,16 +1,17 @@
-const { extendType, intArg } = require('@nexus/schema');
+const { extendType, stringArg } = require('@nexus/schema');
 const { AuthenticationError } = require('apollo-server-express');
 const { verifyToken } = require('../utils/tokens');
+const { decode } = require('../utils/hashIds');
 
 const TabQuery = extendType({
     type: 'Query',
     definition(t) {
-        t.list.field('allTabs', {
-            type: 'Tab',
-            resolve: (_, args, context) => (
-                context.prisma.tab.findMany()
-            ),
-        });
+        // t.list.field('allTabs', {
+        //     type: 'Tab',
+        //     resolve: (_, args, context) => (
+        //         context.prisma.tab.findMany()
+        //     ),
+        // });
 
         t.list.field('myTabs', {
             type: 'Tab',
@@ -40,13 +41,14 @@ const TabQuery = extendType({
         t.field('tab', {
             type: 'Tab',
             args: {
-                id: intArg(),
+                hashId: stringArg(),
             },
-            resolve: (_, { id }, context) => (
-                context.prisma.tab.findOne({
-                    where: { id },
-                })
-            ),
+            resolve: async (_, args, context) => {
+                const tabId = decode(args.hashId);
+                return context.prisma.tab.findOne({
+                    where: { id: tabId },
+                });
+            },
         });
     },
 });

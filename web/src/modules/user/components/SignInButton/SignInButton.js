@@ -6,21 +6,14 @@ import { LoadingOutlined } from '@ant-design/icons';
 import * as s from './SignInButton.style';
 
 const ENTER = gql`
-    mutation Enter(
-        $token: String
-        $externalId: String
-        $name: String
-        $email: String
-        $imageUrl: String
-    ) {
-        enter(
-            token: $token
-            externalId: $externalId
-            name: $name
-            email: $email
-            imageUrl: $imageUrl
-        ) {
-            token
+    mutation Enter($token: String) {
+        enter(token: $token) {
+            token,
+            user {
+                name
+                email
+                imageUrl
+            }
         }
     }
 `;
@@ -46,44 +39,33 @@ const SignInButton = ({ history }) => {
             history.push('/me/tabs');
         }
 
+        function saveUserToLocalstorage(token, user) {
+            const auth = { token, user };
+            localStorage.setItem('auth', JSON.stringify(auth));
+            redirect();
+        }
+
         function checkData() {
-            // TODO
-            if (data) redirect();
+            const token = data?.enter?.token || '';
+            const user = data?.enter?.user || {};
+            const isValidData = token !== '' && user.email !== undefined;
+            if (isValidData) saveUserToLocalstorage(token, user);
         }
 
         checkData();
     }, [data]);
 
     useEffect(() => {
-        function saveUserToDb(auth) {
+        function saveUserToDb(token) {
             enter({
-                variables: {
-                    token: auth.token,
-                    externalId: auth.user.external_id,
-                    name: auth.user.name,
-                    email: auth.user.email,
-                    imageUrl: auth.user.image_url,
-                },
+                variables: { token },
             });
         }
 
-        function saveUserToLocalstorage(auth) {
-            localStorage.setItem('auth', JSON.stringify(auth));
-            saveUserToDb(auth);
-        }
-
         function handleResponse(googleUser) {
-            const profile = googleUser.getBasicProfile();
             const auth_response = googleUser.getAuthResponse();
-            const user = {
-                external_id: profile.getId(),
-                name: profile.getName(),
-                image_url: profile.getImageUrl(),
-                email: profile.getEmail(),
-            };
             const token = auth_response.id_token;
-            const auth = { token, user };
-            saveUserToLocalstorage(auth);
+            saveUserToDb(token);
         }
 
         function attachSignin(auth2) {

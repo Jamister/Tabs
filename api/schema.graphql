@@ -10,6 +10,7 @@ type AuthPayload {
 type Mutation {
   createTab(tab: String): Tab!
   enter(token: String): AuthPayload!
+  saveTab(author: String, hashId: String, private: Boolean, tab: String, title: String, tune: String): Tab!
 }
 
 type Query {
@@ -37,6 +38,7 @@ input TabWhereUniqueInput {
 type User {
   email: String!
   hashId: String!
+  id: Int!
   imageUrl: String!
   name: String!
   tabs(after: TabWhereUniqueInput, before: TabWhereUniqueInput, first: Int, last: Int): [Tab!]!

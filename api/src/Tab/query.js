@@ -15,13 +15,13 @@ const TabQuery = extendType({
         t.list.field('myTabs', {
             type: 'Tab',
             resolve: async (_, args, context) => {
-                const { valid, user_email } = verifyToken(context);
+                const { valid, user_id } = verifyToken(context);
                 if (!valid) {
                     throw new AuthenticationError('You must be logged in');
                 }
 
                 const user = await context.prisma.user.findOne({
-                    where: { email: user_email },
+                    where: { id: user_id },
                 });
                 if (user) {
                     return context.prisma.tab.findMany({

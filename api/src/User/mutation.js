@@ -21,8 +21,6 @@ const UserMutation = extendType({
                 const user_name = token_info.name;
                 const user_external_id = token_info.sub;
                 const user_image_url = token_info.picture;
-                const new_token = createToken(user_email);
-
                 const existing_user = await context.prisma.user.findOne({
                     where: { email: user_email },
                 });
@@ -35,8 +33,10 @@ const UserMutation = extendType({
                             imageUrl: user_image_url,
                         },
                     });
+                    const new_token = createToken(new_user.id);
                     return { token: new_token, user: new_user };
                 }
+                const new_token = createToken(existing_user.id);
                 return { token: new_token, user: existing_user };
             },
         });

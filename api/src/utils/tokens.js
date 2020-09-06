@@ -71,8 +71,8 @@ const googleValidation = (token) => {
     return verify().catch(console.error);
 };
 
-const createToken = (email) => jwt.sign(
-    { email },
+const createToken = (user_id) => jwt.sign(
+    { user_id },
     process.env.SECRET,
     { expiresIn: 15552000 }, // 6 months
 );
@@ -80,8 +80,8 @@ const createToken = (email) => jwt.sign(
 const verifyToken = (context) => {
     const token = context.req.headers.token || '';
     return jwt.verify(token, process.env.SECRET, (err, decoded) => {
-        if (err) return { valid: false, user_email: null };
-        return { valid: true, user_email: decoded.email || '' };
+        if (err) return { valid: false, user_id: 0 };
+        return { valid: true, user_id: decoded.user_id || 0 };
     });
 };
 

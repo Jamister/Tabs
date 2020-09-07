@@ -25,6 +25,10 @@ model Tab {
     tab String @default("")
     link String @default("")
     private Boolean @default(false)
-    userId Int?
     user User? @relation(fields: [userId], references: [id])
+    userId Int?
+}
+
+model Folder {
+    id Int @id @default(autoincrement())
 }

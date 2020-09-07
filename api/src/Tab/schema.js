@@ -4,7 +4,7 @@ const { encode } = require('../utils/hashIds');
 const Tab = objectType({
     name: 'Tab',
     definition(t) {
-        // t.model.id();
+        t.model.id();
         t.string('hashId', (tab) => encode(tab.id));
         t.model.title();
         t.model.author();
@@ -12,7 +12,7 @@ const Tab = objectType({
         t.model.tab();
         t.model.link();
         t.model.private();
-        t.model.userId();
+        t.model.user();
     },
 });
 

@@ -88,6 +88,61 @@ const UserMutation = extendType({
                 return getTab();
             },
         });
+
+        t.list.field('assignTabs', {
+            type: 'Tab',
+            args: {
+                tabsIds: stringArg(),
+            },
+            resolve: async (parent, args, context) => {
+                const { valid, user_id } = verifyToken(context);
+
+                function returnTabs(decodedIdsList) {
+                    return context.prisma.tab.findMany({
+                        where: {
+                            id: {
+                                in: decodedIdsList,
+                            },
+                        },
+                    });
+                }
+
+                async function assign(decodedIdsList) {
+                    const promises = decodedIdsList.map((tabId) => (
+                        context.prisma.tab.update({
+                            where: { id: tabId },
+                            data: {
+                                user: {
+                                    connect: { id: user_id },
+                                },
+                            },
+                        })
+                    ));
+                    await Promise.all(promises);
+                    return returnTabs(decodedIdsList);
+                }
+
+                function decodeTabsIds(tabsIdsList) {
+                    const decodedIdsList = tabsIdsList.map(decode);
+                    return assign(decodedIdsList);
+                }
+
+                function getTabsIds() {
+                    const tabsIds = args.tabsIds || '';
+                    const tabsIdsList = tabsIds.split(',');
+                    return decodeTabsIds(tabsIdsList);
+                }
+
+                function checkValidToken() {
+                    if (!valid) {
+                        throw new AuthenticationError('You must be logged in');
+                    }
+                    return getTabsIds();
+                }
+
+                return checkValidToken();
+            },
+        });
     },
 });
 

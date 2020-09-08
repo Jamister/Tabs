@@ -1,7 +1,7 @@
 export const isUserLogged = () => {
     function checkLogged(token, user) {
         const validToken = token !== '';
-        const validUser = user.external_id !== undefined;
+        const validUser = user.email !== undefined;
         const isLogged = validToken && validUser;
         return isLogged;
     }

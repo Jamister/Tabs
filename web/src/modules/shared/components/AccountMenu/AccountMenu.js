@@ -11,6 +11,7 @@ import SignOutButton from 'modules/user/components/SignOutButton';
 
 // Utils
 import { isUserLogged } from 'modules/user/utils/isUserLogged';
+import { retrieveUserInfo } from 'modules/user/utils/retrieveUserInfo';
 
 const AccountMenu = () => {
     if (!isUserLogged()) {
@@ -35,6 +36,7 @@ const AccountMenu = () => {
         </Menu>
     );
 
+    const userName = retrieveUserInfo('name');
     return (
         <Dropdown
             overlay={menu}
@@ -43,7 +45,7 @@ const AccountMenu = () => {
         >
             <s.AccountMenu>
                 <FontAwesomeIcon icon={faUserCircle} />
-                Beto
+                {userName}
                 <FontAwesomeIcon icon={faCaretDown} />
             </s.AccountMenu>
         </Dropdown>

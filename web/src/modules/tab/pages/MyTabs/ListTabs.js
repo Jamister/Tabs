@@ -15,8 +15,8 @@ const ListTabs = ({ tabs }) => (
         <Row gutter={44}>
             <Col span={24}><br /></Col>
             {tabs.map((tab) => (
-                <Col span={8} className="gutter-row">
-                    <s.TabOnList key={tab.hashId}>
+                <Col span={8} className="gutter-row" key={tab.hashId}>
+                    <s.TabOnList>
                         <s.Title>{tab.title}</s.Title>
                         <s.OtherInfo><span>Author:</span> {tab.author}</s.OtherInfo>
                         <s.OtherInfo><span>Tune:</span> {tab.tune}</s.OtherInfo>
@@ -32,10 +32,14 @@ const ListTabs = ({ tabs }) => (
 );
 
 ListTabs.propTypes = {
-    tabs: PropTypes.arrayOf({
+    tabs: PropTypes.arrayOf(PropTypes.shape({
         hashId: PropTypes.string,
         title: PropTypes.string,
-    }).isRequired,
+        author: PropTypes.string,
+        tune: PropTypes.string,
+        tab: PropTypes.string,
+        private: PropTypes.bool,
+    })).isRequired,
 };
 
 export default ListTabs;

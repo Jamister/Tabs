@@ -1,54 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { loading_stages } from 'modules/tab/constants';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+import { useLazyQuery, useMutation } from '@apollo/client';
+
+// Api
+import { ASSIGN_TABS, MY_TABS } from 'modules/tab/api';
 
 // Components
-import AssigningTabs from './AssigningTabs';
-import FetchingTabs from './FetchingTabs';
+import LoadingTabs from './LoadingTabs';
 import ListTabs from './ListTabs';
 
 const MyTabs = () => {
-    const [stage, setStage] = useState(loading_stages.TO_START);
     const [tabs, setTabs] = useState([]);
+    const [loadTabs, query] = useLazyQuery(MY_TABS);
+    const [assignTabs, mutation] = useMutation(ASSIGN_TABS);
 
     useEffect(() => {
-        function fetchTabs() {
-            setStage(loading_stages.FETCHING_TABS);
-        }
+        const hasError = mutation.error || query.error;
+        if (hasError) console.log('error'); // TODO
+    }, [mutation.error, query.error]);
 
-        function assignTabs() {
-            setStage(loading_stages.ASSIGNING_TABS);
+    useEffect(() => {
+        const data = mutation.data || query.data;
+        const hasData = data !== undefined;
+        if (hasData) {
+            setTabs(data.myTabs);
         }
+    }, [mutation.data, query.data]);
 
+    useLayoutEffect(() => {
         function checkTabsToAssign() {
-            const tabsToAssign = '1,2,3' || ''; // TODO get from localstorage
+            const tabsToAssign = localStorage.getItem('tabsToAssign') || '';
             const hasTabs = tabsToAssign !== '';
             return hasTabs
-                ? assignTabs()
-                : fetchTabs();
+                ? assignTabs({ variables: { tabsIds: tabsToAssign } })
+                : loadTabs();
         }
 
         checkTabsToAssign();
     }, []);
 
-    // const aaa = [
-    //     {
-    //         hashId: '1',
-    //         title: 'Your Body Is a Wonderland',
-    //         author: 'John Mayer',
-    //         tune: 'e A D G B E',
-    //         private: true,
-    //     },
-    // ];
-
-    const comps = {
-        TO_START: <div />, // TODO
-        ASSIGNING_TABS: <AssigningTabs setStage={setStage} />,
-        FETCHING_TABS: <FetchingTabs setStage={setStage} setTabs={setTabs} />,
-        DONE: <ListTabs tabs={tabs} />,
-        ERROR: <div>error</div>, // TODO
-    };
-
-    return comps[stage] || comps.TO_START;
+    const isLoading = mutation.loading || query.loading;
+    return isLoading
+        ? <LoadingTabs />
+        : <ListTabs tabs={tabs} />;
 };
 
 export default MyTabs;

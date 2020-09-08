@@ -1,7 +1,7 @@
 const { extendType, stringArg } = require('@nexus/schema');
 const { AuthenticationError } = require('apollo-server-express');
 const { verifyToken } = require('../utils/tokens');
-const { decode } = require('../utils/hashIds');
+const { decodeId } = require('../utils/hashIds');
 
 const TabQuery = extendType({
     type: 'Query',
@@ -16,13 +16,13 @@ const TabQuery = extendType({
         t.list.field('myTabs', {
             type: 'Tab',
             resolve: async (_, args, context) => {
-                const { valid, user_id } = verifyToken(context);
+                const { valid, userId } = verifyToken(context);
                 if (!valid) {
                     throw new AuthenticationError('You must be logged in');
                 }
 
                 const user = await context.prisma.user.findOne({
-                    where: { id: user_id },
+                    where: { id: userId },
                 });
                 if (user) {
                     return context.prisma.tab.findMany({
@@ -41,10 +41,10 @@ const TabQuery = extendType({
         t.field('tab', {
             type: 'Tab',
             args: {
-                hashId: stringArg(),
+                tabId: stringArg(),
             },
             resolve: async (_, args, context) => {
-                const tabId = decode(args.hashId);
+                const tabId = decodeId(args.tabId);
                 return context.prisma.tab.findOne({
                     where: { id: tabId },
                 });

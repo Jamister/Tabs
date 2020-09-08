@@ -1,7 +1,7 @@
 const { extendType, stringArg, booleanArg } = require('@nexus/schema');
 const { AuthenticationError } = require('apollo-server-express');
 const { verifyToken } = require('../utils/tokens');
-const { decode } = require('../utils/hashIds');
+const { decodeId } = require('../utils/hashIds');
 
 const UserMutation = extendType({
     type: 'Mutation',
@@ -12,10 +12,10 @@ const UserMutation = extendType({
                 tab: stringArg(),
             },
             resolve: async (parent, args, context) => {
-                const { valid, user_id } = verifyToken(context);
+                const { valid, userId } = verifyToken(context);
                 if (valid) {
                     const user = await context.prisma.user.findOne({
-                        where: { id: user_id },
+                        where: { id: userId },
                     });
                     return context.prisma.tab.create({
                         data: {
@@ -43,8 +43,8 @@ const UserMutation = extendType({
                 private: booleanArg(),
             },
             resolve: async (parent, args, context) => {
-                const tabId = decode(args.hashId);
-                const { valid, user_id } = verifyToken(context);
+                const tabId = decodeId(args.hashId);
+                const { valid, userId } = verifyToken(context);
 
                 function saveData() {
                     return context.prisma.tab.update({
@@ -60,7 +60,7 @@ const UserMutation = extendType({
                 }
 
                 function checkTabOwner(tab, tabHasUserAssigned) {
-                    const isCorrectOwner = user_id === tab.userId;
+                    const isCorrectOwner = userId === tab.userId;
                     if (tabHasUserAssigned && !isCorrectOwner) {
                         throw new Error('Tab not found');
                     }
@@ -95,7 +95,7 @@ const UserMutation = extendType({
                 tabsIds: stringArg(),
             },
             resolve: async (parent, args, context) => {
-                const { valid, user_id } = verifyToken(context);
+                const { valid, userId } = verifyToken(context);
 
                 function returnTabs(decodedIdsList) {
                     return context.prisma.tab.findMany({
@@ -113,7 +113,7 @@ const UserMutation = extendType({
                             where: { id: tabId },
                             data: {
                                 user: {
-                                    connect: { id: user_id },
+                                    connect: { id: userId },
                                 },
                             },
                         })
@@ -123,7 +123,7 @@ const UserMutation = extendType({
                 }
 
                 function decodeTabsIds(tabsIdsList) {
-                    const decodedIdsList = tabsIdsList.map(decode);
+                    const decodedIdsList = tabsIdsList.map(decodeId);
                     return assign(decodedIdsList);
                 }
 

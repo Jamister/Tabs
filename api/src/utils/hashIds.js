@@ -6,12 +6,12 @@ const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
 
 const hashids = new Hashids(SALT, HASH_SIZE, ALPHABET);
 
-const encode = (id) => hashids.encode(Number(id));
-const decode = (id) => hashids.decode(id)[0];
+const encodeId = (id) => hashids.encode(Number(id));
+const decodeId = (id) => hashids.decode(id)[0];
 
 const hashIds = {
-    encode,
-    decode,
+    encodeId,
+    decodeId,
 };
 
 module.exports = hashIds;

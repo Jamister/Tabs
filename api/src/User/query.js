@@ -5,15 +5,15 @@ const UserQuery = extendType({
     definition(t) {
         t.list.field('users', {
             type: 'User',
-            resolve: (_, args, ctx) => ctx.prisma.user.findMany(),
+            resolve: (_, args, context) => context.prisma.user.findMany(),
         });
 
         // t.field('me', {
         //     type: 'User',
         //     nullable: true,
-        //     resolve: (parent, args, ctx) => {
-        //         const userId = getUserId(ctx);
-        //         return ctx.prisma.user.findOne({
+        //     resolve: (parent, args, context) => {
+        //         const userId = getUserId(context);
+        //         return context.prisma.user.findOne({
         //             where: { id: userId },
         //         });
         //     },

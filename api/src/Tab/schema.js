@@ -1,11 +1,11 @@
 const { objectType } = require('@nexus/schema');
-const { encode } = require('../utils/hashIds');
+const { encodeId } = require('../utils/hashIds');
 
 const Tab = objectType({
     name: 'Tab',
     definition(t) {
         t.model.id();
-        t.string('hashId', (tab) => encode(tab.id));
+        t.string('hashId', (tab) => encodeId(tab.id));
         t.model.title();
         t.model.author();
         t.model.tune();

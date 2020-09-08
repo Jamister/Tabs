@@ -11,7 +11,7 @@ import TitleInput from 'modules/tab/components/TitleInput';
 import AddPartButton from 'modules/tab/components/_buttons/AddPartButton';
 
 // Functions
-import { mapKeysToActions } from 'modules/tab/utils/mapKeysToActions';
+import mapKeysToActions from 'modules/tab/utils/mapKeysToActions';
 
 const Tab = () => {
     const dispatch = useDispatch();

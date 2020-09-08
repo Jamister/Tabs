@@ -1,1 +1,0 @@
-export { retrieveUserInfo } from './retrieveUserInfo';

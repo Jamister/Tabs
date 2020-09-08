@@ -1,6 +1,6 @@
-import { createUniqueId } from 'modules/shared/utils/createUniqueId';
+import createUniqueId from 'modules/shared/utils/createUniqueId';
 
-export const createColumns = (block_full_id = '') => {
+const createColumns = (block_full_id = '') => {
     const columns = {};
 
     function returnEmptyColumns() {
@@ -39,3 +39,5 @@ export const createColumns = (block_full_id = '') => {
 
     return checkEmptyParam();
 };
+
+export default createColumns;

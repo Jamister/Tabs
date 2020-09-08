@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
-import { createUniqueId } from 'modules/shared/utils/createUniqueId';
-import { createColumns } from 'modules/tab/utils/createColumns';
+import createUniqueId from 'modules/shared/utils/createUniqueId';
+import createColumns from 'modules/tab/utils/createColumns';
 
 const addBlock = produce((draft, action) => {
     const blocks = draft.blocks || {};

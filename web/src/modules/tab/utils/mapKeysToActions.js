@@ -3,9 +3,9 @@ import {
     moveSelectedNote,
     startUpdatingNote,
     clearSelectNote,
-} from '../../store/actions';
+} from '../store/actions';
 
-export const mapKeysToActions = (key) => {
+const mapKeysToActions = (key) => {
     const arrows = (
         key === 'ArrowUp'
         || key === 'ArrowDown'
@@ -24,3 +24,5 @@ export const mapKeysToActions = (key) => {
 
     return startUpdatingNote(key);
 };
+
+export default mapKeysToActions;

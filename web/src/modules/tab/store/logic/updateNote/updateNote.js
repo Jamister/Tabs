@@ -1,6 +1,6 @@
 // Functions
-import { returnKeyValue } from 'modules/tab/utils/returnKeyValue';
-import { returnChord } from 'modules/tab/utils/returnChord';
+import returnKeyValue from 'modules/tab/utils/returnKeyValue';
+import returnChord from 'modules/tab/utils/returnChord';
 
 const updateNote = (state = {}, action = {}) => {
     const instrument = state.instrument || 'guitar';

@@ -1,4 +1,4 @@
-import { createColumns } from '../createColumns';
+import createColumns from '../createColumns';
 
 describe('createColumns', () => {
     it('should not crash with blank values', () => {

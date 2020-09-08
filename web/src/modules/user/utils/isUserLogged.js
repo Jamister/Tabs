@@ -1,4 +1,4 @@
-export const isUserLogged = () => {
+const isUserLogged = () => {
     function checkLogged(token, user) {
         const validToken = token !== '';
         const validUser = user.email !== undefined;
@@ -16,3 +16,5 @@ export const isUserLogged = () => {
 
     return retrieveUserData();
 };
+
+export default isUserLogged;

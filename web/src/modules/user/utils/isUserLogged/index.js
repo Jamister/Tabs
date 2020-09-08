@@ -1,1 +1,0 @@
-export { isUserLogged } from './isUserLogged';

@@ -1,4 +1,4 @@
-export const returnKeyValue = (key, pre_value) => {
+const returnKeyValue = (key, pre_value) => {
     function checkArrows() {
         const arrows = (
             key === 'ArrowUp'
@@ -39,3 +39,5 @@ export const returnKeyValue = (key, pre_value) => {
 
     return checkValidTabChar();
 };
+
+export default returnKeyValue;

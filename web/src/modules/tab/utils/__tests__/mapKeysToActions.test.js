@@ -1,4 +1,4 @@
-import { mapKeysToActions } from '../mapKeysToActions';
+import mapKeysToActions from '../mapKeysToActions';
 
 test('mapKeysToActions should not crash', () => {
     expect(mapKeysToActions()).toStrictEqual({

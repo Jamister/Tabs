@@ -7,7 +7,7 @@ import { Button } from 'antd';
 import { CREATE_TAB } from 'modules/tab/api';
 
 // Utils
-import { isUserLogged } from 'modules/user/utils/isUserLogged';
+import isUserLogged from 'modules/user/utils/isUserLogged';
 
 const CreateTabButton = () => {
     const history = useHistory();

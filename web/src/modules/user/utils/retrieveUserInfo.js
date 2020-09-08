@@ -1,4 +1,4 @@
-export const retrieveUserInfo = (info) => {
+const retrieveUserInfo = (info) => {
     function returnInfo(user) {
         return user[info] || '';
     }
@@ -12,3 +12,5 @@ export const retrieveUserInfo = (info) => {
 
     return retrieveUserData();
 };
+
+export default retrieveUserInfo;

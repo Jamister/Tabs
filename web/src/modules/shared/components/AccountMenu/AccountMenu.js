@@ -10,8 +10,8 @@ import { faUserCircle, faUser, faCaretDown } from '@fortawesome/free-solid-svg-i
 import SignOutButton from 'modules/user/components/SignOutButton';
 
 // Utils
-import { isUserLogged } from 'modules/user/utils/isUserLogged';
-import { retrieveUserInfo } from 'modules/user/utils/retrieveUserInfo';
+import isUserLogged from 'modules/user/utils/isUserLogged';
+import retrieveUserInfo from 'modules/user/utils/retrieveUserInfo';
 
 const AccountMenu = () => {
     if (!isUserLogged()) {

@@ -1,22 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import * as s from './SignInButton.style';
 
-const ENTER = gql`
-    mutation Enter($token: String) {
-        enter(token: $token) {
-            token,
-            user {
-                name
-                email
-                imageUrl
-            }
-        }
-    }
-`;
+// Api
+import { ENTER } from 'modules/user/api';
 
 const SignInButton = ({ history }) => {
     const [enter, { data, loading, error }] = useMutation(ENTER);
@@ -63,8 +53,8 @@ const SignInButton = ({ history }) => {
         }
 
         function handleResponse(googleUser) {
-            const auth_response = googleUser.getAuthResponse();
-            const token = auth_response.id_token;
+            const authResponse = googleUser.getAuthResponse();
+            const token = authResponse.id_token;
             saveUserToDb(token);
         }
 

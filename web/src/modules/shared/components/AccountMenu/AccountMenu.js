@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import * as s from './AccountMenu.style';
 import { Menu, Dropdown } from 'antd';
 
@@ -14,6 +15,11 @@ import isUserLogged from 'modules/user/utils/isUserLogged';
 import retrieveUserInfo from 'modules/user/utils/retrieveUserInfo';
 
 const AccountMenu = () => {
+    const location = useLocation();
+    const isAtSignInPage = location.pathname === '/sign/in';
+
+    if (isAtSignInPage) return null;
+
     if (!isUserLogged()) {
         return (
             <s.SignInButton to="/sign/in">

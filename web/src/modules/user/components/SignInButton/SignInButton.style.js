@@ -5,7 +5,7 @@ export const GoogleButton = styled.button`
 	display: inline-block;
 	width: 200px;
 	height: 42px;
-	margin: 50px auto;
+	margin: 30px auto 50px auto;
 	background: white;
 	color: #444;
 	border-radius: 5px;

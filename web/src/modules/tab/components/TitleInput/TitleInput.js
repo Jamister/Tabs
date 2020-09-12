@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import * as s from './TitleInput.style';
 
@@ -9,6 +9,10 @@ const TitleInput = () => {
     const dispatch = useDispatch();
     const title = useSelector(store => store.tab.title, shallowEqual);
     const [value, setValue] = useState(() => title);
+
+    useEffect(() => {
+        setValue(title);
+    }, [title]);
 
     function handleEdition(e) {
         const new_value = e.target.value || '';
@@ -21,6 +25,7 @@ const TitleInput = () => {
             type="text"
             value={value}
             onChange={handleEdition}
+            placeholder="Title"
         />
     );
 };

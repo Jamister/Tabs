@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import { transition } from 'styles/mixins';
 
-export const PaddingWrapper = styled.div`
-    position: relative;
-    padding-left: 26px;
+export const Header = styled.h1`
+    font-family: 'Source Serif Pro', serif;
+    margin: 32px 0 11px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #323232;
 `;
 
 export const TabOnList = styled.div`
@@ -14,7 +17,7 @@ export const TabOnList = styled.div`
     ${transition('all 0.4s ease')};
 `;
 
-export const Title = styled.div`
+export const Title = styled.h4`
     font-family: 'Source Serif Pro', serif;
     font-size: 21px;
     font-weight: 700;

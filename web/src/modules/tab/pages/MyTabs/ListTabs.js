@@ -14,7 +14,9 @@ import Layout from 'modules/shared/components/Layout';
 const ListTabs = ({ tabs }) => (
     <Layout>
         <Row gutter={44}>
-            <Col span={24}><br /></Col>
+            <Col span={24}>
+                <s.Header>Minhas tablaturas</s.Header>
+            </Col>
             {tabs.map((tab) => (
                 <Col span={8} className="gutter-row" key={tab.hashId}>
                     <s.TabOnList>

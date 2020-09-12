@@ -6,7 +6,7 @@ import * as s from './ChordSelection.style';
 // Actions
 import { selectNote } from '../../store/actions';
 
-// Functions
+// Utils
 import { extract } from '../../utils/extractIds';
 import { isNoteSelectedSelector } from 'modules/tab/store/selectors';
 

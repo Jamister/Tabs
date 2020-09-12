@@ -18,11 +18,21 @@ const ListTabs = ({ tabs }) => (
                 <Col span={8} className="gutter-row" key={tab.hashId}>
                     <s.TabOnList>
                         <s.Title>{tab.title}</s.Title>
-                        <s.OtherInfo><span>Author:</span> {tab.author}</s.OtherInfo>
-                        <s.OtherInfo><span>Tune:</span> {tab.tune}</s.OtherInfo>
-                        <s.OtherInfo><span><FontAwesomeIcon icon={faGlobeAmericas} /></span> Pública</s.OtherInfo>
+                        <s.OtherInfo>
+                            <span>Author:</span> {tab.author}
+                        </s.OtherInfo>
+                        <s.OtherInfo>
+                            <span>Tune:</span> {tab.tune}
+                        </s.OtherInfo>
+                        <s.OtherInfo>
+                            <span>
+                                <FontAwesomeIcon icon={faGlobeAmericas} />
+                            </span> Pública
+                        </s.OtherInfo>
                         <s.Buttons>
-                            <Button>Editar</Button>
+                            <Button href={`/tab/${tab.hashId}`}>
+                                Editar
+                            </Button>
                         </s.Buttons>
                     </s.TabOnList>
                 </Col>

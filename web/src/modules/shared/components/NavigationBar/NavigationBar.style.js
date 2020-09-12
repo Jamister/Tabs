@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme from 'styles/theme';
+import { transition } from 'styles/mixins';
 
 export const TabBarWrapper = styled.div`
     position: relative;
@@ -27,7 +28,7 @@ export const Menu = styled.ul`
     float: left;
     height: ${theme.navbar_height}px;
     margin: 0;
-    padding: 0 0 0 30px;
+    padding: 0 0 0 20px;
     list-style: none;
     text-align: left;
     border-left: 1px solid #36414F;
@@ -41,9 +42,15 @@ export const Menu = styled.ul`
         > a {
             display: block;
             height: ${theme.navbar_height}px;
-            padding: 18px 10px 0;
+            padding: 18px 20px 0;
             font-size: 15px;
             color: #fff;
+            ${transition('background 0.2s ease')};
+
+            :hover {
+                cursor: pointer;
+                background: #324052;
+            }
         }
     }
 `;

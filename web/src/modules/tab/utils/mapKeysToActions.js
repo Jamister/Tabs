@@ -5,7 +5,7 @@ import {
     clearSelectNote,
 } from '../store/actions';
 
-const mapKeysToActions = (key) => {
+const mapKeysToActions = (event, key) => {
     const arrows = (
         key === 'ArrowUp'
         || key === 'ArrowDown'
@@ -14,7 +14,7 @@ const mapKeysToActions = (key) => {
         || key === 'Tab'
     );
     if (arrows) {
-        return moveSelectedNote(key);
+        return moveSelectedNote({ event, key });
     }
 
     const esc = key === 'Escape';
@@ -22,7 +22,7 @@ const mapKeysToActions = (key) => {
         return clearSelectNote();
     }
 
-    return startUpdatingNote(key);
+    return startUpdatingNote({ key });
 };
 
 export default mapKeysToActions;

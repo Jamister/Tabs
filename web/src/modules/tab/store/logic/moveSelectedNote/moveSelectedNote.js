@@ -135,7 +135,17 @@ const moveSelectedNote = produce((draft, action) => {
         }
     }
 
-    return defineKeyFunction();
+    function checkSelectedNote() {
+        const { event } = action;
+        const hasNoteSelected = Number(p) !== 0;
+        if (hasNoteSelected) {
+            event.preventDefault();
+            return defineKeyFunction();
+        }
+        return doNothing();
+    }
+
+    return checkSelectedNote();
 });
 
 export default moveSelectedNote;

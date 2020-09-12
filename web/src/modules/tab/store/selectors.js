@@ -1,7 +1,15 @@
-export const isNoteSelectedSelector = (state, note_id) => {
-    const selected_note_id = Object
-        .values(state.tab.selected_note)
-        .map(p => p)
-        .join('-');
-    return selected_note_id === note_id;
+const getNoteId = (state) => Object
+    .values(state?.tab?.selected_note)
+    .map(value => value)
+    .join('-');
+
+export const isNoteSelectedSelector = (state, noteId) => {
+    const selectedNoteId = getNoteId(state);
+    return selectedNoteId === noteId;
+};
+
+export const hasAnyNoteSelectedSelector = (state) => {
+    const selectedNoteId = getNoteId(state);
+    const hasAnyNoteSelected = selectedNoteId !== '0-0-0-0';
+    return hasAnyNoteSelected;
 };

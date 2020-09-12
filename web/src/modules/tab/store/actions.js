@@ -17,8 +17,9 @@ export const exportTabFormatTxt = () => ({
     type: types.EXPORT_TAB_TXT,
 });
 
-export const moveSelectedNote = (key) => ({
+export const moveSelectedNote = ({ event, key }) => ({
     type: types.MOVE_SELECTED_NOTE,
+    event,
     key,
 });
 
@@ -32,7 +33,7 @@ export const selectNote = (note) => ({
     note,
 });
 
-export const startUpdatingNote = (key) => ({
+export const startUpdatingNote = ({ key }) => ({
     type: types.START_UPDATING_NOTE,
     key,
 });

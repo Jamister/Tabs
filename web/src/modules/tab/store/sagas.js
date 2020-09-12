@@ -1,20 +1,43 @@
-import { takeEvery, put, select } from 'redux-saga/effects';
+import { takeEvery, takeLatest, put, select, call } from 'redux-saga/effects';
 import * as types from './types';
+import { hasAnyNoteSelectedSelector } from 'modules/tab/store/selectors';
 
-export function* handleUpdateNote({ key }) {
-    const selected_note = yield select(state => state.tab.selected_note);
-    const selected_note_id = Object
-        .values(selected_note)
-        .map(value => value)
-        .join('-');
-    const has_note_selected = selected_note_id !== '0-0-0-0';
-    if (has_note_selected) {
+function* handleUpdateNote({ key }) {
+    const hasNoteSelected = yield select(hasAnyNoteSelectedSelector);
+    if (hasNoteSelected) {
         yield put({ type: types.REMOVE_EMPTY_COLUMN, key });
         yield put({ type: types.UPDATE_NOTE, key });
         yield put({ type: types.ADD_COLUMN });
     }
 }
 
+function* handleSaveTab({ mutation }) {
+    try {
+        const fullTab = yield select(state => state.tab);
+        const tab = {
+            parts: fullTab.parts,
+            blocks: fullTab.blocks,
+            columns: fullTab.columns,
+            lines: fullTab.lines,
+            notes: fullTab.notes,
+        };
+        const params = {
+            hashId: fullTab.tabHashId,
+            // instrument: fullTab.instrument,
+            title: fullTab.title,
+            // author: fullTab.tabHashId,
+            // tune: fullTab.tune,
+            tab: JSON.stringify(tab),
+            // private: false,
+        };
+        yield call(mutation, { variables: params });
+        yield put({ type: types.SAVE_TAB_SUCCESS });
+    } catch (error) {
+        yield put({ type: types.SAVE_TAB_FAILED, error });
+    }
+}
+
 export default function* tabSaga() {
     yield takeEvery([types.START_UPDATING_NOTE], handleUpdateNote);
+    yield takeLatest([types.SAVE_TAB], handleSaveTab);
 }

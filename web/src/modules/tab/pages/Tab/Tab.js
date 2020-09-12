@@ -1,51 +1,43 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { useQuery } from '@apollo/client';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Row, Col } from 'antd';
-import * as s from './Tab.style';
+import * as actions from 'modules/tab/store/actions';
+
+// Api
+import { GET_TAB } from 'modules/tab/api';
 
 // Components
+import TabView from './TabView';
+import TabLoading from './TabLoading';
 import Layout from 'modules/shared/components/Layout';
-// import Header from 'modules/shared/components/Header';
-import Parts from 'modules/tab/components/Parts';
 import TitleInput from 'modules/tab/components/TitleInput';
-import AddPartButton from 'modules/tab/components/_buttons/AddPartButton';
-
-// Functions
-import mapKeysToActions from 'modules/tab/utils/mapKeysToActions';
+import SavingEditions from './SavingEditions';
 
 const Tab = () => {
     const dispatch = useDispatch();
-    const parts = useSelector(store => store.tab.parts, shallowEqual);
-    const all_ids = parts.all_ids || [];
-    const by_id = parts.by_id || {};
-
-    function handleKeyDown(e) {
-        const action = mapKeysToActions(e.key);
-        dispatch(action);
-    }
+    const { id } = useParams();
+    const { loading, error, data } = useQuery(GET_TAB, {
+        variables: { tabId: id },
+    });
 
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [handleKeyDown]);
+        if (data) {
+            dispatch(actions.loadTabIntoStore({ payload: data?.tab }));
+        }
+    }, [data]);
+
+    if (loading) return <TabLoading />;
+    if (error) return `Error! ${error.message}`; // TODO
 
     return (
         <Layout include_actions_bar include_keytips>
             <Row>
                 <Col span={24}>
                     <TitleInput />
-                    <s.PaddingWrapper>
-                        {all_ids.map(part_id => (
-                            <Parts
-                                key={part_id}
-                                part_id={part_id}
-                                part={by_id[part_id]}
-                            />
-                        ))}
-                    </s.PaddingWrapper>
-                    <div><AddPartButton /></div>
+                    <TabView />
+                    <SavingEditions />
                     <p><br /></p>
                     <p><br /></p>
                     <p><br /></p>

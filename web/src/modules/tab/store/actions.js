@@ -53,3 +53,13 @@ export const updateTitle = ({ title }) => ({
     type: types.UPDATE_TITLE,
     title,
 });
+
+export const loadTabIntoStore = ({ payload }) => ({
+    type: types.LOAD_TAB_INTO_STORE,
+    payload,
+});
+
+export const saveTab = ({ mutation }) => ({
+    type: types.SAVE_TAB,
+    mutation,
+});

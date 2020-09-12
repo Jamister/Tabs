@@ -9,6 +9,23 @@ export const CREATE_TAB = gql`
     }
 `;
 
+export const SAVE_TAB = gql`
+    mutation SaveTab(
+        $hashId: String
+        $title: String
+        $tab: String
+    ) {
+        saveTab(
+            hashId: $hashId
+            title: $title
+            tab: $tab
+        ) {
+            hashId
+            tab
+        }
+    }
+`;
+
 export const ASSIGN_TABS = gql`
     mutation AssignTabs($tabsIds: String!) {
         assignTabs(tabsIds: $tabsIds) {
@@ -29,6 +46,16 @@ export const MY_TABS = gql`
             author
             tune
             private
+        }
+    }
+`;
+
+export const GET_TAB = gql`
+    query Tab($tabId: String!) {
+        tab(tabId: $tabId) {
+            hashId
+            tab
+            title
         }
     }
 `;

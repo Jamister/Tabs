@@ -1,45 +1,44 @@
-// Functions
+/* eslint-disable no-param-reassign */
+import produce from 'immer';
 import returnKeyValue from 'modules/tab/utils/returnKeyValue';
 import returnChord from 'modules/tab/utils/returnChord';
+import { getDateNow } from 'modules/shared/utils/dates';
 
-const updateNote = (state = {}, action = {}) => {
-    const instrument = state.instrument || 'guitar';
-    const lines = state.lines || [];
-    const selected_note = state.selected_note || {};
+const updateNote = produce((draft, action) => {
+    const instrument = draft.instrument || 'guitar';
+    const lines = draft.lines || [];
+    const selected_note = draft.selected_note || {};
     const { p, b, c, l } = selected_note;
-    const new_state_to_return = {};
 
-    function returnDefaultState() {
-        return { ...state };
+    function finish() {
+        return draft;
     }
 
-    function returnUpdatedState() {
-        return {
-            ...state,
-            ...new_state_to_return,
-        };
+    function setLastChange() {
+        draft.lastChange = getDateNow();
+        return finish();
     }
 
     function fillNotes(note_id, note_new_value) {
         const notes = {
-            ...state.notes,
+            ...draft.notes,
             [note_id]: {
                 value: note_new_value,
             },
         };
-        new_state_to_return.notes = notes;
-        return returnUpdatedState();
+        draft.notes = notes;
+        return setLastChange();
     }
 
     function buildSingleNote() {
         const note_id = `${p}-${b}-${c}-${l}`;
-        const note_previous_value = ((state.notes || {})[note_id] || {}).value || '';
+        const note_previous_value = ((draft.notes || {})[note_id] || {}).value || '';
         const note_new_value = returnKeyValue(action.key, note_previous_value);
         return fillNotes(note_id, note_new_value);
     }
 
     function buildChord(chord) {
-        const notes = { ...state.notes };
+        const notes = { ...draft.notes };
         lines.forEach(line => {
             const note_full_id = `${p}-${b}-${c}-${line}`;
             const note_value = `${chord[line - 1]}`;
@@ -47,20 +46,20 @@ const updateNote = (state = {}, action = {}) => {
                 value: note_value,
             };
         });
-        new_state_to_return.notes = notes;
-        return returnUpdatedState();
+        draft.notes = notes;
+        return finish();
     }
 
     function findChord() {
         const chord = returnChord(action.key, instrument);
         const no_chord_found = chord === null;
         return no_chord_found
-            ? returnUpdatedState()
+            ? finish()
             : buildChord(chord);
     }
 
     function checkIfIsChord() {
-        const { user_is_writing } = state;
+        const { user_is_writing } = draft;
         const writing_chords = user_is_writing === 'chords';
         return writing_chords
             ? findChord()
@@ -70,12 +69,12 @@ const updateNote = (state = {}, action = {}) => {
     function checkBlank() {
         const no_part_found = p === undefined;
         return no_part_found
-            ? returnDefaultState()
+            ? finish()
             : checkIfIsChord();
     }
 
     return checkBlank();
-};
+});
 
 // function deleteColumnIfEmpty(state, columns, value, key_code) {
 // 	if (value !== '') {

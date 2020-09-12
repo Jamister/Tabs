@@ -1,5 +1,9 @@
 const tab = {
-    title: 'Invalid Litter Dept.',
+    tabHashId: '',
+    lastChange: 0,
+    isSaving: false,
+    savingError: null,
+    title: '',
     // instrument: 'guitar',
     // tune: ['e', 'B', 'G', 'D', 'A', 'E'],
     // lines: [1, 2, 3, 4, 5, 6],

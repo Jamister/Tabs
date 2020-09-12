@@ -13,6 +13,10 @@ import updateNote from './logic/updateNote';
 import addColumn from './logic/addColumn';
 import changedWritingType from './logic/changedWritingType';
 import updateTitle from './logic/updateTitle';
+import loadTabIntoStore from './logic/loadTabIntoStore';
+import saveTab from './logic/saveTab';
+import saveTabSuccess from './logic/saveTabSuccess';
+import saveTabFailed from './logic/saveTabFailed';
 
 const funcs = {
     ADD_BLOCK: addBlock,
@@ -27,6 +31,10 @@ const funcs = {
     ADD_COLUMN: addColumn,
     CHANGED_WRITING_TYPE: changedWritingType,
     UPDATE_TITLE: updateTitle,
+    LOAD_TAB_INTO_STORE: loadTabIntoStore,
+    SAVE_TAB: saveTab,
+    SAVE_TAB_SUCCESS: saveTabSuccess,
+    SAVE_TAB_FAILED: saveTabFailed,
 };
 
 const reducer = (state = tab, action) => {

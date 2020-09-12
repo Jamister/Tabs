@@ -3,9 +3,7 @@ import Tab from './pages/Tab';
 
 const tab_routes = [
     { path: '/me/tabs', exact: true, component: MyTabs },
-    { path: '/tab', exact: true, component: Tab },
-    { path: '/', exact: true, component: Tab },
-    { path: '*', exact: true, component: Tab },
+    { path: '/tab/:id', exact: true, component: Tab },
 ];
 
 export default tab_routes;

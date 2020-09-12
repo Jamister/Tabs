@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import * as s from './SignIn.style';
@@ -8,15 +8,17 @@ import Layout from 'modules/shared/components/Layout';
 import AnimatedTab from 'modules/user/components/AnimatedTab';
 import SignInButton from 'modules/user/components/SignInButton';
 
+// Utils
+import isUserLogged from 'modules/user/utils/isUserLogged';
+
 const SignIn = ({ history }) => {
-    useEffect(() => {
+    useLayoutEffect(() => {
         function redirect() {
             history.push('/me/tabs');
         }
 
         function checkAlreadyLogged() {
-            const isLogged = false;
-            if (isLogged) redirect();
+            if (isUserLogged()) redirect();
         }
 
         checkAlreadyLogged();

@@ -21,7 +21,11 @@ const SignInButton = ({ history }) => {
             displayError();
         }
 
-        clearLocalstorage();
+        function checkError() {
+            if (error) clearLocalstorage();
+        }
+
+        checkError();
     }, [error]);
 
     useEffect(() => {

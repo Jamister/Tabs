@@ -14,7 +14,7 @@ const loadTabIntoStore = produce((draft, action) => {
     }
 
     function setFullTab() {
-        const tab = JSON.parse(payload.tab) || {};
+        const tab = JSON.parse(payload.tab || '{}');
         const defaultValue = { all_ids: [], by_id: {} };
         draft.parts = tab.parts || defaultValue;
         draft.blocks = tab.blocks || defaultValue;

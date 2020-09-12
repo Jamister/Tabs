@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'antd';
 import * as s from './MyTabs.style';
 
@@ -30,9 +31,9 @@ const ListTabs = ({ tabs }) => (
                             </span> Pública
                         </s.OtherInfo>
                         <s.Buttons>
-                            <Button href={`/tab/${tab.hashId}`}>
-                                Editar
-                            </Button>
+                            <Link to={`/tab/${tab.hashId}`}>
+                                <Button>Editar</Button>
+                            </Link>
                         </s.Buttons>
                     </s.TabOnList>
                 </Col>

@@ -16,7 +16,10 @@ import retrieveUserInfo from 'modules/user/utils/retrieveUserInfo';
 
 const AccountMenu = () => {
     const location = useLocation();
-    const isAtSignInPage = location.pathname === '/sign/in';
+    const isAtSignInPage = (
+        location.pathname === '/sign/in'
+        || location.pathname === '/'
+    );
 
     if (isAtSignInPage) return null;
 

@@ -31,12 +31,16 @@ const MyTabs = () => {
     }, [mutation.error, query.error]);
 
     useEffect(() => {
-        const data = mutation.data || query.data;
-        const hasData = data !== undefined;
-        if (hasData) {
-            setTabs(data.myTabs);
+        if (query.data) {
+            setTabs(query.data.myTabs);
         }
-    }, [mutation.data, query.data]);
+    }, [query.data]);
+
+    useEffect(() => {
+        if (mutation.data) {
+            setTabs(mutation.data.assignTabs);
+        }
+    }, [mutation.data]);
 
     useLayoutEffect(() => {
         function checkTabsToAssign() {

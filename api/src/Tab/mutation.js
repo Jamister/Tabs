@@ -9,7 +9,7 @@ const UserMutation = extendType({
         t.field('createTab', {
             type: 'Tab',
             args: {
-                tab: stringArg(),
+                content: stringArg(),
             },
             resolve: async (parent, args, context) => {
                 const { valid, userId } = verifyToken(context);
@@ -19,14 +19,14 @@ const UserMutation = extendType({
                     });
                     return context.prisma.tab.create({
                         data: {
-                            tab: args.tab,
+                            content: args.content,
                             user: { connect: { id: user.id } },
                         },
                     });
                 }
                 return context.prisma.tab.create({
                     data: {
-                        tab: args.tab,
+                        content: args.content,
                     },
                 });
             },
@@ -37,9 +37,10 @@ const UserMutation = extendType({
             args: {
                 hashId: stringArg(),
                 title: stringArg(),
-                author: stringArg(),
-                tune: stringArg(),
-                tab: stringArg(),
+                artist: stringArg(),
+                tuning: stringArg(),
+                instrument: stringArg(),
+                content: stringArg(),
                 private: booleanArg(),
             },
             resolve: async (parent, args, context) => {
@@ -51,9 +52,10 @@ const UserMutation = extendType({
                         where: { id: tabId },
                         data: {
                             title: args.title,
-                            author: args.author,
-                            tune: args.tune,
-                            tab: args.tab,
+                            artist: args.artist,
+                            tuning: args.tuning,
+                            instrument: args.instrument,
+                            content: args.content,
                             private: args.private,
                         },
                     });

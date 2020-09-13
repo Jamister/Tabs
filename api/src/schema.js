@@ -4,16 +4,19 @@ const { makeSchema } = require('@nexus/schema');
 const { AuthPayload } = require('./AuthPayload');
 const { Tab, TabQuery, TabMutation } = require('./Tab');
 const { User, UserQuery, UserMutation } = require('./User');
+const { Folder } = require('./Folder');
 
 const AuthType = [AuthPayload];
 const TabType = [Tab, TabQuery, TabMutation];
 const UserType = [User, UserQuery, UserMutation];
+const FolderType = [Folder];
 
 const schema = makeSchema({
     types: [
         ...AuthType,
         ...TabType,
         ...UserType,
+        ...FolderType,
     ],
     plugins: [nexusSchemaPrisma()],
     outputs: {

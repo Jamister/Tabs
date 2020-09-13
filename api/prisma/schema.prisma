@@ -15,20 +15,27 @@ model User {
     name String @default("")
     username String @default("")
     tabs Tab[]
+    folders Folder[]
+}
+
+model Folder {
+    id Int @id @default(autoincrement())
+    name String @default("")
+    tabs Tab[]
+    user User @relation(fields: [userId], references: [id])
+    userId Int
 }
 
 model Tab {
     id Int @id @default(autoincrement())
     title String @default("")
-    author String @default("")
-    tune String @default("")
-    tab String @default("")
-    link String @default("")
+    artist String @default("")
+    tuning String @default("")
+    instrument String @default("")
+    content String @default("")
     private Boolean @default(false)
     user User? @relation(fields: [userId], references: [id])
     userId Int?
-}
-
-model Folder {
-    id Int @id @default(autoincrement())
+    folder Folder? @relation(fields: [folderId], references: [id])
+    folderId Int?
 }

@@ -12,6 +12,7 @@ const User = objectType({
         t.model.name();
         t.model.username();
         t.model.tabs();
+        t.model.folders();
     },
 });
 

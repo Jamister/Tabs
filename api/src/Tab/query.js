@@ -6,13 +6,6 @@ const { decodeId } = require('../utils/hashIds');
 const TabQuery = extendType({
     type: 'Query',
     definition(t) {
-        // t.list.field('allTabs', {
-        //     type: 'Tab',
-        //     resolve: (_, args, context) => (
-        //         context.prisma.tab.findMany()
-        //     ),
-        // });
-
         t.list.field('myTabs', {
             type: 'Tab',
             resolve: async (_, args, context) => {

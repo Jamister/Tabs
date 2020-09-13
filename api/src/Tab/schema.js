@@ -7,12 +7,13 @@ const Tab = objectType({
         t.model.id();
         t.string('hashId', (tab) => encodeId(tab.id));
         t.model.title();
-        t.model.author();
-        t.model.tune();
-        t.model.tab();
-        t.model.link();
+        t.model.artist();
+        t.model.tuning();
+        t.model.instrument();
+        t.model.content();
         t.model.private();
         t.model.user();
+        t.model.folder();
     },
 });
 

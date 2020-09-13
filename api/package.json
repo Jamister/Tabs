@@ -11,7 +11,7 @@
     "start": "node ./src/server.js",
     "msave": "prisma migrate save --experimental",
     "mup": "prisma migrate up --experimental",
-    "gen": "npx prisma generate"
+    "gen": "prisma generate"
   },
   "dependencies": {
     "@nexus/schema": "^0.14.0",

@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_TAB = gql`
-    mutation CreateTab($tab: String) {
-        createTab(tab: $tab) {
+    mutation CreateTab($content: String) {
+        createTab(content: $content) {
             hashId
-            tab
+            content
         }
     }
 `;
@@ -13,15 +13,15 @@ export const SAVE_TAB = gql`
     mutation SaveTab(
         $hashId: String
         $title: String
-        $tab: String
+        $content: String
     ) {
         saveTab(
             hashId: $hashId
             title: $title
-            tab: $tab
+            content: $content
         ) {
             hashId
-            tab
+            content
         }
     }
 `;
@@ -31,8 +31,9 @@ export const ASSIGN_TABS = gql`
         assignTabs(tabsIds: $tabsIds) {
             hashId
             title
-            author
-            tune
+            artist
+            tuning
+            instrument
             private
         }
     }
@@ -43,8 +44,9 @@ export const MY_TABS = gql`
         myTabs {
             hashId
             title
-            author
-            tune
+            artist
+            tuning
+            instrument
             private
         }
     }
@@ -54,8 +56,8 @@ export const GET_TAB = gql`
     query Tab($tabId: String!) {
         tab(tabId: $tabId) {
             hashId
-            tab
             title
+            content
         }
     }
 `;

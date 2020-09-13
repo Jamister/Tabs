@@ -14,7 +14,7 @@ const loadTabIntoStore = produce((draft, action) => {
     }
 
     function setFullTab() {
-        const tab = JSON.parse(payload.tab || '{}');
+        const tab = JSON.parse(payload.content || '{}');
         const defaultValue = { all_ids: [], by_id: {} };
         draft.parts = tab.parts || defaultValue;
         draft.blocks = tab.blocks || defaultValue;
@@ -27,7 +27,7 @@ const loadTabIntoStore = produce((draft, action) => {
     function setBasicInfo() {
         draft.title = payload.title || '';
         draft.artist = payload.artist;
-        draft.tuning = payload.tuning;
+        draft.tuning = payload.tuning.split(',');
         draft.instrument = payload.instrument;
         draft.private = payload.private;
         return setFullTab();

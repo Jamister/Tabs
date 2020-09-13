@@ -26,7 +26,7 @@ function* handleSaveTab({ mutation }) {
             instrument: fullTab.instrument,
             title: fullTab.title,
             artist: fullTab.artist,
-            tuning: fullTab.tuning,
+            tuning: fullTab.tuning.join(','),
             content: JSON.stringify(content),
             // private: false,
         };

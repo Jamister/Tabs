@@ -12,7 +12,7 @@ import ErrorView from 'modules/shared/components/ErrorView';
 
 // Utils
 import { isError403, clearUserAuth } from 'modules/user/utils/isError403';
-/* eslint-disable */
+
 const MyTabs = () => {
     const history = useHistory();
     const [tabs, setTabs] = useState([]);

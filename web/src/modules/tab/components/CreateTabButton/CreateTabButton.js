@@ -22,7 +22,7 @@ const CreateTabButton = () => {
             const previousTabsToAssign = localStorage.getItem('tabsToAssign') || '';
             const tabsToAssign = `${previousTabsToAssign},${tabId}`;
             localStorage.setItem('tabsToAssign', tabsToAssign);
-            redirect();
+            redirect(tabId);
         }
 
         function checkIfUserIsLogged(tabId) {

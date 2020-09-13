@@ -14,7 +14,11 @@ function AddBlockButton({ part_id }) {
     }
 
     return (
-        <s.AddBlockButton type="button" onClick={addNewBlock}>
+        <s.AddBlockButton
+            type="button"
+            data-note="true"
+            onClick={addNewBlock}
+        >
             +
         </s.AddBlockButton>
     );

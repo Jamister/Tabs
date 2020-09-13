@@ -14,7 +14,11 @@ function RemoveBlockButton({ part_id }) {
     }
 
     return (
-        <s.RemoveBlockButton type="button" onClick={removeLastBlock}>
+        <s.RemoveBlockButton
+            type="button"
+            data-note="true"
+            onClick={removeLastBlock}
+        >
             -
         </s.RemoveBlockButton>
     );

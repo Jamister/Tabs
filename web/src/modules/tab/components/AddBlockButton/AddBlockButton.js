@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Tooltip } from 'antd';
 import * as s from './AddBlockButton.style';
 
 // Actions
@@ -14,13 +15,18 @@ function AddBlockButton({ part_id }) {
     }
 
     return (
-        <s.AddBlockButton
-            type="button"
-            data-note="true"
-            onClick={addNewBlock}
+        <Tooltip
+            placement="right"
+            title={<span>Adicionar bloco</span>}
         >
-            +
-        </s.AddBlockButton>
+            <s.AddBlockButton
+                type="button"
+                data-note="true"
+                onClick={addNewBlock}
+            >
+                +
+            </s.AddBlockButton>
+        </Tooltip>
     );
 }
 

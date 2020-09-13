@@ -6,6 +6,7 @@ export const RemoveBlockButton = styled.button`
 	left: 8px;
 	width: 46px;
 	height: 46px;
+	padding-bottom: 3px;
 	background: #A0ACB4;
 	color: #fff;
 	font-size: 34px;

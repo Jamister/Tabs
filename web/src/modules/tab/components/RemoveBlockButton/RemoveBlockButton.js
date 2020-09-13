@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Tooltip } from 'antd';
 import * as s from './RemoveBlockButton.style';
 
 // Actions
@@ -14,13 +15,18 @@ function RemoveBlockButton({ part_id }) {
     }
 
     return (
-        <s.RemoveBlockButton
-            type="button"
-            data-note="true"
-            onClick={removeLastBlock}
+        <Tooltip
+            placement="right"
+            title={<span>Remover bloco</span>}
         >
-            -
-        </s.RemoveBlockButton>
+            <s.RemoveBlockButton
+                type="button"
+                data-note="true"
+                onClick={removeLastBlock}
+            >
+                -
+            </s.RemoveBlockButton>
+        </Tooltip>
     );
 }
 

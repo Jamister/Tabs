@@ -42,7 +42,7 @@ const AnimatedTab = () => {
                 )}
             </s.AnimatedNote>
             {notes.map(note => (
-                <s.FixedNote key={note.x} x={note.x} y={note.y}>
+                <s.FixedNote key={note.key} x={note.x} y={note.y}>
                     <span>{note.value}</span>
                 </s.FixedNote>
             ))}

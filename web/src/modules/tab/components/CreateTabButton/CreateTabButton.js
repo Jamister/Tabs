@@ -20,7 +20,9 @@ const CreateTabButton = () => {
 
         function saveTabIdToAssignInTheFuture(tabId) {
             const previousTabsToAssign = localStorage.getItem('tabsToAssign') || '';
-            const tabsToAssign = `${previousTabsToAssign},${tabId}`;
+            const tabsToAssign = previousTabsToAssign !== ''
+                ? `${previousTabsToAssign},${tabId}`
+                : tabId;
             localStorage.setItem('tabsToAssign', tabsToAssign);
             redirect(tabId);
         }

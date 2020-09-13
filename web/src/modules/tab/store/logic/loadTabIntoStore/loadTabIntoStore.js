@@ -26,8 +26,10 @@ const loadTabIntoStore = produce((draft, action) => {
 
     function setBasicInfo() {
         draft.title = payload.title || '';
-        // draft.instrument = payload.instrument;
-        // draft.private = payload.private;
+        draft.artist = payload.artist;
+        draft.tuning = payload.tuning;
+        draft.instrument = payload.instrument;
+        draft.private = payload.private;
         return setFullTab();
     }
 

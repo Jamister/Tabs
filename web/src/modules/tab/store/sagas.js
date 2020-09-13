@@ -14,7 +14,7 @@ function* handleUpdateNote({ key }) {
 function* handleSaveTab({ mutation }) {
     try {
         const fullTab = yield select(state => state.tab);
-        const tab = {
+        const content = {
             parts: fullTab.parts,
             blocks: fullTab.blocks,
             columns: fullTab.columns,
@@ -23,11 +23,11 @@ function* handleSaveTab({ mutation }) {
         };
         const params = {
             hashId: fullTab.tabHashId,
-            // instrument: fullTab.instrument,
+            instrument: fullTab.instrument,
             title: fullTab.title,
-            // author: fullTab.tabHashId,
-            // tune: fullTab.tune,
-            tab: JSON.stringify(tab),
+            artist: fullTab.artist,
+            tuning: fullTab.tuning,
+            content: JSON.stringify(content),
             // private: false,
         };
         yield call(mutation, { variables: params });

@@ -1,19 +1,18 @@
 import React from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // CSS
 import * as s from './TuneOnPart.style';
 
 const TuneOnPart = () => {
-    const tune = useSelector(store => store
-        .tab.tune, shallowEqual) || [];
+    const tuning = useSelector(store => store.tab.tuning) || [];
 
-    return tune.map((tune_note, i) => {
-        const key = `${tune_note}${i}`;
+    return tuning.map((tuningNote, i) => {
+        const key = `${tuningNote}${i}`;
 
         return (
             <s.TuneNote key={key}>
-                {tune_note}
+                {tuningNote}
             </s.TuneNote>
         );
     });

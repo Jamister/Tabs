@@ -21,7 +21,6 @@ export const SAVE_TAB = gql`
             content: $content
         ) {
             hashId
-            content
         }
     }
 `;
@@ -57,7 +56,11 @@ export const GET_TAB = gql`
         tab(tabId: $tabId) {
             hashId
             title
+            artist
+            tuning
+            instrument
             content
+            private
         }
     }
 `;

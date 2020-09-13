@@ -46,7 +46,7 @@ const CreateTabButton = () => {
     }, [error]);
 
     function create() {
-        createTab({ variables: { tab: '' } });
+        createTab({ variables: { content: '' } });
     }
 
     return (

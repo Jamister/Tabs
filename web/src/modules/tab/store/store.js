@@ -4,14 +4,15 @@ const tab = {
     isSaving: false,
     savingError: null,
     title: '',
-    // instrument: 'guitar',
-    // tune: ['e', 'B', 'G', 'D', 'A', 'E'],
-    // lines: [1, 2, 3, 4, 5, 6],
-    // user_is_writing: 'notes',
-    // selected_note: {
-    // 	p: 0, b: 0, c: 0, l: 0,
-    // },
-    // notes: {},
+    artist: '',
+    instrument: 'guitar',
+    tuning: ['e', 'B', 'G', 'D', 'A', 'E'],
+    lines: [1, 2, 3, 4, 5, 6],
+    user_is_writing: 'notes',
+    selected_note: {
+        p: 0, b: 0, c: 0, l: 0,
+    },
+    notes: {},
     parts: {
         all_ids: [],
         by_id: {},
@@ -24,19 +25,7 @@ const tab = {
         all_ids: [],
         by_id: {},
     },
-    // printed_tab: '',
-
-    instrument: 'guitar',
-    selected_note: {
-        p: 0,
-        b: 0,
-        c: 0,
-        l: 0,
-    },
-    tune: ['e', 'B', 'G', 'D', 'A', 'E'],
-    lines: [1, 2, 3, 4, 5, 6],
-    user_is_writing: 'notes',
-    notes: {},
+    printed_tab: '',
     // parts: {
     //     all_ids: [1, 2],
     //     by_id: {
@@ -77,7 +66,6 @@ const tab = {
     //         '1-2-5': {},
     //     },
     // },
-    printed_tab: '',
     // lyric_chords: {
     // 	1: {
     // 		lyric_line_id: '1',

@@ -22,10 +22,10 @@ const ListTabs = ({ tabs }) => (
                     <s.TabOnList>
                         <s.Title>{tab.title}</s.Title>
                         <s.OtherInfo>
-                            <span>Author:</span> {tab.author}
+                            <span>Artist:</span> {tab.artist}
                         </s.OtherInfo>
                         <s.OtherInfo>
-                            <span>Tune:</span> {tab.tune}
+                            <span>Tuning:</span> {tab.tuning}
                         </s.OtherInfo>
                         <s.OtherInfo>
                             <span>
@@ -48,9 +48,8 @@ ListTabs.propTypes = {
     tabs: PropTypes.arrayOf(PropTypes.shape({
         hashId: PropTypes.string,
         title: PropTypes.string,
-        author: PropTypes.string,
-        tune: PropTypes.string,
-        tab: PropTypes.string,
+        artist: PropTypes.string,
+        tuning: PropTypes.string,
         private: PropTypes.bool,
     })).isRequired,
 };

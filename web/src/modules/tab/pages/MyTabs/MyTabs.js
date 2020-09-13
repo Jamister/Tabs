@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useLazyQuery, useMutation } from '@apollo/client';
+import { useHistory } from 'react-router-dom';
 
 // Api
 import { ASSIGN_TABS, MY_TABS } from 'modules/tab/api';
@@ -7,15 +8,26 @@ import { ASSIGN_TABS, MY_TABS } from 'modules/tab/api';
 // Components
 import LoadingTabs from './LoadingTabs';
 import ListTabs from './ListTabs';
+import ErrorView from 'modules/shared/components/ErrorView';
 
+// Utils
+import { isError403, clearUserAuth } from 'modules/user/utils/isError403';
+/* eslint-disable */
 const MyTabs = () => {
+    const history = useHistory();
     const [tabs, setTabs] = useState([]);
     const [loadTabs, query] = useLazyQuery(MY_TABS);
     const [assignTabs, mutation] = useMutation(ASSIGN_TABS);
 
     useEffect(() => {
-        const hasError = mutation.error || query.error;
-        if (hasError) console.log('error'); // TODO
+        const error = mutation.error || query.error;
+        if (error) {
+            const userNotLogged = isError403(error);
+            if (userNotLogged) {
+                clearUserAuth();
+                history.push('/sign/in');
+            }
+        }
     }, [mutation.error, query.error]);
 
     useEffect(() => {
@@ -39,9 +51,11 @@ const MyTabs = () => {
     }, []);
 
     const isLoading = mutation.loading || query.loading;
-    return isLoading
-        ? <LoadingTabs />
-        : <ListTabs tabs={tabs} />;
+    const hasError = mutation.error || query.error;
+    if (isLoading) return <LoadingTabs />;
+    if (hasError) return <ErrorView />;
+
+    return <ListTabs tabs={tabs} />;
 };
 
 export default MyTabs;

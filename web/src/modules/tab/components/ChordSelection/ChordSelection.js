@@ -38,6 +38,7 @@ function ChordSelection({ full_column_id = '' }) {
     return (
         <s.Chord
             type="button"
+            data-note="true"
             aria-label="chord button"
             is_selected={is_selected}
             onClick={handleNote}

@@ -6,7 +6,10 @@ import * as s from './Tab.style';
 import Parts from 'modules/tab/components/Parts';
 import AddPartButton from 'modules/tab/components/_buttons/AddPartButton';
 
-// utils
+// Actions
+import * as actions from 'modules/tab/store/actions';
+
+// Utils
 import mapKeysToActions from 'modules/tab/utils/mapKeysToActions';
 
 const TabView = () => {
@@ -15,17 +18,25 @@ const TabView = () => {
     const all_ids = parts.all_ids || [];
     const by_id = parts.by_id || {};
 
-    function handleKeyDown(event) {
-        const action = mapKeysToActions(event, event.key);
-        dispatch(action);
-    }
-
     useEffect(() => {
+        function handleKeyDown(event) {
+            const action = mapKeysToActions(event, event.key);
+            dispatch(action);
+        }
+
+        function handleMouseUp(event) {
+            const elementAttr = event.target.getAttribute('data-note');
+            const isOutsideTabClick = elementAttr === null;
+            if (isOutsideTabClick) dispatch(actions.clearSelectNote());
+        }
+
         window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('mouseup', handleMouseUp);
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [handleKeyDown]);
+    }, []);
 
     return (
         <>

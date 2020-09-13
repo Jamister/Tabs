@@ -7,7 +7,11 @@ function NoteValue({ note_id }) {
     const note_value = note.value || '';
 
     if (note_value !== '') {
-        return <span>{note_value}</span>;
+        return (
+            <span data-note="true">
+                {note_value}
+            </span>
+        );
     }
 
     return null;

@@ -44,7 +44,7 @@ function Note({ full_column_id, line_id = '' }) {
     if (user_is_writing === 'chords') {
         return (
             <>
-                <s.Note line={line_id}>
+                <s.Note data-note="true" line={line_id}>
                     <NoteValue note_id={note_id} />
                 </s.Note>
                 <NoteWidthSpace note_id={note_id} />
@@ -56,6 +56,7 @@ function Note({ full_column_id, line_id = '' }) {
         <>
             <s.Note
                 type="button"
+                data-note="true"
                 line={line_id}
                 is_selected={is_selected}
                 onClick={handleNote}

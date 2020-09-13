@@ -4,7 +4,7 @@ import * as s from './Tab.style';
 
 // Components
 import Parts from 'modules/tab/components/Parts';
-import AddPartButton from 'modules/tab/components/_buttons/AddPartButton';
+import AddPartButton from 'modules/tab/components/AddPartButton';
 
 // Actions
 import * as actions from 'modules/tab/store/actions';

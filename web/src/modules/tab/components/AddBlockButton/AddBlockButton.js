@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import * as s from './AddBlockButton.style';
 
 // Actions
-import { addBlock } from '../../../store/actions';
+import * as actions from 'modules/tab/store/actions';
 
 function AddBlockButton({ part_id }) {
     const dispatch = useDispatch();
 
     function addNewBlock() {
-        dispatch(addBlock(part_id));
+        dispatch(actions.addBlock(part_id));
     }
 
     return (

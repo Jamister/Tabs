@@ -4,17 +4,17 @@ import { Button } from 'antd';
 // import * as s from './AddPartButton.style';
 
 // Actions
-import { addPart } from 'modules/tab/store/actions';
+import * as actions from 'modules/tab/store/actions';
 
 const AddPartButton = () => {
     const dispatch = useDispatch();
 
-    function exportTab() {
-        dispatch(addPart());
+    function addNewPart() {
+        dispatch(actions.addPart());
     }
 
     return (
-        <Button type="primary" onClick={exportTab}>
+        <Button type="primary" onClick={addNewPart}>
             Add new part
         </Button>
     );

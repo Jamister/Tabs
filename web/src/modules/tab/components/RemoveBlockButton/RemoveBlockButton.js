@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import * as s from './RemoveBlockButton.style';
 
 // Actions
-import { removeBlock } from '../../../store/actions';
+import * as actions from 'modules/tab/store/actions';
 
 function RemoveBlockButton({ part_id }) {
     const dispatch = useDispatch();
 
     function removeLastBlock() {
-        dispatch(removeBlock(part_id));
+        dispatch(actions.removeBlock(part_id));
     }
 
     return (

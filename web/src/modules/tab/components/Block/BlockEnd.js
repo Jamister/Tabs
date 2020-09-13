@@ -6,10 +6,10 @@ import { useSelector, shallowEqual } from 'react-redux';
 import * as s from './BlockEnd.style';
 
 // Components
-import AddBlockButton from '../_buttons/AddBlockButton';
-import RemoveBlockButton from '../_buttons/RemoveBlockButton';
+import AddBlockButton from '../AddBlockButton';
+import RemoveBlockButton from '../RemoveBlockButton';
 
-// Functions
+// Utils
 import { extract } from '../../utils/extractIds';
 
 function BlockEnd({ full_block_id }) {

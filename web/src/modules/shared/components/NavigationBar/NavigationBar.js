@@ -7,17 +7,22 @@ import Container from '../Container';
 import AccountMenu from '../AccountMenu';
 import CreateTabButton from 'modules/tab/components/CreateTabButton';
 
+// Utils
+import isUserLogged from 'modules/user/utils/isUserLogged';
+
 const NavigationBar = () => (
     <s.TabBarWrapper>
         <Container background="#253140">
             <s.Logo>Oak</s.Logo>
-            <s.Menu>
-                <li>
-                    <Link to="/me/tabs">
-                        Tablaturas
-                    </Link>
-                </li>
-            </s.Menu>
+            {isUserLogged() && (
+                <s.Menu>
+                    <li>
+                        <Link to="/me/tabs">
+                            Tablaturas
+                        </Link>
+                    </li>
+                </s.Menu>
+            )}
             <s.Button>
                 <CreateTabButton />
             </s.Button>

@@ -63,3 +63,9 @@ export const saveTab = ({ mutation }) => ({
     type: types.SAVE_TAB,
     mutation,
 });
+
+export const changeLineTuning = ({ line, note }) => ({
+    type: types.CHANGE_LINE_TUNING,
+    line,
+    note,
+});

@@ -13,12 +13,20 @@ export const SAVE_TAB = gql`
     mutation SaveTab(
         $hashId: String
         $title: String
+        $artist: String
+        $tuning: String
+        $instrument: String
         $content: String
+        # $private: Boolean
     ) {
         saveTab(
             hashId: $hashId
             title: $title
+            artist: $artist
+            tuning: $tuning
+            instrument: $instrument
             content: $content
+            # private: $private
         ) {
             hashId
         }

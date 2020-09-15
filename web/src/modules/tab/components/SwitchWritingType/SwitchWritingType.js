@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-
-// CSS
 import { Radio } from 'antd';
+import * as s from './SwitchWritingType.style';
 
 // Actions
-import { userChangedWritingType } from '../../store/actions';
+import * as actions from '../../store/actions';
 
 const SwitchWritingType = () => {
     const dispatch = useDispatch();
@@ -14,19 +13,20 @@ const SwitchWritingType = () => {
 
     function switchWriting(e) {
         const writing = e?.target?.value || 'notes';
-        const action = userChangedWritingType(writing);
-        dispatch(action);
+        dispatch(actions.userChangedWritingType(writing));
     }
 
     return (
-        <Radio.Group
-            buttonStyle="solid"
-            defaultValue={user_is_writing}
-            onChange={switchWriting}
-        >
-            <Radio.Button value="notes">Notes</Radio.Button>
-            <Radio.Button value="chords">Chords</Radio.Button>
-        </Radio.Group>
+        <s.SwitchWritingType>
+            <Radio.Group
+                buttonStyle="solid"
+                defaultValue={user_is_writing}
+                onChange={switchWriting}
+            >
+                <Radio.Button value="notes">Notes</Radio.Button>
+                <Radio.Button value="chords">Chords</Radio.Button>
+            </Radio.Group>
+        </s.SwitchWritingType>
     );
 };
 

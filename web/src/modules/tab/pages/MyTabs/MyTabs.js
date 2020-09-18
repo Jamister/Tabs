@@ -39,6 +39,7 @@ const MyTabs = () => {
     useEffect(() => {
         if (mutation.data) {
             setTabs(mutation.data.assignTabs);
+            localStorage.setItem('tabsToAssign', '');
         }
     }, [mutation.data]);
 

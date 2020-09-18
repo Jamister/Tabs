@@ -3,9 +3,9 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { applyMiddleware } = require('graphql-middleware');
 
-const { schema } = require('./schema');
+const { schema } = require('./src/schema');
 // const { permissions } = require('./permissions');
-const { prisma } = require('./context');
+const { prisma } = require('./src/context');
 
 // const middleware = [permissions];
 // const schemaWithMiddleware = applyMiddleware(schema, ...middleware);

@@ -124,9 +124,14 @@ const UserMutation = extendType({
                     return returnTabs(decodedIdsList);
                 }
 
+                function removeInvalidIds(decodedIdsList) {
+                    const clearedIdsList = decodedIdsList.filter(id => id);
+                    return assign(clearedIdsList);
+                }
+
                 function decodeTabsIds(tabsIdsList) {
                     const decodedIdsList = tabsIdsList.map(decodeId);
-                    return assign(decodedIdsList);
+                    return removeInvalidIds(decodedIdsList);
                 }
 
                 function getTabsIds() {

@@ -13,6 +13,7 @@ import TabView from './TabView';
 import TabLoading from './TabLoading';
 import Layout from 'modules/shared/components/Layout';
 import TitleInput from 'modules/tab/components/TitleInput';
+import ExportTabButton from 'modules/tab/components/ExportTabButton';
 import SavingEditions from './SavingEditions';
 
 const Tab = () => {
@@ -36,6 +37,7 @@ const Tab = () => {
             <Row>
                 <Col span={24}>
                     <TitleInput />
+                    <ExportTabButton />
                     <TabView />
                     <SavingEditions />
                     <p><br /></p>

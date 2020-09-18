@@ -21,6 +21,16 @@ export const Logo = styled.div`
     font-size: 20px;
     font-weight: 400;
     border-right: 1px solid #0E1522;
+
+    &:before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: -${theme.container_side_padding}px;
+        width: ${theme.container_side_padding}px;
+        height: ${theme.navbar_height}px;
+        background: #202a37;
+    }
 `;
 
 export const Menu = styled.ul`

@@ -5,6 +5,7 @@ const theme = {
     column_width: 36,
     navbar_height: 61,
     subbar_height: 44,
+    container_side_padding: 30,
 };
 
 export default theme;

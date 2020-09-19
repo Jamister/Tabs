@@ -49,7 +49,9 @@ const TabView = () => {
                     />
                 ))}
             </s.PaddingWrapper>
-            <div><AddPartButton /></div>
+            <s.AddPartButtonWrapper>
+                <AddPartButton />
+            </s.AddPartButtonWrapper>
         </>
     );
 };

@@ -38,11 +38,6 @@ const Tab = () => {
                     <TabHeaderInfo />
                     <TabView />
                     <SavingEditions />
-                    <p><br /></p>
-                    <p><br /></p>
-                    <p><br /></p>
-                    <p><br /></p>
-                    <p><br /></p>
                 </Col>
             </Row>
         </Layout>

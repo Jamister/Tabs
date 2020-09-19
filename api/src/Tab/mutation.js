@@ -9,6 +9,8 @@ const UserMutation = extendType({
         t.field('createTab', {
             type: 'Tab',
             args: {
+                tuning: stringArg(),
+                instrument: stringArg(),
                 content: stringArg(),
             },
             resolve: async (parent, args, context) => {
@@ -19,6 +21,8 @@ const UserMutation = extendType({
                     });
                     return context.prisma.tab.create({
                         data: {
+                            tuning: args.tuning,
+                            instrument: args.instrument,
                             content: args.content,
                             user: { connect: { id: user.id } },
                         },
@@ -26,6 +30,8 @@ const UserMutation = extendType({
                 }
                 return context.prisma.tab.create({
                     data: {
+                        tuning: args.tuning,
+                        instrument: args.instrument,
                         content: args.content,
                     },
                 });

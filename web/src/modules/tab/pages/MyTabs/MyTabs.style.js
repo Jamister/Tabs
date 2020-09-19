@@ -18,6 +18,7 @@ export const TabOnList = styled.div`
 `;
 
 export const Title = styled.h4`
+    margin-bottom: 0.2em;
     font-family: 'Source Serif Pro', serif;
     font-size: 21px;
     font-weight: 700;

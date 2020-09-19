@@ -54,6 +54,11 @@ export const updateTitle = ({ title }) => ({
     title,
 });
 
+export const updateArtist = ({ artist }) => ({
+    type: types.UPDATE_ARTIST,
+    artist,
+});
+
 export const loadTabIntoStore = ({ payload }) => ({
     type: types.LOAD_TAB_INTO_STORE,
     payload,

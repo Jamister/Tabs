@@ -26,6 +26,10 @@ const Tab = () => {
         if (data) {
             dispatch(actions.loadTabIntoStore({ payload: data?.tab }));
         }
+
+        return () => {
+            dispatch(actions.clearTabValues());
+        };
     }, [data]);
 
     if (loading) return <TabLoading />;

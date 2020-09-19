@@ -74,3 +74,7 @@ export const changeLineTuning = ({ line, note }) => ({
     line,
     note,
 });
+
+export const clearTabValues = () => ({
+    type: types.CLEAR_TAB_VALUES,
+});

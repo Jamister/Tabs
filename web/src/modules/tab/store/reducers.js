@@ -19,6 +19,7 @@ import saveTab from './logic/saveTab';
 import saveTabSuccess from './logic/saveTabSuccess';
 import saveTabFailed from './logic/saveTabFailed';
 import changeLineTuning from './logic/changeLineTuning';
+import clearTabValues from './logic/clearTabValues';
 
 const funcs = {
     ADD_BLOCK: addBlock,
@@ -39,6 +40,7 @@ const funcs = {
     SAVE_TAB_SUCCESS: saveTabSuccess,
     SAVE_TAB_FAILED: saveTabFailed,
     CHANGE_LINE_TUNING: changeLineTuning,
+    CLEAR_TAB_VALUES: clearTabValues,
 };
 
 const reducer = (state = tab, action) => {

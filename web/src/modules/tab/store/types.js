@@ -18,3 +18,4 @@ export const SAVE_TAB = 'SAVE_TAB';
 export const SAVE_TAB_SUCCESS = 'SAVE_TAB_SUCCESS';
 export const SAVE_TAB_FAILED = 'SAVE_TAB_FAILED';
 export const CHANGE_LINE_TUNING = 'CHANGE_LINE_TUNING';
+export const CLEAR_TAB_VALUES = 'CLEAR_TAB_VALUES';

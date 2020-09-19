@@ -60,7 +60,7 @@ export const MY_TABS = gql`
 `;
 
 export const GET_TAB = gql`
-    query Tab($tabId: String!) {
+    query Tab($tabId: String) {
         tab(tabId: $tabId) {
             hashId
             title
@@ -69,6 +69,14 @@ export const GET_TAB = gql`
             instrument
             content
             private
+        }
+    }
+`;
+
+export const DELETE_TAB = gql`
+    mutation DeleteTab($tabId: String) {
+        deleteTab(tabId: $tabId) {
+            hashId
         }
     }
 `;

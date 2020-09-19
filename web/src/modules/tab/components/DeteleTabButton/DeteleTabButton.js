@@ -3,8 +3,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 import { Modal, Button } from 'antd';
-// import * as s from './DeteleTabButton.style';
-/* eslint-disable */
+
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -36,7 +35,7 @@ const DeteleTabButton = () => {
 
     function handleOk() {
         deleteTab({ variables: { tabId } });
-    } // brabo.rodrigo@gmail.com
+    }
 
     return (
         <>

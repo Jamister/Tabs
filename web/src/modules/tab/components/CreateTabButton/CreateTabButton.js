@@ -8,6 +8,7 @@ import { CREATE_TAB } from 'modules/tab/api';
 
 // Utils
 import isUserLogged from 'modules/user/utils/isUserLogged';
+import tabDefaultValues from 'modules/tab/utils/tabDefaultValues';
 
 const CreateTabButton = () => {
     const history = useHistory();
@@ -48,7 +49,12 @@ const CreateTabButton = () => {
     }, [error]);
 
     function create() {
-        createTab({ variables: { content: '' } });
+        const variables = {
+            tuning: tabDefaultValues.tuning.join(','),
+            instrument: tabDefaultValues.instrument,
+            content: tabDefaultValues.content,
+        };
+        createTab({ variables });
     }
 
     return (

@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
 import { getDateNow } from 'modules/shared/utils/dates';
+import tabDefaultValues from 'modules/tab/utils/tabDefaultValues';
 
 const changeLineTuning = produce((draft, action) => {
     const note = action?.note;
@@ -21,7 +22,7 @@ const changeLineTuning = produce((draft, action) => {
     }
 
     function createTuningWithNewNote() {
-        draft.tuning = ['e', 'B', 'G', 'D', 'A', 'E'];
+        draft.tuning = tabDefaultValues.tuning;
         return updateNote();
     }
 

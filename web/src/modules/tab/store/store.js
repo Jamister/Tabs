@@ -1,3 +1,5 @@
+import tabDefaultValues from 'modules/tab/utils/tabDefaultValues';
+
 const tab = {
     tabHashId: '',
     lastChange: 0,
@@ -5,9 +7,9 @@ const tab = {
     savingError: null,
     title: '',
     artist: '',
-    instrument: 'guitar',
-    tuning: ['e', 'B', 'G', 'D', 'A', 'E'],
-    lines: [1, 2, 3, 4, 5, 6],
+    instrument: tabDefaultValues.instrument,
+    tuning: tabDefaultValues.tuning,
+    lines: tabDefaultValues.lines,
     user_is_writing: 'notes',
     selected_note: {
         p: 0, b: 0, c: 0, l: 0,

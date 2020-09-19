@@ -125,7 +125,7 @@ const UserMutation = extendType({
                 }
 
                 function removeInvalidIds(decodedIdsList) {
-                    const clearedIdsList = decodedIdsList.filter(id => id);
+                    const clearedIdsList = decodedIdsList.filter((id) => id);
                     return assign(clearedIdsList);
                 }
 
@@ -148,6 +148,51 @@ const UserMutation = extendType({
                 }
 
                 return checkValidToken();
+            },
+        });
+
+        t.field('deleteTab', {
+            type: 'Tab',
+            args: {
+                tabId: stringArg(),
+            },
+            resolve: async (parent, args, context) => {
+                const tabId = decodeId(args.tabId);
+                const { valid, userId } = verifyToken(context);
+
+                function deleteTab() {
+                    return context.prisma.tab.delete({
+                        where: { id: tabId },
+                    });
+                }
+
+                function checkTabOwner(tab, tabHasUserAssigned) {
+                    const isCorrectOwner = userId === tab.userId;
+                    if (tabHasUserAssigned && !isCorrectOwner) {
+                        throw new Error('Tab not found');
+                    }
+                    return deleteTab();
+                }
+
+                function checkIfTabHasOwner(tab) {
+                    const tabHasUserAssigned = tab.userId !== null;
+                    if (tabHasUserAssigned && !valid) {
+                        throw new AuthenticationError('You must be logged in');
+                    }
+                    return checkTabOwner(tab, tabHasUserAssigned);
+                }
+
+                async function getTab() {
+                    const tab = await context.prisma.tab.findOne({
+                        where: { id: tabId },
+                    });
+                    if (!tab) {
+                        throw new Error('Tab not found');
+                    }
+                    return checkIfTabHasOwner(tab);
+                }
+
+                return getTab();
             },
         });
     },

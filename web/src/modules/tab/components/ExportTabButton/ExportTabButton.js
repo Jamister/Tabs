@@ -3,6 +3,10 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { Modal, Button } from 'antd';
 import * as s from './ExportTabButton.style';
 
+// FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
+
 // Actions
 import * as actions from '../../store/actions';
 
@@ -23,11 +27,11 @@ const ExportTabButton = () => {
 
     return (
         <>
-            <Button onClick={exportTab}>
-                Exportar tab
+            <Button type="link" onClick={exportTab}>
+                <FontAwesomeIcon icon={faExternalLinkSquareAlt} /> Exportar tab
             </Button>
             <Modal
-                title="Basic Modal"
+                title="Versão em texto"
                 visible={visible}
                 onCancel={closeModal}
                 width={1000}

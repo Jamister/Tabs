@@ -12,8 +12,7 @@ import { GET_TAB } from 'modules/tab/api';
 import TabView from './TabView';
 import TabLoading from './TabLoading';
 import Layout from 'modules/shared/components/Layout';
-import TitleInput from 'modules/tab/components/TitleInput';
-import ExportTabButton from 'modules/tab/components/ExportTabButton';
+import TabHeaderInfo from 'modules/tab/components/TabHeaderInfo';
 import SavingEditions from './SavingEditions';
 
 const Tab = () => {
@@ -36,8 +35,7 @@ const Tab = () => {
         <Layout include_actions_bar include_keytips>
             <Row>
                 <Col span={24}>
-                    <TitleInput />
-                    <ExportTabButton />
+                    <TabHeaderInfo />
                     <TabView />
                     <SavingEditions />
                     <p><br /></p>

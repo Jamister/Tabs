@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { transition } from 'styles/mixins';
 
 export const Input = styled.input`
+    width: 100%;
     margin: 36px 0 23px;
     background: none;
     border: 1px solid transparent;

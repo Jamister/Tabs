@@ -16,7 +16,7 @@ const ErrorView = () => (
                 <s.ErrorWrapper>
                     <FontAwesomeIcon icon={faExclamationCircle} />
                     <h2>Desculpe, tivemos um problema!</h2>
-                    <p>Atualize a página usando um dos comandos abaixo.</p>
+                    <p>Atualize a página utilizando um dos comandos abaixo.</p>
                     <s.KeyboardsWrapper>
                         <s.Keyboards>
                             <s.KeyboardType>Windows:</s.KeyboardType>

@@ -27,7 +27,7 @@ const ArtistInput = () => {
                 type="text"
                 value={value}
                 onChange={handleEdition}
-                placeholder="Title"
+                placeholder="..."
             />
         </s.ArtistWrapper>
     );

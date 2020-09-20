@@ -19,15 +19,17 @@ const moveSelectedNote = produce((draft, action) => {
     }
 
     function ArrowDown() {
-        const lower_line = lines.reduce((res, cur) => (cur > res ? cur : res));
-        const next_line = l === lower_line ? lower_line : l + 1;
-        const new_selected_note = { p, b, c, l: next_line };
+        const lineAsNumber = Number(l);
+        const lowerLine = lines.reduce((res, cur) => (cur > res ? cur : res));
+        const nextLine = lineAsNumber === lowerLine ? lowerLine : lineAsNumber + 1;
+        const new_selected_note = { p, b, c, l: `${nextLine}` };
         return saveState(new_selected_note);
     }
 
     function ArrowUp() {
-        const next_line = l === 1 ? 1 : l - 1;
-        const new_selected_note = { p, b, c, l: next_line };
+        const lineAsNumber = Number(l);
+        const nextLine = lineAsNumber === 1 ? 1 : lineAsNumber - 1;
+        const new_selected_note = { p, b, c, l: `${nextLine}` };
         return saveState(new_selected_note);
     }
 

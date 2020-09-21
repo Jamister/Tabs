@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -8,7 +8,8 @@ import * as s from './SignInButton.style';
 // Api
 import { ENTER } from 'modules/user/api';
 
-const SignInButton = ({ history }) => {
+const SignInButton = () => {
+    const history = useHistory();
     const [enter, { data, loading, error }] = useMutation(ENTER);
 
     useEffect(() => {
@@ -110,12 +111,6 @@ const SignInButton = ({ history }) => {
             <s.SpanText>Sign in with Google</s.SpanText>
         </s.GoogleButton>
     );
-};
-
-SignInButton.propTypes = {
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired,
-    }).isRequired,
 };
 
 export default SignInButton;

@@ -14,6 +14,7 @@ import TabLoading from './TabLoading';
 import Layout from 'modules/shared/components/Layout';
 import TabHeaderInfo from 'modules/tab/components/TabHeaderInfo';
 import SavingEditions from 'modules/tab/components/SavingEditions';
+import ErrorView from 'modules/shared/components/ErrorView';
 
 const Tab = () => {
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Tab = () => {
     }, [data]);
 
     if (loading) return <TabLoading />;
-    if (error) return `Error! ${error.message}`; // TODO
+    if (error) return <ErrorView />;
 
     return (
         <Layout include_actions_bar include_keytips>

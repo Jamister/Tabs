@@ -9,6 +9,7 @@ const saveTab = produce((draft) => {
     function setSaving() {
         draft.lastChange = 0;
         draft.isSaving = true;
+        draft.savingError = null;
         return finish();
     }
 

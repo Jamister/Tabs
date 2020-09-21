@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { message } from 'antd';
 import * as s from './TabSavedMessage.style';
 
 // FontAwesome
@@ -8,15 +9,30 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const TabSavedMessage = () => {
     const isSaving = useSelector(state => state.tab.isSaving);
+    const savingError = useSelector(state => state.tab.savingError);
     const [step, setStep] = useState('EMPTY');
 
     useEffect(() => {
+        function setErrorView() {
+            setStep('EMPTY');
+            const errorMessage = savingError === 'You must be logged in'
+                ? 'Esta tablatura só pode ser editada pelo dono.'
+                : savingError;
+            message.error(errorMessage);
+        }
+
         function timeoutToHideMessage() {
             setTimeout(() => setStep('EMPTY'), 3000);
         }
 
         function checkFinishSaving() {
-            if (step === 'SAVING') {
+            const hasError = savingError !== null;
+            if (hasError) {
+                setErrorView();
+                return;
+            }
+            const wasSaving = step === 'SAVING';
+            if (wasSaving) {
                 setStep('SUCCESS');
                 timeoutToHideMessage();
             }
@@ -33,7 +49,7 @@ const TabSavedMessage = () => {
         }
 
         checkIfIsSaving();
-    }, [isSaving]);
+    }, [isSaving, savingError]);
 
     if (step === 'SAVING') {
         return (

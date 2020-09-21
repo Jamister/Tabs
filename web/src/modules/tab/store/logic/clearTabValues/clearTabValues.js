@@ -8,6 +8,7 @@ const clearTabValues = produce((draft) => {
     }
 
     function clearValues() {
+        draft.savingError = null;
         draft.tabHashId = '';
         draft.lastChange = 0;
         draft.title = '';

@@ -5,7 +5,7 @@ import { Menu, Dropdown } from 'antd';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faUser, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 // Components
 import SignOutButton from 'modules/user/components/SignOutButton';
@@ -33,12 +33,12 @@ const AccountMenu = () => {
 
     const menu = (
         <Menu>
-            <Menu.Item key="0">
+            {/* <Menu.Item key="0">
                 <s.LinkPad to="/account">
                     <FontAwesomeIcon icon={faUser} /> Minha conta
                 </s.LinkPad>
             </Menu.Item>
-            <Menu.Divider />
+            <Menu.Divider /> */}
             <Menu.Item key="3">
                 <SignOutButton />
             </Menu.Item>

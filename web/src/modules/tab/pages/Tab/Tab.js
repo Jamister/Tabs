@@ -13,7 +13,7 @@ import TabView from './TabView';
 import TabLoading from './TabLoading';
 import Layout from 'modules/shared/components/Layout';
 import TabHeaderInfo from 'modules/tab/components/TabHeaderInfo';
-import SavingEditions from './SavingEditions';
+import SavingEditions from 'modules/tab/components/SavingEditions';
 
 const Tab = () => {
     const dispatch = useDispatch();

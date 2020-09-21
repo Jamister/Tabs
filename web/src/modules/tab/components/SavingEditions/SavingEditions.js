@@ -26,8 +26,8 @@ const SavingEditions = () => {
 
         const checkIfUserStopEditing = () => {
             const lastChangeFromNow = getDateDiffFromNow(lastChange, 'seconds');
-            const noChangesInLast5Seconds = lastChangeFromNow < -5;
-            if (noChangesInLast5Seconds) checkPreviousOtsStillSaving();
+            const noChangesInLast3Seconds = lastChangeFromNow < -3;
+            if (noChangesInLast3Seconds) checkPreviousOtsStillSaving();
         };
 
         const checkIfHadEdition = () => {

@@ -29,7 +29,7 @@ export const SAVE_TAB = gql`
             # private: $private
         ) {
             hashId
-            $title
+            title
             artist
             tuning
             instrument

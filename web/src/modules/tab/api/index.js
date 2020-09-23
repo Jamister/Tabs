@@ -29,6 +29,12 @@ export const SAVE_TAB = gql`
             # private: $private
         ) {
             hashId
+            $title
+            artist
+            tuning
+            instrument
+            content
+            # private
         }
     }
 `;
@@ -37,11 +43,6 @@ export const ASSIGN_TABS = gql`
     mutation AssignTabs($tabsIds: String!) {
         assignTabs(tabsIds: $tabsIds) {
             hashId
-            title
-            artist
-            tuning
-            instrument
-            private
         }
     }
 `;

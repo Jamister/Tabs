@@ -16,7 +16,7 @@ function NoteWidthSpace({ note_id }) {
         return <s.WidthSpace size={note_size} />;
     }
 
-    return null;
+    return <s.WidthSpace size={1} />;
 }
 
 NoteWidthSpace.propTypes = {

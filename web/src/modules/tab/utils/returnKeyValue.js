@@ -1,3 +1,5 @@
+import validChars from './validChars';
+
 const returnKeyValue = (key, pre_value) => {
     function checkArrows() {
         const arrows = (
@@ -23,15 +25,8 @@ const returnKeyValue = (key, pre_value) => {
     }
 
     function checkValidTabChar() {
-        const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        const letters = ['s', 'h', 'p', 'b', 'r', 'v', 't', 'x'];
-        const special_chars = ['\\', '/'];
-        const valid_chars = [
-            ...numbers,
-            ...letters,
-            ...special_chars,
-        ];
-        const is_valid_char = valid_chars.some(char => char === key.toLowerCase());
+        const is_valid_char = validChars
+            .some(char => char === key.toLowerCase());
         return is_valid_char
             ? `${pre_value}${key.toLowerCase()}`
             : checkBackspace();

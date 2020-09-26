@@ -9,8 +9,9 @@ import { selectNote } from '../../store/actions';
 // Components
 import NoteValue from './NoteValue';
 import NoteWidthSpace from './NoteWidthSpace';
+import NotePopover from '../NotePopover';
 
-// Functions
+// Utils
 import { extract } from '../../utils/extractIds';
 import { isNoteSelectedSelector } from 'modules/tab/store/selectors';
 
@@ -49,6 +50,23 @@ function NoteVK({ full_column_id, line_id = '' }) {
                 </s.Note>
                 <NoteWidthSpace note_id={note_id} />
             </>
+        );
+    }
+
+    if (is_selected) {
+        return (
+            <NotePopover>
+                <s.Note
+                    type="button"
+                    data-note="true"
+                    line={line_id}
+                    is_selected={is_selected}
+                    onClick={handleNote}
+                >
+                    <NoteValue note_id={note_id} />
+                </s.Note>
+                <NoteWidthSpace note_id={note_id} />
+            </NotePopover>
         );
     }
 

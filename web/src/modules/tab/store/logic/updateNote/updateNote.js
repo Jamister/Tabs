@@ -47,7 +47,7 @@ const updateNote = produce((draft, action) => {
             };
         });
         draft.notes = notes;
-        return finish();
+        return setLastChange();
     }
 
     function findChord() {

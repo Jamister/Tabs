@@ -8,6 +8,7 @@ import * as s from './NotePopover.style';
 import * as actions from '../../store/actions';
 
 // Utils
+import isVirtualKeyboardActive from 'modules/user/utils/isVirtualKeyboardActive';
 import { numbers, letters, specialChars } from 'modules/tab/utils/validChars';
 
 function NotePopover({ children }) {
@@ -44,19 +45,25 @@ function NotePopover({ children }) {
         </div>
     );
 
-    return (
-        <Popover
-            content={content}
-            trigger="click"
-            visible
-        >
-            {React.Children.map(children, (child) => (
-                <React.Fragment key={child}>
-                    {child}
-                </React.Fragment>
-            ))}
-        </Popover>
-    );
+    const childrenElems = React.Children.map(children, (child) => (
+        <React.Fragment key={child}>
+            {child}
+        </React.Fragment>
+    ));
+
+    if (isVirtualKeyboardActive()) {
+        return (
+            <Popover
+                content={content}
+                trigger="click"
+                visible
+            >
+                {childrenElems}
+            </Popover>
+        );
+    }
+
+    return <>{childrenElems}</>;
 }
 
 NotePopover.propTypes = {

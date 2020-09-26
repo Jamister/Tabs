@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
+import { getDateNow } from 'modules/shared/utils/dates';
 import createUniqueId from 'modules/shared/utils/createUniqueId';
 import createColumns from 'modules/tab/utils/createColumns';
 
@@ -8,8 +9,13 @@ const addPart = produce((draft) => {
     const parts_all_ids = parts.all_ids || [];
     const parts_by_id = parts.by_id || {};
 
-    function saveStore() {
+    function finish() {
         return draft;
+    }
+
+    function setLastChange() {
+        draft.lastChange = getDateNow();
+        return finish();
     }
 
     function addColumnsToById(new_columns) {
@@ -20,7 +26,7 @@ const addPart = produce((draft) => {
             ...by_id,
         };
         draft.columns.by_id = new_columns_by_id;
-        return saveStore();
+        return setLastChange();
     }
 
     function addColumnsToAllIds(new_columns) {

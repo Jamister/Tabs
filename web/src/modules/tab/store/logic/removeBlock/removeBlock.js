@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
+import { getDateNow } from 'modules/shared/utils/dates';
 
 const removeBlock = produce((draft, action) => {
     const blocks = draft.blocks || {};
@@ -8,6 +9,11 @@ const removeBlock = produce((draft, action) => {
 
     function finish() {
         return draft;
+    }
+
+    function setLastChange() {
+        draft.lastChange = getDateNow();
+        return finish();
     }
 
     function removeNotesInLastBlock(last_block_id) {
@@ -19,7 +25,7 @@ const removeBlock = produce((draft, action) => {
             return !to_delete;
         });
         draft.notes = notes;
-        return finish();
+        return setLastChange();
     }
 
     function removeColumnsInLastBlock(last_block_full_id) {

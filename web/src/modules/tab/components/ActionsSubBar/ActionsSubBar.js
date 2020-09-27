@@ -5,6 +5,7 @@ import * as s from './ActionsSubBar.style';
 import Container from 'modules/shared/components/Container';
 import SwitchWritingType from '../SwitchWritingType';
 import TuningButton from '../TuningButton';
+import VirtualKeyboardSwitch from '../VirtualKeyboardSwitch';
 
 const ActionsSubBar = () => (
     <s.SubBarWrapper>
@@ -12,6 +13,8 @@ const ActionsSubBar = () => (
             <SwitchWritingType />
             <s.SubBarDivision />
             <TuningButton />
+            <s.SubBarDivision />
+            <VirtualKeyboardSwitch />
             <s.SubBarDivision />
         </Container>
     </s.SubBarWrapper>

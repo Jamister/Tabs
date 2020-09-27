@@ -12,3 +12,11 @@ export const ENTER = gql`
         }
     }
 `;
+
+export const UPDATE_USER = gql`
+    mutation UpdateUser($virtualKeyboard: Boolean) {
+        updateUser(virtualKeyboard: $virtualKeyboard) {
+            virtualKeyboard,
+        }
+    }
+`;

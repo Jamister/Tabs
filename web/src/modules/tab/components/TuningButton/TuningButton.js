@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Input, Popover } from 'antd';
+import { Input, Popover, Button } from 'antd';
 import * as s from './TuningButton.style';
 
 // FontAwesome
@@ -22,7 +22,7 @@ const TuningButton = () => {
     }
 
     const content = (
-        <s.TuningWrapper>
+        <s.TuningPopoverWrapper>
             {lines.map((line) => (
                 <s.TuningRow key={line}>
                     <s.LineNumber>{line}ª linha</s.LineNumber>
@@ -36,17 +36,20 @@ const TuningButton = () => {
                     />
                 </s.TuningRow>
             ))}
-        </s.TuningWrapper>
+        </s.TuningPopoverWrapper>
     );
 
     return (
-        <Popover placement="bottomLeft" content={content} trigger="click">
-            <s.TuningButton>
-                <FontAwesomeIcon icon={faAlignLeft} />
-                <span>Tuning:</span> {tuning.join(' ')}
-                <FontAwesomeIcon icon={faCaretDown} />
-            </s.TuningButton>
-        </Popover>
+        <s.TuningWrapper>
+            <FontAwesomeIcon icon={faAlignLeft} />
+            <span>Tuning:</span>
+            <Popover placement="bottomLeft" content={content} trigger="click">
+                <Button type="primary">
+                    {tuning.join(' ')}
+                    <FontAwesomeIcon icon={faCaretDown} />
+                </Button>
+            </Popover>
+        </s.TuningWrapper>
     );
 };
 

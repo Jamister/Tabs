@@ -1,45 +1,41 @@
 import styled from 'styled-components';
 import theme from 'styles/theme';
-import { transition } from 'styles/mixins';
 
-export const TuningButton = styled.button`
+export const TuningWrapper = styled.div`
     position: relative;
     float: left;
     height: ${theme.subbar_height}px;
-    padding: 0 42px 0 48px;
+    padding: 6px 32px 0 48px;
     color: #212121;
     font-size: 15px;
-    background: none;
-    border: none;
-    outline: none;
-    ${transition('background 0.2s ease')};
-
-    :hover {
-        cursor: pointer;
-        background: #e5eaec;
-    }
 
     > span {
         color: #7C7C7C;
     }
 
+    > button {
+        margin-left: 8px;
+        padding: 4px 30px 4px 15px;
+
+        > svg {
+            position: absolute;
+            top: 7px;
+            right: 11px;
+            font-size: 15px;
+            color: #dadee2;
+        }
+    }
+
     > svg {
         position: absolute;
         top: 14px;
-        right: 21px;
-        font-size: 15px;
+        left: 25px;
+        font-size: 16px;
         color: #A1ABB4;
-
-        :first-of-type {
-            top: 14px;
-            left: 25px;
-            right: auto;
-            font-size: 16px;
-        }
     }
 `;
 
-export const TuningWrapper = styled.div`
+export const TuningPopoverWrapper = styled.div`
     padding: 6px 0px;
 `;
 

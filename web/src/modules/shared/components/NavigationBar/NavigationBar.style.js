@@ -21,6 +21,12 @@ export const Logo = styled.div`
     font-weight: 400;
     border-right: 1px solid #0E1522;
 
+    > svg {
+        margin-right: 8px;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
     &:before {
         content: ' ';
         position: absolute;

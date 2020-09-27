@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Switch } from 'antd';
 import * as s from './VirtualKeyboardSwitch.style';
@@ -15,13 +15,9 @@ import retrieveUserInfo from 'modules/user/utils/retrieveUserInfo';
 import updateUserInfoOnLocalstorage from 'modules/user/utils/updateUserInfoOnLocalstorage';
 
 const VirtualKeyboardSwitch = () => {
-    const [updateUser, { data }] = useMutation(UPDATE_USER);
+    const [updateUser] = useMutation(UPDATE_USER);
     const virtualKeyboard = retrieveUserInfo('virtualKeyboard') || false;
     const [keyboardActive, setKeyboard] = useState(() => virtualKeyboard);
-
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
 
     function onChange(checked) {
         updateUserInfoOnLocalstorage({

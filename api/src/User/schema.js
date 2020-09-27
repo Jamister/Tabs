@@ -11,6 +11,7 @@ const User = objectType({
         t.model.imageUrl();
         t.model.name();
         t.model.username();
+        t.model.virtualKeyboard();
         t.model.tabs();
         t.model.folders();
     },

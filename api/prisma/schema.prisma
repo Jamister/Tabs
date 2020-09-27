@@ -14,6 +14,7 @@ model User {
     imageUrl String @default("")
     name String @default("")
     username String @default("")
+    virtualKeyboard Boolean @default(true)
     tabs Tab[]
     folders Folder[]
 }

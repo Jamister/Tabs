@@ -3,11 +3,6 @@ const { extendType } = require('@nexus/schema');
 const UserQuery = extendType({
     type: 'Query',
     definition(t) {
-        // t.list.field('users', {
-        //     type: 'User',
-        //     resolve: (_, args, context) => context.prisma.user.findMany(),
-        // });
-
         // t.field('me', {
         //     type: 'User',
         //     nullable: true,

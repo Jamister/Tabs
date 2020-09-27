@@ -17,7 +17,7 @@ function RemoveBlockButton({ part_id }) {
     return (
         <Tooltip
             placement="right"
-            title={<span>Remover bloco</span>}
+            title={<span>Remover compasso</span>}
         >
             <s.RemoveBlockButton
                 type="button"

@@ -13,7 +13,7 @@ import isUserLogged from 'modules/user/utils/isUserLogged';
 const NavigationBar = () => (
     <s.TabBarWrapper>
         <Container background="#253140">
-            <s.Logo>Oak</s.Logo>
+            <s.Logo>Jamister</s.Logo>
             {isUserLogged() && (
                 <s.Menu>
                     <li>

@@ -17,7 +17,7 @@ function AddBlockButton({ part_id }) {
     return (
         <Tooltip
             placement="right"
-            title={<span>Adicionar bloco</span>}
+            title={<span>Adicionar compasso</span>}
         >
             <s.AddBlockButton
                 type="button"

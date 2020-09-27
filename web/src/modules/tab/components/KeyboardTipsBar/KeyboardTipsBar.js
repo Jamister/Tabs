@@ -8,6 +8,7 @@ import ArrowDownKey from './ArrowDownKey';
 import ArrowLeftKey from './ArrowLeftKey';
 import ArrowRightKey from './ArrowRightKey';
 
+// To navigate through the tab
 const KeyboardTipsBar = () => (
     <s.TipsBarWrapper>
         <Container>
@@ -15,7 +16,9 @@ const KeyboardTipsBar = () => (
             <ArrowDownKey />
             <ArrowLeftKey />
             <ArrowRightKey />
-            <s.Subtitle>To navigate through the tab</s.Subtitle>
+            <s.Subtitle>
+                Use as teclas para navegar pela tab
+            </s.Subtitle>
         </Container>
     </s.TipsBarWrapper>
 );

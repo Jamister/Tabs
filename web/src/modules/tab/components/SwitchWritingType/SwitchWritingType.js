@@ -23,8 +23,8 @@ const SwitchWritingType = () => {
                 defaultValue={user_is_writing}
                 onChange={switchWriting}
             >
-                <Radio.Button value="notes">Notes</Radio.Button>
-                <Radio.Button value="chords">Chords</Radio.Button>
+                <Radio.Button value="notes">Notas</Radio.Button>
+                <Radio.Button value="chords">Acordes</Radio.Button>
             </Radio.Group>
         </s.SwitchWritingType>
     );

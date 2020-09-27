@@ -25,10 +25,10 @@ const ListTabs = ({ tabs }) => {
                         <s.TabOnList>
                             <s.Title>{tab.title}</s.Title>
                             <s.OtherInfo>
-                                <span>Artist:</span> {tab.artist}
+                                <span>Artista:</span> {tab.artist}
                             </s.OtherInfo>
                             <s.OtherInfo>
-                                <span>Tuning:</span> {tuningView(tab.tuning)}
+                                <span>Afinação:</span> {tuningView(tab.tuning)}
                             </s.OtherInfo>
                             <s.OtherInfo>
                                 <span>

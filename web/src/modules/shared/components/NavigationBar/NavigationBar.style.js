@@ -6,7 +6,6 @@ export const TabBarWrapper = styled.div`
     position: relative;
     width: 100%;
     height: ${theme.navbar_height}px;
-    /* background: #253140; */
     background: linear-gradient(90deg, #202A37 50%, #253140 50%);
 `;
 
@@ -14,7 +13,7 @@ export const Logo = styled.div`
     position: relative;
     float: left;
     height: ${theme.navbar_height}px;
-    padding: 15px 60px 0 0;
+    padding: 15px 53px 0 0;
     text-transform: uppercase;
     background: #202A37;
     color: #fff;
@@ -38,7 +37,7 @@ export const Menu = styled.ul`
     float: left;
     height: ${theme.navbar_height}px;
     margin: 0;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 14px;
     list-style: none;
     text-align: left;
     border-left: 1px solid #36414F;

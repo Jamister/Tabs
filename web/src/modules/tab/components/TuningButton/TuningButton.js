@@ -42,7 +42,7 @@ const TuningButton = () => {
     return (
         <s.TuningWrapper>
             <FontAwesomeIcon icon={faAlignLeft} />
-            <span>Tuning:</span>
+            <span>Afinação:</span>
             <Popover placement="bottomLeft" content={content} trigger="click">
                 <Button type="primary">
                     {tuning.join(' ')}

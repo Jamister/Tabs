@@ -5,8 +5,8 @@ describe('addPart', () => {
         const state = {};
         const action = addPart(state);
         const result = {
-            all_ids: [1],
-            by_id: { 1: { id: 1 } },
+            allIds: [1],
+            byId: { 1: { id: 1 } },
         };
         expect(action.parts).toStrictEqual(result);
     });
@@ -15,8 +15,8 @@ describe('addPart', () => {
         const state = {};
         const action = addPart(state);
         const result = {
-            all_ids: ['1-1'],
-            by_id: { '1-1': { id: '1-1' } },
+            allIds: ['1-1'],
+            byId: { '1-1': { id: '1-1' } },
         };
         expect(action.blocks).toStrictEqual(result);
     });
@@ -25,8 +25,8 @@ describe('addPart', () => {
         const state = {};
         const action = addPart(state);
         const result = {
-            all_ids: ['1-1-1', '1-1-2', '1-1-3', '1-1-4', '1-1-5'],
-            by_id: {
+            allIds: ['1-1-1', '1-1-2', '1-1-3', '1-1-4', '1-1-5'],
+            byId: {
                 '1-1-1': { id: '1-1-1' },
                 '1-1-2': { id: '1-1-2' },
                 '1-1-3': { id: '1-1-3' },

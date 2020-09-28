@@ -16,16 +16,16 @@ const clearTabValues = produce((draft) => {
         draft.tuning = tabDefaultValues.tuning;
         draft.notes = {};
         draft.parts = {
-            all_ids: [],
-            by_id: {},
+            allIds: [],
+            byId: {},
         };
         draft.blocks = {
-            all_ids: [],
-            by_id: {},
+            allIds: [],
+            byId: {},
         };
         draft.columns = {
-            all_ids: [],
-            by_id: {},
+            allIds: [],
+            byId: {},
         };
         return finish();
     }

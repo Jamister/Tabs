@@ -9,7 +9,7 @@ import Block from '../Block';
 
 function TablaturePart({ part_id }) {
     const blocks = useSelector(store => store.tab.blocks, shallowEqual);
-    const blocks_in_this_part = (blocks.all_ids || [])
+    const blocks_in_this_part = (blocks.allIds || [])
         .filter(b => b.indexOf(`${part_id}-`) !== -1);
 
     return (

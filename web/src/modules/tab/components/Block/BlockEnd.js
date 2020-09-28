@@ -19,9 +19,9 @@ function BlockEnd({ full_block_id }) {
     });
 
     function isLastBlockInThisPart() {
-        // TODO refactor
-        const blocks_all_ids = blocks.all_ids || {};
-        const blocks_in_this_part = (blocks_all_ids || [])
+        // REFACTOR
+        const blocksAllIds = blocks.allIds || {};
+        const blocks_in_this_part = (blocksAllIds || [])
             .filter(b => b.indexOf(`${part_id}-`) !== -1);
         const [last_block_full_id] = blocks_in_this_part.slice(-1);
         const this_block_id = extract.blockId({

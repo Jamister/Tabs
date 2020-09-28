@@ -5,9 +5,9 @@ import { getDateNow } from 'modules/shared/utils/dates';
 const removeBlock = produce((draft, action) => {
     const partId = action?.part_id || '';
     const blocks = draft.blocks || {};
-    const blocks_all_ids = blocks.all_ids || [];
-    const blocks_by_id = blocks.by_id || {};
-    const blocksInThisPart = blocks_all_ids
+    const blocksAllIds = blocks.allIds || [];
+    const blocksById = blocks.byId || {};
+    const blocksInThisPart = blocksAllIds
         .filter(b => b.indexOf(`${partId}-`) !== -1);
 
     function finish() {
@@ -20,15 +20,15 @@ const removeBlock = produce((draft, action) => {
     }
 
     function removePartFromById() {
-        const partsById = { ...draft?.parts?.by_id };
+        const partsById = { ...draft?.parts?.byId };
         delete partsById[partId];
-        draft.parts.by_id = partsById;
+        draft.parts.byId = partsById;
         return setLastChange();
     }
 
     function removePartFromAllIds() {
-        const partsAllIds = draft?.parts?.all_ids || [];
-        draft.parts.all_ids = partsAllIds.filter(p => p !== partId);
+        const partsAllIds = draft?.parts?.allIds || [];
+        draft.parts.allIds = partsAllIds.filter(p => p !== partId);
         return removePartFromById();
     }
 
@@ -53,29 +53,29 @@ const removeBlock = produce((draft, action) => {
 
     function removeColumnsInLastBlock(lastBlockFullId) {
         const columns = draft.columns || {};
-        const new_columns_by_id = { ...columns.by_id || {} };
-        const new_columns_all_ids = (columns.all_ids || [])
+        const newColumnsById = { ...columns.byId || {} };
+        const newColumnsAllIds = (columns.allIds || [])
             .filter(id => {
                 const to_delete = id.indexOf(`${lastBlockFullId}-`) === 0;
-                if (to_delete) delete new_columns_by_id[id];
+                if (to_delete) delete newColumnsById[id];
                 return !to_delete;
             });
-        draft.columns.all_ids = new_columns_all_ids;
-        draft.columns.by_id = new_columns_by_id;
+        draft.columns.allIds = newColumnsAllIds;
+        draft.columns.byId = newColumnsById;
         return removeNotesInLastBlock(lastBlockFullId);
     }
 
     function removeBlockFromById(lastBlockFullId) {
-        const new_blocks_by_id = { ...blocks_by_id };
-        delete new_blocks_by_id[lastBlockFullId];
-        draft.blocks.by_id = new_blocks_by_id;
+        const newBlocksById = { ...blocksById };
+        delete newBlocksById[lastBlockFullId];
+        draft.blocks.byId = newBlocksById;
         return removeColumnsInLastBlock(lastBlockFullId);
     }
 
     function removeBlockFromAllIds(lastBlockFullId) {
-        const blocksAllIdsUpdated = blocks_all_ids
+        const blocksAllIdsUpdated = blocksAllIds
             .filter(blockId => blockId !== lastBlockFullId);
-        draft.blocks.all_ids = blocksAllIdsUpdated;
+        draft.blocks.allIds = blocksAllIdsUpdated;
         return removeBlockFromById(lastBlockFullId);
     }
 

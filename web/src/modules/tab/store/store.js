@@ -16,70 +16,28 @@ const tab = {
     },
     notes: {},
     parts: {
-        all_ids: [],
-        by_id: {},
+        allIds: [],
+        byId: {},
     },
     blocks: {
-        all_ids: [],
-        by_id: {},
+        allIds: [],
+        byId: {},
     },
     columns: {
-        all_ids: [],
-        by_id: {},
+        allIds: [],
+        byId: {},
     },
     printed_tab: '',
     // parts: {
-    //     all_ids: [1, 2],
-    //     by_id: {
+    //     allIds: [1, 2],
+    //     byId: {
     //         1: { type: 'tablature' },
     //         2: { type: 'lyric' },
     //     },
     // },
-    // blocks: {
-    //     all_ids: ['1-1', '1-2'],
-    //     by_id: {
-    //         '1-1': {},
-    //         '1-2': {},
-    //     },
-    // },
-    // columns: {
-    //     all_ids: [
-    //         '1-1-1',
-    //         '1-1-2',
-    //         '1-1-3',
-    //         '1-1-4',
-    //         '1-1-5',
-    //         '1-2-1',
-    //         '1-2-2',
-    //         '1-2-3',
-    //         '1-2-4',
-    //         '1-2-5',
-    //     ],
-    //     by_id: {
-    //         '1-1-1': {},
-    //         '1-1-2': {},
-    //         '1-1-3': {},
-    //         '1-1-4': {},
-    //         '1-1-5': {},
-    //         '1-2-1': {},
-    //         '1-2-2': {},
-    //         '1-2-3': {},
-    //         '1-2-4': {},
-    //         '1-2-5': {},
-    //     },
-    // },
-    // lyric_chords: {
-    // 	1: {
-    // 		lyric_line_id: '1',
-    // 		chord: 'B',
-    // 		version: 1,
-    // 		position: 10,
-    // 	},
-    // },
-    // 'tablature/lyric'
     lyric_lines: {
-        all_ids: ['2-1'],
-        by_id: {
+        allIds: ['2-1'],
+        byId: {
             '2-1': {
                 id: '2-1',
                 lyric: 'Sing as their bones go marching in',
@@ -87,8 +45,8 @@ const tab = {
         },
     },
     lyric_chords: {
-        all_ids: ['1-1', '1-2'],
-        by_id: {
+        allIds: ['1-1', '1-2'],
+        byId: {
             '1-1': {
                 id: '1-1',
                 lyric_line_id: '2-1',

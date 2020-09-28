@@ -12,8 +12,8 @@ const addColumn = produce((draft) => {
 
     function addNewColumn() {
         const next_column_id = `${p}-${b}-${c + 1}`;
-        draft.columns.all_ids.push(next_column_id);
-        draft.columns.by_id[next_column_id] = {
+        draft.columns.allIds.push(next_column_id);
+        draft.columns.byId[next_column_id] = {
             part_id: p,
             block_id: b,
             id: next_column_id,
@@ -22,7 +22,7 @@ const addColumn = produce((draft) => {
     }
 
     function checkIfIsLastColumn() {
-        const allColumnsInCurrentBlock = (draft?.columns?.all_ids || [])
+        const allColumnsInCurrentBlock = (draft?.columns?.allIds || [])
             .filter(id => id.indexOf(`${p}-${b}-`) !== -1);
         const [lastColumnFullId] = allColumnsInCurrentBlock.slice(-1);
         const lastColumnId = extract.columnId({

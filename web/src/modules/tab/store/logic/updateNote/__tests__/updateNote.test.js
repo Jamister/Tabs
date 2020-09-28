@@ -10,13 +10,13 @@ describe('updateNote', () => {
         '1-1-2-3': { value: '2' },
     };
     const columns = {
-        all_ids: [
+        allIds: [
             '1-1-1',
             '1-1-2',
             '1-1-3',
             '1-1-4',
         ],
-        by_id: {
+        byId: {
             '1-1-1': {
                 part_id: 1,
                 block_id: 1,

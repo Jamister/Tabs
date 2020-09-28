@@ -17,7 +17,11 @@ Parts.propTypes = {
     part_id: PropTypes.string.isRequired,
     part: PropTypes.shape({
         type: PropTypes.string,
-    }).isRequired,
+    }),
+};
+
+Parts.defaultProps = {
+    part: {},
 };
 
 export default Parts;

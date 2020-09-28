@@ -4,22 +4,22 @@ describe('createColumns', () => {
     it('should not crash with blank values', () => {
         const result = createColumns();
         expect(result).toStrictEqual({
-            new_columns_all_ids: [],
-            new_columns_by_id: {},
+            new_columns_allIds: [],
+            new_columns_byId: {},
         });
     });
 
     it('should create 5 columns', () => {
         const result = createColumns('4-1');
         const expected = {
-            new_columns_all_ids: [
+            new_columns_allIds: [
                 '4-1-1',
                 '4-1-2',
                 '4-1-3',
                 '4-1-4',
                 '4-1-5',
             ],
-            new_columns_by_id: {
+            new_columns_byId: {
                 '4-1-1': {
                     id: '4-1-1',
                 },

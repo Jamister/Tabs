@@ -10,15 +10,15 @@ export const testStore = {
     },
     notes: {},
     parts: {
-        all_ids: [],
-        by_id: {},
+        allIds: [],
+        byId: {},
     },
     blocks: {
-        all_ids: [],
-        by_id: {},
+        allIds: [],
+        byId: {},
     },
     columns: {
-        all_ids: [],
-        by_id: {},
+        allIds: [],
+        byId: {},
     },
 };

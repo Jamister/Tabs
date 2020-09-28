@@ -23,14 +23,14 @@ describe('TablaturePart', () => {
         const mocked_store = {
             ...tab,
             parts: {
-                all_ids: [1],
-                by_id: {
+                allIds: [1],
+                byId: {
                     1: { type: 'tablature' },
                 },
             },
             blocks: {
-                all_ids: ['1-1', '1-2'],
-                by_id: {
+                allIds: ['1-1', '1-2'],
+                byId: {
                     '1-1': { id: '1-1' },
                     '1-2': { id: '1-2' },
                 },

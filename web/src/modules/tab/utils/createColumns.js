@@ -4,7 +4,7 @@ const createColumns = (block_full_id = '') => {
     const columns = {};
 
     function returnEmptyColumns() {
-        return { all_ids: [], by_id: {} };
+        return { allIds: [], byId: {} };
     }
 
     function returnColumns() {
@@ -12,21 +12,21 @@ const createColumns = (block_full_id = '') => {
     }
 
     function createById() {
-        const by_id = {};
-        columns.all_ids.forEach(id => {
-            by_id[id] = {};
+        const byId = {};
+        columns.allIds.forEach(id => {
+            byId[id] = {};
         });
-        columns.by_id = by_id;
+        columns.byId = byId;
         return returnColumns();
     }
 
     function createAllIds() {
-        const all_ids = [1, 2, 3, 4, 5].map(column_number => {
+        const allIds = [1, 2, 3, 4, 5].map(column_number => {
             const hash = `column ${column_number}`;
             const { smaller_id: column_id } = createUniqueId(hash);
             return `${block_full_id}-${column_id}`;
         });
-        columns.all_ids = all_ids;
+        columns.allIds = allIds;
         return createById();
     }
 

@@ -8,7 +8,7 @@ import BlockEnd from './BlockEnd';
 
 function Block({ full_block_id }) {
     const columns = useSelector(store => store.tab.columns, shallowEqual);
-    const columns_in_this_block = (columns.all_ids || [])
+    const columns_in_this_block = (columns.allIds || [])
         .filter(b => b.indexOf(`${full_block_id}-`) !== -1);
 
     return (

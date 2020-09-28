@@ -12,13 +12,13 @@ import moveSelectedNote from '../moveSelectedNote';
 describe('Moves', () => {
     const selected_note = { p: '1', b: '1', c: '2', l: '3' };
     const columns = {
-        all_ids: [
+        allIds: [
             '1-1-1',
             '1-1-2',
             '1-1-3',
             '1-1-4',
         ],
-        by_id: {
+        byId: {
             '1-1-1': {},
             '1-1-2': {},
             '1-1-3': {},

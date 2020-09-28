@@ -6,8 +6,8 @@ import createColumns from 'modules/tab/utils/createColumns';
 
 const addPart = produce((draft) => {
     const parts = draft.parts || {};
-    const parts_all_ids = parts.all_ids || [];
-    const parts_by_id = parts.by_id || {};
+    const partsAllIds = parts.allIds || [];
+    const partsById = parts.byId || {};
 
     function finish() {
         return draft;
@@ -19,24 +19,24 @@ const addPart = produce((draft) => {
     }
 
     function addColumnsToById(new_columns) {
-        const { by_id } = new_columns;
-        const columns_by_id = (draft.columns || {}).by_id || {};
-        const new_columns_by_id = {
-            ...columns_by_id,
-            ...by_id,
+        const { byId } = new_columns;
+        const columnsById = (draft.columns || {}).byId || {};
+        const newColumnsById = {
+            ...columnsById,
+            ...byId,
         };
-        draft.columns.by_id = new_columns_by_id;
+        draft.columns.byId = newColumnsById;
         return setLastChange();
     }
 
     function addColumnsToAllIds(new_columns) {
-        const { all_ids } = new_columns;
-        const columns_all_ids = (draft.columns || {}).all_ids || [];
-        const new_columns_all_ids = [
-            ...columns_all_ids,
-            ...all_ids,
+        const { allIds } = new_columns;
+        const columnsAllIds = (draft.columns || {}).allIds || [];
+        const newColumnsAllIds = [
+            ...columnsAllIds,
+            ...allIds,
         ];
-        draft.columns.all_ids = new_columns_all_ids;
+        draft.columns.allIds = newColumnsAllIds;
         return addColumnsToById(new_columns);
     }
 
@@ -46,19 +46,19 @@ const addPart = produce((draft) => {
     }
 
     function addBlockToById(full_block_id) {
-        const blocks_by_id = (draft.blocks || {}).by_id || {};
-        const new_blocks_by_id = {
-            ...blocks_by_id,
+        const blocksById = (draft.blocks || {}).byId || {};
+        const newBlocksById = {
+            ...blocksById,
             [full_block_id]: {},
         };
-        draft.blocks.by_id = new_blocks_by_id;
+        draft.blocks.byId = newBlocksById;
         return createBlockColumns(full_block_id);
     }
 
     function addBlockToAllIds(full_block_id) {
-        const blocks_all_ids = (draft.blocks || {}).all_ids || [];
-        const new_blocks_all_ids = [...blocks_all_ids, full_block_id];
-        draft.blocks.all_ids = new_blocks_all_ids;
+        const blocksAllIds = (draft.blocks || {}).allIds || [];
+        const newBlocksAllIds = [...blocksAllIds, full_block_id];
+        draft.blocks.allIds = newBlocksAllIds;
         return addBlockToById(full_block_id);
     }
 
@@ -70,22 +70,22 @@ const addPart = produce((draft) => {
     }
 
     function addPartToById(next_part_id) {
-        const new_parts_by_id = {
-            ...parts_by_id,
+        const newPartsById = {
+            ...partsById,
             [next_part_id]: { type: 'tablature' },
         };
-        draft.parts.by_id = new_parts_by_id;
+        draft.parts.byId = newPartsById;
         return createBlockId(next_part_id);
     }
 
     function addPartToAllIds(next_part_id) {
-        const new_parts_all_ids = [...parts_all_ids, next_part_id];
-        draft.parts.all_ids = new_parts_all_ids;
+        const newPartsAllIds = [...partsAllIds, next_part_id];
+        draft.parts.allIds = newPartsAllIds;
         return addPartToById(next_part_id);
     }
 
     function createNextPartId() {
-        const hash = `part ${parts_all_ids.length + 1}`;
+        const hash = `part ${partsAllIds.length + 1}`;
         const { smaller_id: next_part_id } = createUniqueId(hash);
         return addPartToAllIds(next_part_id);
     }

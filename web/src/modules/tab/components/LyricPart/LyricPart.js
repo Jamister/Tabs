@@ -12,9 +12,9 @@ import LyricLine from '../LyricLine';
 function LyricPart({ part_id }) {
     const lyric_lines = useSelector(store => store
         .tab.lyric_lines, shallowEqual);
-    const by_id = lyric_lines.by_id || {};
-    const all_ids = lyric_lines.all_ids || [];
-    const all_part_lines = all_ids
+    const byId = lyric_lines.byId || {};
+    const allIds = lyric_lines.allIds || [];
+    const all_part_lines = allIds
         .filter(b => b.indexOf(`${part_id}-`) !== -1);
 
     return (
@@ -23,11 +23,11 @@ function LyricPart({ part_id }) {
                 <React.Fragment key={line_id}>
                     <LyricChords
                         part_id={part_id}
-                        lyric_line={by_id[line_id]}
+                        lyric_line={byId[line_id]}
                     />
                     <LyricLine
                         part_id={part_id}
-                        lyric_line={by_id[line_id]}
+                        lyric_line={byId[line_id]}
                     />
                 </React.Fragment>
             ))}

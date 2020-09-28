@@ -1,8 +1,16 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_TAB = gql`
-    mutation CreateTab($content: String) {
-        createTab(content: $content) {
+    mutation CreateTab(
+        $tuning: String
+        $instrument: String
+        $content: String
+    ) {
+        createTab(
+            tuning: $tuning
+            instrument: $instrument
+            content: $content
+        ) {
             hashId
             content
         }

@@ -15,8 +15,8 @@ import mapKeysToActions from 'modules/tab/utils/mapKeysToActions';
 const TabView = () => {
     const dispatch = useDispatch();
     const parts = useSelector(store => store.tab.parts, shallowEqual);
-    const all_ids = parts.all_ids || [];
-    const by_id = parts.by_id || {};
+    const allIds = parts.allIds || [];
+    const byId = parts.byId || {};
 
     useEffect(() => {
         function handleKeyDown(event) {
@@ -41,11 +41,11 @@ const TabView = () => {
     return (
         <>
             <s.PaddingWrapper>
-                {all_ids.map(part_id => (
+                {allIds.map(part_id => (
                     <Parts
                         key={part_id}
                         part_id={part_id}
-                        part={by_id[part_id]}
+                        part={byId[part_id]}
                     />
                 ))}
             </s.PaddingWrapper>

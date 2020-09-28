@@ -90,40 +90,4 @@ const updateNote = produce((draft, action) => {
     return checkBlank();
 });
 
-// function deleteColumnIfEmpty(state, columns, value, key_code) {
-// 	if (value !== '') {
-// 		return { ...columns };
-// 	}
-
-// 	const all_ids = columns.all_ids || [];
-// 	const by_id = columns.by_id || {};
-// 	const selected_note = state.selected_note || {};
-// 	const { p, b, c } = selected_note;
-// 	const lines = state.lines || [];
-
-// 	const notes_on_column = lines.reduce((res, cur) => {
-// 		const note_id = `${p}-${b}-${c}-${cur}`;
-// 		const note_value = ((state.notes || {})[note_id] || {}).value || '';
-// 		if (note_value !== '') {
-// 			return note_value;
-// 		}
-
-// 		return res;
-// 	}, '');
-
-// 	if (notes_on_column === '' && key_code === 46) {
-// 		const column_id = `${p}-${b}-${c + 1}`;
-// 		const _all_ids = all_ids.filter(x => x !== column_id);
-// 		const _by_id = { ...by_id };
-// 		delete _by_id[column_id];
-// 		const new_columns = {
-// 			all_ids: _all_ids,
-// 			by_id: _by_id,
-// 		};
-// 		return new_columns;
-// 	}
-
-// 	return { ...columns };
-// }
-
 export default updateNote;

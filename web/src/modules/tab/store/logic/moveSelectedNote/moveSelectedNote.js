@@ -34,7 +34,7 @@ const moveSelectedNote = produce((draft, action) => {
     }
 
     function findBlockInPart(orderHandler) {
-        const all_blocks_in_current_part = (blocks.all_ids || [])
+        const all_blocks_in_current_part = (blocks.allIds || [])
             .filter(id => id.indexOf(`${p}-`) !== -1);
         const current_block_full_id = `${p}-${b}`;
         const location_of_current_block = all_blocks_in_current_part
@@ -44,7 +44,7 @@ const moveSelectedNote = produce((draft, action) => {
     }
 
     function findColumnInBlock(orderHandler) {
-        const all_columns_in_current_block = (columns.all_ids || [])
+        const all_columns_in_current_block = (columns.allIds || [])
             .filter(id => id.indexOf(`${p}-${b}-`) !== -1);
         const current_column_full_id = `${p}-${b}-${c}`;
         const location_of_current_column = all_columns_in_current_block
@@ -69,7 +69,7 @@ const moveSelectedNote = produce((draft, action) => {
         // REFACTOR
         const is_column_1_of_current_block = previous_column_full_id === undefined;
         if (is_column_1_of_current_block) {
-            const all_columns_in_previous_block = (columns.all_ids || [])
+            const all_columns_in_previous_block = (columns.allIds || [])
                 .filter(id => id.indexOf(`${previous_block_full_id}-`) !== -1);
             const [last_column_on_previous_block] = all_columns_in_previous_block.slice(-1);
             const previous_block_id = extract.blockId({
@@ -105,7 +105,7 @@ const moveSelectedNote = produce((draft, action) => {
         // REFACTOR
         const is_last_column_of_current_block = next_column_full_id === undefined;
         if (is_last_column_of_current_block) {
-            const all_columns_in_next_block = (columns.all_ids || [])
+            const all_columns_in_next_block = (columns.allIds || [])
                 .filter(id => id.indexOf(`${next_block_full_id}-`) !== -1);
             const first_column_on_next_block = all_columns_in_next_block[0];
             const next_block_id = extract.blockId({

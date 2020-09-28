@@ -7,14 +7,14 @@ test('addBlock should not crash', () => {
 
 describe('addBlock', () => {
     const parts = {
-        all_ids: [1],
-        by_id: {
+        allIds: [1],
+        byId: {
             1: { id: 1 },
         },
     };
     const blocks = {
-        all_ids: ['1-1', '1-2'],
-        by_id: {
+        allIds: ['1-1', '1-2'],
+        byId: {
             '1-1': {
                 part_id: 1,
                 id: '1-1',
@@ -22,13 +22,13 @@ describe('addBlock', () => {
         },
     };
     const columns = {
-        all_ids: [
+        allIds: [
             '1-1-1',
             '1-1-2',
             '1-1-3',
             '1-1-4',
         ],
-        by_id: {
+        byId: {
             '1-1-1': {
                 part_id: 1,
                 block_id: 1,
@@ -62,8 +62,8 @@ describe('addBlock', () => {
         expect(action).toStrictEqual({
             parts,
             blocks: {
-                all_ids: ['1-1', '1-2'],
-                by_id: {
+                allIds: ['1-1', '1-2'],
+                byId: {
                     '1-1': {
                         part_id: 1,
                         id: '1-1',
@@ -75,7 +75,7 @@ describe('addBlock', () => {
                 },
             },
             columns: {
-                all_ids: [
+                allIds: [
                     '1-1-1',
                     '1-1-2',
                     '1-1-3',
@@ -86,7 +86,7 @@ describe('addBlock', () => {
                     '1-2-4',
                     '1-2-5',
                 ],
-                by_id: {
+                byId: {
                     '1-1-1': {
                         part_id: 1,
                         block_id: 1,

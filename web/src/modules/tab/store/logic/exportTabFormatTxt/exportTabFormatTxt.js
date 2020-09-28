@@ -13,8 +13,8 @@ export const createPrintedTab = (state = {}) => {
                 ...result,
                 [current]: '',
             }), {});
-        const parts_all_ids = parts.all_ids || [];
-        const parts_to_print = parts_all_ids
+        const partsAllIds = parts.allIds || [];
+        const parts_to_print = partsAllIds
             .reduce((result, current) => ({
                 ...result,
                 [current]: { ...lines_to_print },
@@ -42,8 +42,8 @@ export const createPrintedTab = (state = {}) => {
             }, '');
     }
 
-    function filterIfHasId(all_ids, piece_of_id) {
-        return all_ids.filter(id => id.indexOf(piece_of_id) !== -1);
+    function filterIfHasId(allIds, piece_of_id) {
+        return allIds.filter(id => id.indexOf(piece_of_id) !== -1);
     }
 
     function updateLinesToPrint(part_id, line, note_value) {
@@ -106,8 +106,8 @@ export const createPrintedTab = (state = {}) => {
     }
 
     function loopThroughColumns(block_full_id) {
-        const columns_all_ids = columns.all_ids || [];
-        const columns_in_this_block = filterIfHasId(columns_all_ids, `${block_full_id}-`);
+        const columnsAllIds = columns.allIds || [];
+        const columns_in_this_block = filterIfHasId(columnsAllIds, `${block_full_id}-`);
         const columns_length = columns_in_this_block.length;
 
         for (let c = 0; c < columns_length; c += 1) {
@@ -117,8 +117,8 @@ export const createPrintedTab = (state = {}) => {
     }
 
     function loopThroughBlocks(part_id) {
-        const blocks_all_ids = blocks.all_ids || [];
-        const blocks_in_this_part = filterIfHasId(blocks_all_ids, `${part_id}-`);
+        const blocksAllIds = blocks.allIds || [];
+        const blocks_in_this_part = filterIfHasId(blocksAllIds, `${part_id}-`);
         const blocks_length = blocks_in_this_part.length;
 
         for (let b = 0; b < blocks_length; b += 1) {
@@ -132,11 +132,11 @@ export const createPrintedTab = (state = {}) => {
     }
 
     function loopThroughParts() {
-        const parts_all_ids = parts.all_ids || [];
-        const parts_length = parts_all_ids.length;
+        const partsAllIds = parts.allIds || [];
+        const parts_length = partsAllIds.length;
 
         for (let p = 0; p < parts_length; p += 1) {
-            const part_id = parts_all_ids[p];
+            const part_id = partsAllIds[p];
             createBorder(part_id);
             loopThroughBlocks(part_id);
         }

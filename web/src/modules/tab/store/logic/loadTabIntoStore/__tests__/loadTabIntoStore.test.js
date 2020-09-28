@@ -3,16 +3,16 @@ import loadTabIntoStore from '../loadTabIntoStore';
 describe('Load Tab Into Store', () => {
     const content = {
         parts: {
-            all_ids: [],
-            by_id: {},
+            allIds: [],
+            byId: {},
         },
         blocks: {
-            all_ids: [],
-            by_id: {},
+            allIds: [],
+            byId: {},
         },
         columns: {
-            all_ids: [],
-            by_id: {},
+            allIds: [],
+            byId: {},
         },
         notes: {},
         lines: [1, 2, 3, 4, 5, 6],

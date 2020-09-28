@@ -18,20 +18,20 @@ test('should export tab in string format', () => {
             '1-2-4-4': { value: '4' },
         },
         parts: {
-            all_ids: [1, 2],
-            by_id: {
+            allIds: [1, 2],
+            byId: {
                 1: { id: 1 },
                 2: { id: 2 },
             },
         },
         blocks: {
-            all_ids: [
+            allIds: [
                 '1-1',
                 '1-2',
                 '2-1',
                 '2-2',
             ],
-            by_id: {
+            byId: {
                 '1-1': {
                     part_id: 1,
                     id: '1-1',
@@ -51,7 +51,7 @@ test('should export tab in string format', () => {
             },
         },
         columns: {
-            all_ids: [
+            allIds: [
                 '1-1-1',
                 '1-1-2',
                 '1-1-3',
@@ -69,7 +69,7 @@ test('should export tab in string format', () => {
                 '2-2-3',
                 '2-2-4',
             ],
-            by_id: {
+            byId: {
                 '1-1-1': {
                     part_id: 1,
                     block_id: 1,

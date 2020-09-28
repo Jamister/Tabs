@@ -3,7 +3,7 @@ import produce from 'immer';
 
 const removeEmptyColumn = produce((draft, action) => {
     const columns = draft.columns || {};
-    const by_id = columns.by_id || {};
+    const byId = columns.byId || {};
     const selected_note = draft.selected_note || {};
     const { p, b, c, l } = selected_note;
 
@@ -18,18 +18,18 @@ const removeEmptyColumn = produce((draft, action) => {
     }
 
     function removeColumn(column_full_id) {
-        const columns_by_id = { ...by_id || {} };
-        const columns_all_ids = (columns.all_ids || [])
+        const columnsById = { ...byId || {} };
+        const columnsAllIds = (columns.allIds || [])
             .filter(id => {
                 const to_delete = id === column_full_id;
                 if (to_delete) {
-                    delete columns_by_id[id];
+                    delete columnsById[id];
                 }
                 return !to_delete;
             });
         draft.columns = {
-            all_ids: columns_all_ids,
-            by_id: columns_by_id,
+            allIds: columnsAllIds,
+            byId: columnsById,
         };
         return moveNote();
     }
@@ -45,7 +45,7 @@ const removeEmptyColumn = produce((draft, action) => {
 
     function checkIfIsLastColumn(column_full_id) {
         const next_column_id = `${p}-${b}-${c + 1}`;
-        const last_column = by_id[next_column_id] === undefined;
+        const last_column = byId[next_column_id] === undefined;
         return last_column
             ? checkIfBlockHasLessThan2Columns(column_full_id)
             : finish();

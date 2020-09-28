@@ -50,11 +50,25 @@ const updateNote = produce((draft, action) => {
         return setLastChange();
     }
 
+    function clearChord() {
+        const chord = lines.map(() => '');
+        return buildChord(chord);
+    }
+
+    function checkBackspaceOnChords() {
+        const isDelete = action.key === 'Delete';
+        const isBackspace = action.key === 'Backspace';
+        const clearKeyWasPressed = isDelete || isBackspace;
+        return clearKeyWasPressed
+            ? clearChord()
+            : finish();
+    }
+
     function findChord() {
         const chord = returnChord(action.key, instrument);
         const no_chord_found = chord === null;
         return no_chord_found
-            ? finish()
+            ? checkBackspaceOnChords()
             : buildChord(chord);
     }
 

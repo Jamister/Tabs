@@ -1,10 +1,13 @@
 /* eslint-disable no-param-reassign */
-import produce from 'immer';
+/* Test using createDraft to update all content at the same time */
+import { createDraft, finishDraft } from 'immer';
 import { getDateNow } from 'modules/shared/utils/dates';
 
-const updateTitle = produce((draft, action) => {
+const updateTitle = (state, action) => {
+    const draft = createDraft(state);
+
     function finish() {
-        return draft;
+        return finishDraft(draft);
     }
 
     function setLastChange() {
@@ -19,6 +22,6 @@ const updateTitle = produce((draft, action) => {
     }
 
     return setTitle();
-});
+};
 
 export default updateTitle;

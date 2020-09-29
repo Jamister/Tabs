@@ -10,9 +10,11 @@ import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 
 // Components
 import Layout from 'modules/shared/components/Layout';
+import CreateTabButton from 'modules/tab/components/CreateTabButton';
 
 const ListTabs = ({ tabs }) => {
     const tuningView = (tuning) => tuning.split(',').join(' ');
+    const emptyTabs = tabs.length === 0;
 
     return (
         <Layout>
@@ -43,6 +45,13 @@ const ListTabs = ({ tabs }) => {
                         </s.TabOnList>
                     </Col>
                 ))}
+                {emptyTabs && (
+                    <Col span={24}>
+                        Você ainda não criou nenhuma tablatura.
+                        <br /><br />
+                        <CreateTabButton />
+                    </Col>
+                )}
             </Row>
         </Layout>
     );

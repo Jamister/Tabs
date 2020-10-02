@@ -1,139 +1,47 @@
+import { createDraft, finishDraft } from 'immer';
+import { getDateNow } from 'modules/shared/utils/dates';
 import addBlock from '../addBlock';
-
-test('addBlock should not crash', () => {
-    const test_empty = addBlock();
-    expect(test_empty).toStrictEqual({});
-});
+import tab from '../../../store';
 
 describe('addBlock', () => {
-    const parts = {
-        allIds: [1],
+    const draft = createDraft(tab);
+    draft.parts = {
+        allIds: ['63cca1b2'],
         byId: {
-            1: { id: 1 },
+            '63cca1b2': { type: 'tablature' },
         },
     };
-    const blocks = {
-        allIds: ['1-1', '1-2'],
-        byId: {
-            '1-1': {
-                part_id: 1,
-                id: '1-1',
-            },
-        },
-    };
-    const columns = {
-        allIds: [
-            '1-1-1',
-            '1-1-2',
-            '1-1-3',
-            '1-1-4',
-        ],
-        byId: {
-            '1-1-1': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-1',
-            },
-            '1-1-2': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-2',
-            },
-            '1-1-3': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-3',
-            },
-            '1-1-4': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-4',
-            },
-        },
-    };
+    const state = finishDraft(draft);
 
-    it('should add block number 2', () => {
-        const state = {
-            parts,
-            blocks,
-            columns,
-        };
-        const action = addBlock(state, { part_id: 1 });
-        expect(action).toStrictEqual({
-            parts,
-            blocks: {
-                allIds: ['1-1', '1-2'],
-                byId: {
-                    '1-1': {
-                        part_id: 1,
-                        id: '1-1',
-                    },
-                    '1-2': {
-                        part_id: 1,
-                        id: '1-2',
-                    },
-                },
-            },
-            columns: {
-                allIds: [
-                    '1-1-1',
-                    '1-1-2',
-                    '1-1-3',
-                    '1-1-4',
-                    '1-2-1',
-                    '1-2-2',
-                    '1-2-3',
-                    '1-2-4',
-                    '1-2-5',
-                ],
-                byId: {
-                    '1-1-1': {
-                        part_id: 1,
-                        block_id: 1,
-                        id: '1-1-1',
-                    },
-                    '1-1-2': {
-                        part_id: 1,
-                        block_id: 1,
-                        id: '1-1-2',
-                    },
-                    '1-1-3': {
-                        part_id: 1,
-                        block_id: 1,
-                        id: '1-1-3',
-                    },
-                    '1-1-4': {
-                        part_id: 1,
-                        block_id: 1,
-                        id: '1-1-4',
-                    },
-                    '1-2-1': {
-                        part_id: 1,
-                        block_id: 2,
-                        id: '1-2-1',
-                    },
-                    '1-2-2': {
-                        part_id: 1,
-                        block_id: 2,
-                        id: '1-2-2',
-                    },
-                    '1-2-3': {
-                        part_id: 1,
-                        block_id: 2,
-                        id: '1-2-3',
-                    },
-                    '1-2-4': {
-                        part_id: 1,
-                        block_id: 2,
-                        id: '1-2-4',
-                    },
-                    '1-2-5': {
-                        part_id: 1,
-                        block_id: 2,
-                        id: '1-2-5',
-                    },
-                },
-            }
+    it('should create block id', () => {
+        expect(state.blocks).toStrictEqual({
+            allIds: [],
+            byId: {},
         });
+        const action = { part_id: '63cca1b2' };
+        const result = addBlock(state, action);
+        const blockId = result.blocks.allIds[0];
+        expect(result.blocks).toStrictEqual({
+            allIds: [blockId],
+            byId: {
+                [blockId]: {},
+            },
+        });
+    });
+
+    it('should create block columns', () => {
+        const action = { part_id: '63cca1b2' };
+        const result = addBlock(state, action);
+        expect(result.columns.allIds).toHaveLength(5);
+        const firstColumnId = result.columns.allIds[0];
+        expect(result.columns.byId).toHaveProperty(firstColumnId);
+    });
+
+    it('should set last change with date now', () => {
+        const action = { part_id: '63cca1b2' };
+        const result = addBlock(state, action);
+        const dateNow = getDateNow();
+        expect(result.lastChange).not.toBe(0);
+        expect(result.lastChange).toBe(dateNow);
     });
 });

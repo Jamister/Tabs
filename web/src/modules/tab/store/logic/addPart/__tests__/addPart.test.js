@@ -1,39 +1,42 @@
+import { createDraft, finishDraft } from 'immer';
 import addPart from '../addPart';
+import tab from '../../../store';
 
 describe('addPart', () => {
-    it('should add new part at the end of the tab', () => {
-        const state = {};
-        const action = addPart(state);
-        const result = {
-            allIds: [1],
-            byId: { 1: { id: 1 } },
-        };
-        expect(action.parts).toStrictEqual(result);
+    it('should add new part', () => {
+        expect(tab.parts).toStrictEqual({
+            allIds: [],
+            byId: {},
+        });
+        const result = addPart(tab);
+        const partId = result.parts.allIds[0];
+        expect(result.parts).toStrictEqual({
+            allIds: [partId],
+            byId: {
+                [partId]: { type: 'tablature' },
+            },
+        });
     });
 
-    it('should start with 1 empty block in this part', () => {
-        const state = {};
-        const action = addPart(state);
-        const result = {
-            allIds: ['1-1'],
-            byId: { '1-1': { id: '1-1' } },
+    it('should add 1 block for this part', () => {
+        const draft = createDraft(tab);
+        draft.blocks = {
+            allIds: ['1', '2'],
+            byId: {
+                '1': {},
+                '2': {},
+            },
         };
-        expect(action.blocks).toStrictEqual(result);
+        const state = finishDraft(draft);
+        const result = addPart(state);
+        expect(result.blocks.allIds).toHaveLength(3);
     });
 
     it('should have empty block with 5 columns in it', () => {
-        const state = {};
-        const action = addPart(state);
-        const result = {
-            allIds: ['1-1-1', '1-1-2', '1-1-3', '1-1-4', '1-1-5'],
-            byId: {
-                '1-1-1': { id: '1-1-1' },
-                '1-1-2': { id: '1-1-2' },
-                '1-1-3': { id: '1-1-3' },
-                '1-1-4': { id: '1-1-4' },
-                '1-1-5': { id: '1-1-5' },
-            },
-        };
-        expect(action.columns).toStrictEqual(result);
+        const result = addPart(tab);
+        expect(result.blocks.allIds).toHaveLength(1);
+        expect(result.columns.allIds).toHaveLength(5);
+        const [lastColumnFullId] = result.columns.allIds.slice(-1);
+        expect(result.columns.byId).toHaveProperty(lastColumnFullId);
     });
 });

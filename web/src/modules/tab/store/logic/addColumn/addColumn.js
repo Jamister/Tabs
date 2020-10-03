@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
 import { extract } from 'modules/tab/utils/extractIds';
+import createUniqueId from 'modules/shared/utils/createUniqueId';
 
 const addColumn = produce((draft) => {
     const selected_note = draft?.selected_note || {};
@@ -10,15 +11,17 @@ const addColumn = produce((draft) => {
         return draft;
     }
 
-    function addNewColumn() {
-        const next_column_id = `${p}-${b}-${c + 1}`;
-        draft.columns.allIds.push(next_column_id);
-        draft.columns.byId[next_column_id] = {
-            part_id: p,
-            block_id: b,
-            id: next_column_id,
-        };
+    function addNewColumn(fullNewColumnId) {
+        draft.columns.allIds.push(fullNewColumnId);
+        draft.columns.byId[fullNewColumnId] = {};
         return finish();
+    }
+
+    function createColumnId(allColumnsInCurrentBlock) {
+        const hash = `column ${allColumnsInCurrentBlock.length + 1}`;
+        const { smaller_id: newColumnId } = createUniqueId(hash);
+        const fullNewColumnId = `${p}-${b}-${newColumnId}`;
+        return addNewColumn(fullNewColumnId);
     }
 
     function checkIfIsLastColumn() {
@@ -30,7 +33,7 @@ const addColumn = produce((draft) => {
         });
         const isLastColumn = c === lastColumnId;
         return isLastColumn
-            ? addNewColumn()
+            ? createColumnId(allColumnsInCurrentBlock)
             : finish();
     }
 

@@ -9,7 +9,7 @@ test('mapKeysToActions should not crash', () => {
 
 test('mapKeysToActions return ESC keypress', () => {
     expect(mapKeysToActions(27)).toStrictEqual({
-        type: 'CLEAR_SELECT_NOTE',
+        type: 'CLEAR_SELECTED_NOTE',
     });
 });
 

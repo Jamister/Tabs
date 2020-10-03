@@ -9,8 +9,8 @@ export const addPart = () => ({
     type: types.ADD_PART,
 });
 
-export const clearSelectNote = () => ({
-    type: types.CLEAR_SELECT_NOTE,
+export const clearSelectedNote = () => ({
+    type: types.CLEAR_SELECTED_NOTE,
 });
 
 export const exportTabFormatTxt = () => ({

@@ -27,7 +27,7 @@ const TabView = () => {
         function handleMouseUp(event) {
             const elementAttr = event.target.getAttribute('data-note');
             const isOutsideTabClick = elementAttr === null;
-            if (isOutsideTabClick) dispatch(actions.clearSelectNote());
+            if (isOutsideTabClick) dispatch(actions.clearSelectedNote());
         }
 
         window.addEventListener('keydown', handleKeyDown);

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
 
-const clearSelectNote = produce((draft) => {
+const clearSelectedNote = produce((draft) => {
     function resetSelectedNote() {
         const clear_selected_note = {
             p: 0,
@@ -16,4 +16,4 @@ const clearSelectNote = produce((draft) => {
     resetSelectedNote();
 });
 
-export default clearSelectNote;
+export default clearSelectedNote;

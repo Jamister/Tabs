@@ -1,6 +1,6 @@
 export const ADD_BLOCK = 'ADD_BLOCK';
 export const ADD_PART = 'ADD_PART';
-export const CLEAR_SELECT_NOTE = 'CLEAR_SELECT_NOTE';
+export const CLEAR_SELECTED_NOTE = 'CLEAR_SELECTED_NOTE';
 export const EXPORT_TAB_TXT = 'EXPORT_TAB_TXT';
 export const MOVE_SELECTED_NOTE = 'MOVE_SELECTED_NOTE';
 export const REMOVE_BLOCK = 'REMOVE_BLOCK';

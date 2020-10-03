@@ -1,8 +1,8 @@
 import produce from 'immer';
-import clearSelectNote from '../clearSelectNote';
+import clearSelectedNote from '../clearSelectedNote';
 import tab from '../../../store';
 
-describe('clearSelectNote', () => {
+describe('clearSelectedNote', () => {
     it('should clear the selected note', () => {
         const state = produce(tab, draft => {
             draft.selected_note = {
@@ -12,7 +12,7 @@ describe('clearSelectNote', () => {
                 l: '2',
             };
         });
-        const result = clearSelectNote(state);
+        const result = clearSelectedNote(state);
         expect(result.selected_note).toStrictEqual({
             p: 0, b: 0, c: 0, l: 0,
         });

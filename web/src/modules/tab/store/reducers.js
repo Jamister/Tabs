@@ -3,7 +3,7 @@ import tab from './store';
 // Use cases
 import addBlock from './logic/addBlock';
 import addPart from './logic/addPart';
-import clearSelectNote from './logic/clearSelectNote';
+import clearSelectedNote from './logic/clearSelectedNote';
 import exportTabFormatTxt from './logic/exportTabFormatTxt';
 import moveSelectedNote from './logic/moveSelectedNote';
 import removeBlock from './logic/removeBlock';
@@ -24,7 +24,7 @@ import clearTabValues from './logic/clearTabValues';
 const funcs = {
     ADD_BLOCK: addBlock,
     ADD_PART: addPart,
-    CLEAR_SELECT_NOTE: clearSelectNote,
+    CLEAR_SELECTED_NOTE: clearSelectedNote,
     EXPORT_TAB_TXT: exportTabFormatTxt,
     MOVE_SELECTED_NOTE: moveSelectedNote,
     REMOVE_BLOCK: removeBlock,

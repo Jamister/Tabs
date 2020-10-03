@@ -1,5 +1,5 @@
 const features = {
-    virtualKeyboard: true,
+    // virtualKeyboard: true,
 };
 
 export default features;

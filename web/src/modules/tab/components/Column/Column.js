@@ -4,15 +4,8 @@ import { useSelector, shallowEqual } from 'react-redux';
 import * as s from './Column.style';
 
 // Components
-// eslint-disable-next-line import/no-named-default
-import { default as NoteNormal } from '../Note';
-import NoteVK from '../Note/NoteVK';
+import Note from '../Note';
 import ChordSelection from '../ChordSelection';
-
-// Feature flag
-import features from 'utils/featureFlags';
-
-const Note = features.virtualKeyboard ? NoteVK : NoteNormal;
 
 function Column({ full_column_id }) {
     const lines = useSelector(store => store

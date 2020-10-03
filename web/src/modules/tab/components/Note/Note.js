@@ -9,12 +9,13 @@ import { selectNote } from '../../store/actions';
 // Components
 import NoteValue from './NoteValue';
 import NoteWidthSpace from './NoteWidthSpace';
+import NotePopover from '../NotePopover';
 
-// Functions
+// Utils
 import { extract } from '../../utils/extractIds';
 import { isNoteSelectedSelector } from 'modules/tab/store/selectors';
 
-function Note({ full_column_id, line_id = '' }) {
+const Note = ({ full_column_id, line_id = '' }) => {
     const dispatch = useDispatch();
     const note_id = `${full_column_id}-${line_id}`;
     const is_selected = useSelector(store => isNoteSelectedSelector(store, note_id));
@@ -52,6 +53,23 @@ function Note({ full_column_id, line_id = '' }) {
         );
     }
 
+    if (is_selected) {
+        return (
+            <NotePopover>
+                <s.Note
+                    type="button"
+                    data-note="true"
+                    line={line_id}
+                    is_selected={is_selected}
+                    onClick={handleNote}
+                >
+                    <NoteValue note_id={note_id} />
+                </s.Note>
+                <NoteWidthSpace note_id={note_id} />
+            </NotePopover>
+        );
+    }
+
     return (
         <>
             <s.Note
@@ -66,7 +84,7 @@ function Note({ full_column_id, line_id = '' }) {
             <NoteWidthSpace note_id={note_id} />
         </>
     );
-}
+};
 
 Note.propTypes = {
     full_column_id: PropTypes.string.isRequired,

@@ -1,14 +1,17 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Skeleton } from 'antd';
 
 // Components
 import Layout from 'modules/shared/components/Layout';
 
 const TabLoading = () => (
-    <Layout include_actions_bar include_keytips>
+    <Layout>
         <Row>
             <Col span={24}>
-                Carregando...
+                <p><br /></p>
+            </Col>
+            <Col span={24}>
+                <Skeleton active />
             </Col>
         </Row>
     </Layout>

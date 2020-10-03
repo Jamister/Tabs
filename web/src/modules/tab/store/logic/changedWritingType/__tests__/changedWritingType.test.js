@@ -10,7 +10,7 @@ describe('changedWritingType', () => {
     });
 
     it('should change the writing to notes', () => {
-        const state = produce((draft) => {
+        const state = produce(tab, draft => {
             draft.user_is_writing = 'chords';
         });
         const action = { writing: 'notes' };

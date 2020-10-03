@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
 
+// REFACTOR
 const removeEmptyColumn = produce((draft, action) => {
     const columns = draft.columns || {};
     const byId = columns.byId || {};

@@ -1,27 +1,22 @@
 import selectNote from '../selectNote';
+import tab from '../../../store';
 
-test('selectNote should not crash', () => {
-    const test_empty = selectNote();
-    expect(test_empty).toStrictEqual({});
-});
-
-test('should select note 1-1-1-1', () => {
-    const state = {};
-    const action = {
-        note: {
-            p: 1,
-            b: 2,
-            c: 1,
-            l: 3,
-        },
-    };
-    const result = selectNote(state, action);
-    expect(result).toStrictEqual({
-        selected_note: {
-            p: 1,
-            b: 2,
-            c: 1,
-            l: 3,
-        },
+describe('selectNote', () => {
+    it('should select note p1-b3-c9-2', () => {
+        const action = {
+            note: {
+                p: 'p1',
+                b: 'b3',
+                c: 'c9',
+                l: '2',
+            },
+        };
+        const result = selectNote(tab, action);
+        expect(result.selected_note).toStrictEqual({
+            p: 'p1',
+            b: 'b3',
+            c: 'c9',
+            l: '2',
+        });
     });
 });

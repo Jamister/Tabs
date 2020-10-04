@@ -1,6 +1,6 @@
 import createUniqueId from 'modules/shared/utils/createUniqueId';
 
-const createColumns = (block_full_id = '') => {
+const createColumns = (blockFullId = '') => {
     const columns = {};
 
     function returnEmptyColumns() {
@@ -21,18 +21,18 @@ const createColumns = (block_full_id = '') => {
     }
 
     function createAllIds() {
-        const allIds = [1, 2, 3, 4, 5].map(column_number => {
-            const hash = `column ${column_number}`;
-            const { smaller_id: column_id } = createUniqueId(hash);
-            return `${block_full_id}-${column_id}`;
+        const allIds = [1, 2, 3, 4, 5].map(columnNumber => {
+            const hash = `column ${columnNumber}`;
+            const { smaller_id: columnId } = createUniqueId(hash);
+            return `${blockFullId}-${columnId}`;
         });
         columns.allIds = allIds;
         return createById();
     }
 
     function checkEmptyParam() {
-        const empty_param = block_full_id === '';
-        return empty_param
+        const emptyParam = blockFullId === '';
+        return emptyParam
             ? returnEmptyColumns()
             : createAllIds();
     }

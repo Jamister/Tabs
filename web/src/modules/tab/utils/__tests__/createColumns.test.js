@@ -4,39 +4,26 @@ describe('createColumns', () => {
     it('should not crash with blank values', () => {
         const result = createColumns();
         expect(result).toStrictEqual({
-            new_columns_allIds: [],
-            new_columns_byId: {},
+            allIds: [],
+            byId: {},
         });
     });
 
     it('should create 5 columns', () => {
-        const result = createColumns('4-1');
-        const expected = {
-            new_columns_allIds: [
-                '4-1-1',
-                '4-1-2',
-                '4-1-3',
-                '4-1-4',
-                '4-1-5',
-            ],
-            new_columns_byId: {
-                '4-1-1': {
-                    id: '4-1-1',
-                },
-                '4-1-2': {
-                    id: '4-1-2',
-                },
-                '4-1-3': {
-                    id: '4-1-3',
-                },
-                '4-1-4': {
-                    id: '4-1-4',
-                },
-                '4-1-5': {
-                    id: '4-1-5',
-                },
-            },
-        };
-        expect(result).toStrictEqual(expected);
+        const result = createColumns('p4-b2');
+        expect(result.allIds).toHaveLength(5);
+        const [
+            column1FullId,
+            column2FullId,
+            column3FullId,
+            column4FullId,
+            column5FullId,
+        ] = result.allIds;
+        expect(result.byId).toHaveProperty(column1FullId);
+        expect(result.byId).toHaveProperty(column2FullId);
+        expect(result.byId).toHaveProperty(column3FullId);
+        expect(result.byId).toHaveProperty(column4FullId);
+        expect(result.byId).toHaveProperty(column5FullId);
     });
 });
+

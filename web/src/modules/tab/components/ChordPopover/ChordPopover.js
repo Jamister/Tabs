@@ -7,28 +7,15 @@ import KeyboardButton from '../KeyboardButton';
 
 // Utils
 import isVirtualKeyboardActive from 'modules/user/utils/isVirtualKeyboardActive';
-import { numbers, letters, specialChars } from 'modules/tab/utils/validChars';
 
-const NotePopover = ({ children }) => {
-    const additionalChars = ['Backspace'];
+function ChordPopover({ children }) {
+    const chordsNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
     const content = (
         <div data-note="true">
-            <div>
-                {numbers.map(char => (
-                    <KeyboardButton key={char} char={char} />
-                ))}
-            </div>
-            <div>
-                {[...letters, ...specialChars].map(char => (
-                    <KeyboardButton key={char} char={char} />
-                ))}
-            </div>
-            <div>
-                {additionalChars.map(char => (
-                    <KeyboardButton key={char} char={char} width="auto" />
-                ))}
-            </div>
+            {chordsNotes.map(char => (
+                <KeyboardButton key={char} char={char} />
+            ))}
         </div>
     );
 
@@ -51,13 +38,13 @@ const NotePopover = ({ children }) => {
     }
 
     return <>{childrenElems}</>;
-};
+}
 
-NotePopover.propTypes = {
+ChordPopover.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
     ]).isRequired,
 };
 
-export default NotePopover;
+export default ChordPopover;

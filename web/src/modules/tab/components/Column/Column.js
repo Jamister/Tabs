@@ -15,17 +15,13 @@ function Column({ full_column_id }) {
 
     if (user_is_writing === 'chords') {
         return (
-            <s.Column data-test="column-render">
-                <ChordSelection
-                    full_column_id={full_column_id}
-                    data-test="notes-render"
-                />
+            <s.Column>
+                <ChordSelection full_column_id={full_column_id} />
                 {(lines || []).map(l => (
                     <Note
                         key={l}
                         full_column_id={full_column_id}
                         line_id={l}
-                        data-test="notes-render"
                     />
                 ))}
             </s.Column>
@@ -33,13 +29,12 @@ function Column({ full_column_id }) {
     }
 
     return (
-        <s.Column data-test="column-render">
+        <s.Column>
             {(lines || []).map(l => (
                 <Note
                     key={l}
                     full_column_id={full_column_id}
                     line_id={l}
-                    data-test="notes-render"
                 />
             ))}
         </s.Column>

@@ -1,6 +1,6 @@
 import validChars from './validChars';
 
-const returnKeyValue = (key, pre_value) => {
+const returnKeyValue = (key = '', preValue) => {
     function checkArrows() {
         const arrows = (
             key === 'ArrowUp'
@@ -9,7 +9,7 @@ const returnKeyValue = (key, pre_value) => {
             || key === 'ArrowLeft'
             || key === 'Tab'
         );
-        return arrows ? 'arrows' : pre_value || '';
+        return arrows ? 'arrows' : preValue || '';
     }
 
     function checkDelete() {
@@ -20,15 +20,15 @@ const returnKeyValue = (key, pre_value) => {
     function checkBackspace() {
         const is_backspace = key === 'Backspace';
         return is_backspace
-            ? pre_value.slice(0, -1)
+            ? preValue.slice(0, -1)
             : checkDelete();
     }
 
     function checkValidTabChar() {
-        const is_valid_char = validChars
+        const isValidChar = validChars
             .some(char => char === key.toLowerCase());
-        return is_valid_char
-            ? `${pre_value}${key.toLowerCase()}`
+        return isValidChar
+            ? `${preValue}${key.toLowerCase()}`
             : checkBackspace();
     }
 

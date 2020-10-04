@@ -1,21 +1,24 @@
 import mapKeysToActions from '../mapKeysToActions';
 
-test('mapKeysToActions should not crash', () => {
-    expect(mapKeysToActions()).toStrictEqual({
-        key_code: undefined,
-        type: 'UPDATE_NOTE',
+describe('mapKeysToActions', () => {
+    it('should update note', () => {
+        expect(mapKeysToActions(null, '2')).toStrictEqual({
+            key: '2',
+            type: 'START_UPDATING_NOTE',
+        });
     });
-});
 
-test('mapKeysToActions return ESC keypress', () => {
-    expect(mapKeysToActions(27)).toStrictEqual({
-        type: 'CLEAR_SELECTED_NOTE',
+    it('should return ESC keypress', () => {
+        expect(mapKeysToActions(null, 'Escape')).toStrictEqual({
+            type: 'CLEAR_SELECTED_NOTE',
+        });
     });
-});
 
-test('mapKeysToActions return right arrow keypress', () => {
-    expect(mapKeysToActions(39)).toStrictEqual({
-        key_code: 39,
-        type: 'MOVE_SELECTED_NOTE',
+    it('should return right arrow keypress', () => {
+        expect(mapKeysToActions(null, 'ArrowUp')).toStrictEqual({
+            event: null,
+            key: 'ArrowUp',
+            type: 'MOVE_SELECTED_NOTE',
+        });
     });
 });

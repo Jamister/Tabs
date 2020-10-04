@@ -1,77 +1,70 @@
+import produce from 'immer';
 import updateNote from '../updateNote';
-
-test('updateNote should not crash', () => {
-    const test_empty = updateNote();
-    expect(test_empty).toStrictEqual({});
-});
+import tab from '../../../store';
 
 describe('updateNote', () => {
-    const notes = {
-        '1-1-2-3': { value: '2' },
-    };
-    const columns = {
-        allIds: [
-            '1-1-1',
-            '1-1-2',
-            '1-1-3',
-            '1-1-4',
-        ],
-        byId: {
-            '1-1-1': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-1',
-            },
-            '1-1-2': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-2',
-            },
-            '1-1-3': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-3',
-            },
-            '1-1-4': {
-                part_id: 1,
-                block_id: 1,
-                id: '1-1-4',
-            },
-        },
-    };
-
-    it('should change note to 2', () => {
-        const selected_note = { p: 1, b: 1, c: 1, l: 3 };
-        const state = {
-            selected_note,
-            notes,
-            columns,
-        };
-        const action = updateNote(state, { key_code: 50 });
-        expect(action).toStrictEqual({
-            selected_note,
-            columns,
-            notes: {
-                '1-1-2-3': { value: '2' },
-                '1-1-1-3': { value: '2' },
-            },
+    it('should add note 6', () => {
+        const state = produce(tab, draft => {
+            draft.selected_note = {
+                p: 'p1', b: 'b1', c: 'c2', l: '6',
+            };
+            draft.notes = {
+                'p1-b1-c2-3': { value: '2' },
+            };
+        });
+        const action = { key: '6' };
+        const result = updateNote(state, action);
+        expect(result.notes).toStrictEqual({
+            'p1-b1-c2-3': { value: '2' },
+            'p1-b1-c2-6': { value: '6' },
         });
     });
 
-    it('should change note to 21', () => {
-        const selected_note = { p: 1, b: 1, c: 2, l: 3 };
-        const state = {
-            selected_note,
-            notes,
-            columns,
-        };
-        const action = updateNote(state, { key_code: 49 });
-        expect(action).toStrictEqual({
-            selected_note,
-            columns,
-            notes: {
-                '1-1-2-3': { value: '21' },
-            },
+    it('should change note 21', () => {
+        const state = produce(tab, draft => {
+            draft.selected_note = {
+                p: 'p1', b: 'b1', c: 'c2', l: '3',
+            };
+            draft.notes = {
+                'p1-b1-c2-3': { value: '2' },
+            };
+        });
+        const action = { key: '1' };
+        const result = updateNote(state, action);
+        expect(result.notes).toStrictEqual({
+            'p1-b1-c2-3': { value: '21' },
+        });
+    });
+
+    it('should delete note', () => {
+        const state = produce(tab, draft => {
+            draft.selected_note = {
+                p: 'p1', b: 'b1', c: 'c2', l: '3',
+            };
+            draft.notes = {
+                'p1-b1-c2-3': { value: '2' },
+            };
+        });
+        const action = { key: 'Delete' };
+        const result = updateNote(state, action);
+        expect(result.notes).toStrictEqual({
+            'p1-b1-c2-3': { value: '' },
+        });
+    });
+
+    it('should delete last char of note value', () => {
+        const state = produce(tab, draft => {
+            draft.selected_note = {
+                p: 'p1', b: 'b1', c: 'c2', l: '3',
+            };
+            draft.notes = {
+                'p1-b1-c2-3': { value: '12b' },
+            };
+        });
+        const action = { key: 'Backspace' };
+        const result = updateNote(state, action);
+        expect(result.notes).toStrictEqual({
+            'p1-b1-c2-3': { value: '12' },
         });
     });
 });

@@ -2,6 +2,7 @@ import tab from './store';
 
 // Use cases
 import addBlock from './logic/addBlock';
+import addColumn from './logic/addColumn';
 import addPart from './logic/addPart';
 import clearSelectedNote from './logic/clearSelectedNote';
 import exportTabFormatTxt from './logic/exportTabFormatTxt';
@@ -10,7 +11,6 @@ import removeBlock from './logic/removeBlock';
 import selectNote from './logic/selectNote';
 import removeEmptyColumn from './logic/removeEmptyColumn';
 import updateNote from './logic/updateNote';
-import addColumn from './logic/addColumn';
 import changedWritingType from './logic/changedWritingType';
 import updateTitle from './logic/updateTitle';
 import updateArtist from './logic/updateArtist';
@@ -23,6 +23,7 @@ import clearTabValues from './logic/clearTabValues';
 
 const funcs = {
     ADD_BLOCK: addBlock,
+    ADD_COLUMN: addColumn,
     ADD_PART: addPart,
     CLEAR_SELECTED_NOTE: clearSelectedNote,
     EXPORT_TAB_TXT: exportTabFormatTxt,
@@ -31,7 +32,6 @@ const funcs = {
     SELECT_NOTE: selectNote,
     REMOVE_EMPTY_COLUMN: removeEmptyColumn,
     UPDATE_NOTE: updateNote,
-    ADD_COLUMN: addColumn,
     CHANGED_WRITING_TYPE: changedWritingType,
     UPDATE_TITLE: updateTitle,
     UPDATE_ARTIST: updateArtist,

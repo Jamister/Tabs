@@ -1,9 +1,5 @@
 // Actions
-import {
-    moveSelectedNote,
-    startUpdatingNote,
-    clearSelectedNote,
-} from '../store/actions';
+import * as actions from '../store/actions';
 
 const mapKeysToActions = (event, key) => {
     const arrows = (
@@ -14,15 +10,20 @@ const mapKeysToActions = (event, key) => {
         || key === 'Tab'
     );
     if (arrows) {
-        return moveSelectedNote({ event, key });
+        return actions.moveSelectedNote({ event, key });
+    }
+
+    const plus = key === '+';
+    if (plus) {
+        return actions.addColumn();
     }
 
     const esc = key === 'Escape';
     if (esc) {
-        return clearSelectedNote();
+        return actions.clearSelectedNote();
     }
 
-    return startUpdatingNote({ key });
+    return actions.startUpdatingNote({ key });
 };
 
 export default mapKeysToActions;

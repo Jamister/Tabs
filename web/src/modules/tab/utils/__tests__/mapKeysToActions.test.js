@@ -8,6 +8,12 @@ describe('mapKeysToActions', () => {
         });
     });
 
+    it('should return + keypress', () => {
+        expect(mapKeysToActions(null, '+')).toStrictEqual({
+            type: 'ADD_COLUMN',
+        });
+    });
+
     it('should return ESC keypress', () => {
         expect(mapKeysToActions(null, 'Escape')).toStrictEqual({
             type: 'CLEAR_SELECTED_NOTE',

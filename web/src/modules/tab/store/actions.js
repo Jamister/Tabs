@@ -5,6 +5,10 @@ export const addBlock = (part_id) => ({
     part_id,
 });
 
+export const addColumn = () => ({
+    type: types.ADD_COLUMN,
+});
+
 export const addPart = () => ({
     type: types.ADD_PART,
 });

@@ -7,7 +7,7 @@ function* handleUpdateNote({ key }) {
     if (hasNoteSelected) {
         yield put({ type: types.REMOVE_EMPTY_COLUMN, key });
         yield put({ type: types.UPDATE_NOTE, key });
-        yield put({ type: types.ADD_COLUMN });
+        yield put({ type: types.ADD_COLUMN, auto: true });
     }
 }
 

@@ -9,7 +9,7 @@ import exportTabFormatTxt from './logic/exportTabFormatTxt';
 import moveSelectedNote from './logic/moveSelectedNote';
 import removeBlock from './logic/removeBlock';
 import selectNote from './logic/selectNote';
-import removeEmptyColumn from './logic/removeEmptyColumn';
+import removeColumn from './logic/removeColumn';
 import updateNote from './logic/updateNote';
 import changedWritingType from './logic/changedWritingType';
 import updateTitle from './logic/updateTitle';
@@ -30,7 +30,7 @@ const funcs = {
     MOVE_SELECTED_NOTE: moveSelectedNote,
     REMOVE_BLOCK: removeBlock,
     SELECT_NOTE: selectNote,
-    REMOVE_EMPTY_COLUMN: removeEmptyColumn,
+    REMOVE_COLUMN: removeColumn,
     UPDATE_NOTE: updateNote,
     CHANGED_WRITING_TYPE: changedWritingType,
     UPDATE_TITLE: updateTitle,

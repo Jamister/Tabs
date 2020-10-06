@@ -27,6 +27,10 @@ export const moveSelectedNote = ({ event, key }) => ({
     key,
 });
 
+export const removeColumn = () => ({
+    type: types.REMOVE_COLUMN,
+});
+
 export const removeBlock = (part_id) => ({
     type: types.REMOVE_BLOCK,
     part_id,

@@ -18,6 +18,11 @@ const mapKeysToActions = (event, key) => {
         return actions.addColumn();
     }
 
+    const minus = key === '-';
+    if (minus) {
+        return actions.removeColumn();
+    }
+
     const esc = key === 'Escape';
     if (esc) {
         return actions.clearSelectedNote();

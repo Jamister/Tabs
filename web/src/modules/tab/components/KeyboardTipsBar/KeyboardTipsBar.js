@@ -12,12 +12,22 @@ import ArrowRightKey from './ArrowRightKey';
 const KeyboardTipsBar = () => (
     <s.TipsBarWrapper>
         <Container>
+            <s.Subtitle first>
+                Atalhos do teclado:
+            </s.Subtitle>
+
             <ArrowTopKey />
             <ArrowDownKey />
             <ArrowLeftKey />
             <ArrowRightKey />
             <s.Subtitle>
-                Use as teclas para navegar pela tab
+                - Navegue pela tab
+            </s.Subtitle>
+
+            <s.Key plusKey>+</s.Key>
+            <s.Key minusKey>-</s.Key>
+            <s.Subtitle>
+                - Adicione ou remova colunas
             </s.Subtitle>
         </Container>
     </s.TipsBarWrapper>

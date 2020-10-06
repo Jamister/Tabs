@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { getDateNow } from 'modules/shared/utils/dates';
 import removeColumn from '../removeColumn';
 import tab from '../../../store';
 
@@ -87,5 +88,10 @@ describe('removeColumn', () => {
         expect(result.selected_note).toStrictEqual({
             p: 'p1', b: 'b1', c: 'c2', l: '1',
         });
+    });
+
+    it('should set last change with date now', () => {
+        const dateNow = getDateNow();
+        expect(result.lastChange).toBe(dateNow);
     });
 });

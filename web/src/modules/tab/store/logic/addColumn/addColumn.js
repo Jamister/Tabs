@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
+import { getDateNow } from 'modules/shared/utils/dates';
 import { extract } from 'modules/tab/utils/extractIds';
 import createUniqueId from 'modules/shared/utils/createUniqueId';
 
@@ -26,19 +27,24 @@ const addColumn = produce((draft, action) => {
         return draft;
     }
 
+    function setLastChange() {
+        draft.lastChange = getDateNow();
+        return finish();
+    }
+
     function addNewColumn(selectedColumnLocation) {
         const newColumnFullId = createColumnId();
         const locationToAdd = selectedColumnLocation + 1;
         draft.columns.allIds.splice(locationToAdd, 0, newColumnFullId);
         draft.columns.byId[newColumnFullId] = {};
-        return finish();
+        return setLastChange();
     }
 
     function addNewColumnAtTheEnd() {
         const newColumnFullId = createColumnId();
         draft.columns.allIds.push(newColumnFullId);
         draft.columns.byId[newColumnFullId] = {};
-        return finish();
+        return setLastChange();
     }
 
     function getSelectedColumnLocationOnArray() {

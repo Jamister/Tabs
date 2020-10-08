@@ -1,8 +1,8 @@
 {
-  "name": "oaktabs",
+  "name": "jamister_tabs",
   "version": "4.0.0",
-  "description": "Oaktabs | Project to create online guitar tabs",
-  "homepage": "",
+  "description": "Jamister | Create online guitar tabs",
+  "homepage": "https://jamister.com",
   "author": "Beto Figueiredo <herberto_f@yahoo.com.br>",
   "engines": {
     "node": ">=10.0.0"
@@ -35,6 +35,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/betofigueiredo/oaktabs"
+    "url": "https://github.com/Jamister/Tabs"
   }
 }

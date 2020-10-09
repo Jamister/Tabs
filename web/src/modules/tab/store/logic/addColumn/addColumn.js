@@ -32,19 +32,28 @@ const addColumn = produce((draft, action) => {
         return finish();
     }
 
+    function moveNoteToNewColumn(newColumnFullId) {
+        const columnId = extract.columnId({
+            full_id: newColumnFullId,
+        });
+        const newSelectedNote = { p, b, c: columnId, l };
+        draft.selected_note = newSelectedNote;
+        return setLastChange();
+    }
+
     function addNewColumn(selectedColumnLocation) {
         const newColumnFullId = createColumnId();
         const locationToAdd = selectedColumnLocation + 1;
         draft.columns.allIds.splice(locationToAdd, 0, newColumnFullId);
         draft.columns.byId[newColumnFullId] = {};
-        return setLastChange();
+        return moveNoteToNewColumn(newColumnFullId);
     }
 
     function addNewColumnAtTheEnd() {
         const newColumnFullId = createColumnId();
         draft.columns.allIds.push(newColumnFullId);
         draft.columns.byId[newColumnFullId] = {};
-        return setLastChange();
+        return moveNoteToNewColumn(newColumnFullId);
     }
 
     function getSelectedColumnLocationOnArray() {

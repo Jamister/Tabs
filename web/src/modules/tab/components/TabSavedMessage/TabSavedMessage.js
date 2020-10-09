@@ -22,7 +22,7 @@ const TabSavedMessage = () => {
         }
 
         function timeoutToHideMessage() {
-            setTimeout(() => setStep('EMPTY'), 3000);
+            setTimeout(() => setStep('EMPTY'), 4000);
         }
 
         function checkFinishSaving() {

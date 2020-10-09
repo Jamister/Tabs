@@ -25,8 +25,7 @@ export const GoogleButton = styled.button`
 `;
 
 export const SpanIcon = styled.span`
-	// TODO
-	background: url('https://developers-dot-devsite-v2-prod.appspot.com/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+	background: url('/images/g-normal.png') transparent 5px 50% no-repeat;
 	background-size: contain;
 	display: inline-block;
 	vertical-align: middle;

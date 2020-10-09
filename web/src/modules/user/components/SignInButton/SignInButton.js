@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { Spin } from 'antd';
+import { Spin, message } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import * as s from './SignInButton.style';
 
@@ -14,7 +14,8 @@ const SignInButton = () => {
 
     useEffect(() => {
         function displayError() {
-            // TODO error
+            const errorMessage = 'Desculpe, ocorreu algum erro no sistema. Tente entrar novamente.';
+            message.error(errorMessage);
         }
 
         function clearLocalstorage() {
@@ -68,9 +69,8 @@ const SignInButton = () => {
             auth2.attachClickHandler((element), {}, (googleUser) => {
                 handleResponse(googleUser);
             }, (err) => {
-                // TODO
-                // eslint-disable-next-line no-console
-                console.log(JSON.stringify(err, undefined, 2));
+                const errorMessage = JSON.stringify(err, undefined, 2);
+                message.error(errorMessage);
             });
         }
 

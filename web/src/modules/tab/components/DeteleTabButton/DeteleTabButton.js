@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
-import { Modal, Button } from 'antd';
+import { Modal, Button, message } from 'antd';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,7 +25,8 @@ const DeteleTabButton = () => {
 
     useEffect(() => {
         if (error) {
-            console.log(error); // TODO error
+            const errorMessage = 'Desculpe, ocorreu um problema ao apagar sua tab. Tente novamente.';
+            message.error(errorMessage);
         }
     }, [error]);
 

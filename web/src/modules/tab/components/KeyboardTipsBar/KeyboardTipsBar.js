@@ -13,7 +13,7 @@ const KeyboardTipsBar = () => (
     <s.TipsBarWrapper>
         <Container>
             <s.Subtitle first>
-                Atalhos do teclado:
+                Use o teclado:
             </s.Subtitle>
 
             <ArrowTopKey />

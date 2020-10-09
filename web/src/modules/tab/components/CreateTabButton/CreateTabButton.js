@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 
 // Api
 import { CREATE_TAB } from 'modules/tab/api';
@@ -44,7 +44,8 @@ const CreateTabButton = () => {
 
     useEffect(() => {
         if (error) {
-            console.log(error); // TODO error
+            const errorMessage = 'Desculpe, ocorreu um problema ao criar sua tab. Tente novamente.';
+            message.error(errorMessage);
         }
     }, [error]);
 

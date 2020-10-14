@@ -1,3 +1,4 @@
+<br /><br /><br />
 <p align="center">
   <a href="https://jamister.com">
     <img src="/prints/logo-1.png" width="268px" alt="Jamister logo" />
@@ -11,7 +12,7 @@
 ---
 
 
-![Preview](/prints/print-4.jpg?raw=true)
+![Preview](/prints/print-4.png?raw=true)
 
 
 ## License

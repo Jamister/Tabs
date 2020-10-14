@@ -68,9 +68,9 @@ const SignInButton = () => {
             const element = document.getElementById('customBtn');
             auth2.attachClickHandler((element), {}, (googleUser) => {
                 handleResponse(googleUser);
-            }, (err) => {
-                const errorMessage = JSON.stringify(err, undefined, 2);
-                message.error(errorMessage);
+            }, () => {
+                // const errorMessage = JSON.stringify(err, undefined, 2);
+                // TODO
             });
         }
 

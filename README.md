@@ -1,10 +1,17 @@
-<div align="center">
-  <h1>Jamister</h1>
-  <h3 align="center">🎸 Project to create online guitar tabs</h3>
-  <img src="https://img.shields.io/badge/-Work--in--Progress-blue">
-</div>
+<p align="center">
+  <a href="https://jamister.com">
+    <img src="/prints/logo-1.png" width="268px" alt="Jamister logo" />
+  </a>
+</p>
+<p align="center">🎸 Project to create online guitar tabs.</p>
+<p align="center">⇢ <a href="https://jamister.com">https://jamister.com</a></p>
+<br />
 
-![Preview](/prints/print-3.jpg?raw=true)
+
+---
+
+
+![Preview](/prints/print-4.jpg?raw=true)
 
 
 ## License
